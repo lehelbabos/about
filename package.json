@@ -1,0 +1,11 @@
+{
+  "name": "lehelbabos-com",
+  "version": "2.0.0",
+  "description": "This is the package file for the build of my portfolio",
+  "repository": "https://Lehel@bitbucket.org/Lehel/sherlock.git",
+  "author": "Lehel Babos",
+  "devDependencies": {},
+  "dependencies": {
+    "gulp": "^3.9.1"
+  }
+}
