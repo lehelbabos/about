@@ -2,10 +2,34 @@
   "name": "lehelbabos-com",
   "version": "2.0.0",
   "description": "This is the package file for the build of my portfolio",
-  "repository": "https://Lehel@bitbucket.org/Lehel/sherlock.git",
+  "repository": {
+    "type": "git",
+    "url": "https://Lehel@bitbucket.org/Lehel/sherlock.git"
+  },
   "author": "Lehel Babos",
-  "devDependencies": {},
+  "license": "ISC",
+  "main": "server.js",
+  "devDependencies": {
+    "angular": "^1.5.5",
+    "angular-animate": "^1.5.5",
+    "angular-ui-router": "^0.2.18",
+    "express": "^4.13.4",
+    "gulp-nodemon": "^2.0.3",
+    "browser-sync": "^2.8.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-eslint": "^1.0.0",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-sass": "^2.3.2",
+    "gulp-inject-svg": "^0.1.4",
+    "browser-sync": "^2.8.2",
+    "gulp-sass-lint": "^1.1.1",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+
+
+  },
   "dependencies": {
-    "gulp": "^3.9.1"
   }
 }
