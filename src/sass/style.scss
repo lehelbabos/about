@@ -1,0 +1,36 @@
+
+/////////////////////
+// WA UI Toolki
+////////////////////
+
+/* The UI Toolkit also includes and bootstraps the following packages
+	- IBM Design Colours
+	- IBM Design Fonts
+	- IBM Icons
+	- WA Icons
+
+   Included in the Toolkit but not configured for use in this setup:
+	- Bootstrap
+
+	The globals and base styles of the toolkit have been linked below. Refer to the documentation on the UI Toolkit site 
+	at https://pages.github.ibm.com/WatsonAnalytics/wa-ui-toolkit/#intro for futher config options and how to set up / link individual components. 
+*/
+
+@import "wa-ui-toolkit/dist/sass/globals/all";
+@import "wa-ui-toolkit/dist/sass/utils/all";
+
+
+
+/////////////////////////////
+// Custom Angular Components 
+/////////////////////////////
+
+@import "../app/components/first-component/first-component";
+
+h1 {
+	color: color('blue', 30);
+}
+
+.bee {
+	width: 256px;
+}
