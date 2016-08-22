@@ -3,9 +3,13 @@
 //////////////////////////////
 // Requires
 //////////////////////////////
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
+var gulp = require('gulp'),
+    sass = require('gulp-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
+    concat = require('gulp-concat'),
+    eslint = require('gulp-eslint'),
+    uglify = require('gulp-uglify');
+
 
 //////////////////////////////
 // Directories
@@ -13,7 +17,16 @@ var autoprefixer = require('gulp-autoprefixer');
 
 var dirs = {
   'sass': ['src/app/**/*.scss','src/sass/**/*.scss' ],
-  'dist': 'dist/'
+  'dist': 'dist/',
+  'js': [
+    'src/app/app.js',
+    'src/app/data/**/*.js',
+    'src/app/filters/**/*.js',
+    'src/app/components/**/*.js',
+    'src/app/views/**/*.js',
+    'src/js/**/*.js',
+    '!src/**/*.min.js'
+  ],
 };
 
 
@@ -35,6 +48,25 @@ gulp.task('sass:watch', function () {
   gulp.watch(dirs.sass, ['sass']);
 });
 
+//////////////////////////////
+// JavaScript Tasks
+//////////////////////////////
+gulp.task('js', function () {
+  gulp.src(dirs.js)
+    .pipe(concat('app.js'))
+    .pipe(eslint()) // Linting
+    .pipe(eslint.format())
+    .pipe(uglify({ //Uglify
+    }))
+    .pipe(gulp.dest(dirs.dist + 'js')) // Write to JS folder in dist
+    console.log('JS TASK');
+});
 
 
-gulp.task('watch', ['sass:watch']);
+gulp.task('js:watch', function () {
+  gulp.watch(dirs.js, ['js']);
+});
+
+
+
+gulp.task('watch', ['sass:watch', 'js:watch']);
