@@ -8,7 +8,9 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     concat = require('gulp-concat'),
     eslint = require('gulp-eslint'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    imagemin = require('gulp-imagemin');
+
 
 
 //////////////////////////////
@@ -16,17 +18,14 @@ var gulp = require('gulp'),
 //////////////////////////////
 
 var dirs = {
-  'sass': ['src/app/**/*.scss','src/sass/**/*.scss' ],
+  'sass': ['src/components/**/*.scss','src/sass/**/*.scss' ],
   'dist': 'dist/',
   'js': [
-    'src/app/app.js',
-    'src/app/data/**/*.js',
-    'src/app/filters/**/*.js',
-    'src/app/components/**/*.js',
-    'src/app/views/**/*.js',
     'src/js/**/*.js',
+    'src/components/**/*.js',
     '!src/**/*.min.js'
   ],
+  'images': 'src/images/*.*',
 };
 
 
@@ -62,11 +61,24 @@ gulp.task('js', function () {
     console.log('JS TASK');
 });
 
-
 gulp.task('js:watch', function () {
   gulp.watch(dirs.js, ['js']);
 });
 
+//////////////////////////////
+// ImageMin Tasks
+//////////////////////////////
+gulp.task('imagemin', function () {
+  gulp.src(dirs.images)
+    .pipe(imagemin())
+    .pipe(gulp.dest(dirs.dist + 'images'))
+    console.log('IMAGEMIN TASK');
+});
+
+gulp.task('imagemin:watch', function () {
+  gulp.watch(dirs.images, ['imagemin']);
+});
 
 
-gulp.task('watch', ['sass:watch', 'js:watch']);
+
+gulp.task('watch', ['sass:watch', 'js:watch', 'imagemin:watch']);
