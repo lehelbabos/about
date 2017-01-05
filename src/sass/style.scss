@@ -1,3 +1,5 @@
+@import 'fonts';
+
 ///////////////////////////////
 // Colours
 ///////////////////////////////
@@ -24,6 +26,10 @@ $grey-4: #383838;
 $grey-5: #222222;
 
 
+
+body {
+	font-family: 'Affogato', Helvetica;
+}
 h1 {
 	color: $blue-3;
 }

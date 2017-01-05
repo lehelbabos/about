@@ -1,0 +1,56 @@
+
+////////////////////////////////
+// Affogato
+////////////////////////////////
+@font-face {
+  font-family: 'Affogato';
+    src: url('../fonts/Affogato-Black.eot');
+    src: url('../fonts/Affogato-Black.eot?#iefix') format('embedded-opentype'),
+    	 url('../fonts/Affogato-Black.woff') format('woff'),
+         url('../fonts/Affogato-Black.woff2') format('woff2'),
+         url('../fonts/Affogato-Black.ttf')  format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'Affogato';
+    src: url('../fonts/Affogato-Bold.eot');
+    src: url('../fonts/Affogato-Bold.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Affogato-Bold.woff') format('woff'),
+      url('../fonts/Affogato-Bold.woff2') format('woff2'),
+      url('../fonts/Affogato-Bold.ttf')  format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'Affogato';
+    src: url('../fonts/Affogato-Medium.eot');
+    src: url('../fonts/Affogato-Medium.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Affogato-Medium.woff') format('woff'),
+      url('../fonts/Affogato-Medium.woff2') format('woff2'),
+      url('../fonts/Affogato-Medium.ttf')  format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'Affogato';
+  src: url('../fonts/Affogato-Regular.eot');
+  src: url('../fonts/Affogato-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Affogato-Regular.woff') format('woff'),
+    url('../fonts/Affogato-Regular.woff2') format('woff2'),
+    url('../fonts/Affogato-Regular.ttf')  format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Affogato';
+  src: url('../fonts/Affogato-Light.eot');
+  src: url('../fonts/Affogato-Light.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Affogato-Light.woff') format('woff'),
+    url('../fonts/Affogato-Light.woff2') format('woff2'),
+    url('../fonts/Affogato-Light.ttf')  format('truetype');
+  font-weight: 300;
+}

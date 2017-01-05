@@ -29,8 +29,7 @@ var dirs = {
     '!src/**/*.min.js'
   ],
   'images': 'src/images/*.*',
-  'src': 'src/**/*.*',
-  'index': 'index.html',
+  'fonts': 'src/fonts/*.*',
 };
 
 
@@ -85,6 +84,19 @@ gulp.task('imagemin:watch', function () {
 });
 
 
+
+//////////////////////////////
+// Font Task
+//////////////////////////////
+gulp.task('fonts', function () {
+    return gulp.src(dirs.fonts)
+    .pipe(gulp.dest(dirs.dist + 'fonts'));
+});
+
+gulp.task('fonts:watch', function () {
+  gulp.watch(dirs.fonts, ['fonts']);
+});
+
 //////////////////////////////
 // Browser Sync
 //////////////////////////////
@@ -114,6 +126,6 @@ gulp.task('nodemon', function (cb) {
 	});
 });
 
-
-
-gulp.task('watch', ['sass:watch', 'js:watch', 'imagemin:watch', 'browser-sync']);
+gulp.task('default', ['build', 'watch']);
+gulp.task('build', ['sass', 'js', 'imagemin', 'fonts']);
+gulp.task('watch', ['sass:watch', 'js:watch', 'imagemin:watch', 'fonts:watch', 'browser-sync']);
