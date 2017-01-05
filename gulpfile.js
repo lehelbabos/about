@@ -9,7 +9,10 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     eslint = require('gulp-eslint'),
     uglify = require('gulp-uglify'),
-    imagemin = require('gulp-imagemin');
+    imagemin = require('gulp-imagemin'),
+    browserSync = require('browser-sync'),
+    nodemon = require('gulp-nodemon');
+
 
 
 
@@ -26,6 +29,8 @@ var dirs = {
     '!src/**/*.min.js'
   ],
   'images': 'src/images/*.*',
+  'src': 'src/**/*.*',
+  'index': 'index.html',
 };
 
 
@@ -80,5 +85,35 @@ gulp.task('imagemin:watch', function () {
 });
 
 
+//////////////////////////////
+// Browser Sync
+//////////////////////////////
+gulp.task('browser-sync', ['nodemon'], function() {
+	browserSync.init(null, {
+		proxy: "http://localhost:9001",
+        files: ["src/**/*.*", "index.html"],
+        browser: "google chrome",
+        port: 9002,
+	});
+});
 
-gulp.task('watch', ['sass:watch', 'js:watch', 'imagemin:watch']);
+//////////////////////////////
+// Nodemon
+//////////////////////////////
+gulp.task('nodemon', function (cb) {
+
+	var started = false;
+
+	return nodemon({
+		script: 'server.js'
+	}).on('start', function () { // to avoid nodemon being started multiple times
+		if (!started) {
+			cb();
+			started = true;
+		}
+	});
+});
+
+
+
+gulp.task('watch', ['sass:watch', 'js:watch', 'imagemin:watch', 'browser-sync']);
