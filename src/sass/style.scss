@@ -1,34 +1,11 @@
+@import 'reset';
 @import 'fonts';
-
-///////////////////////////////
-// Colours
-///////////////////////////////
-
-// Blues
-$blue-1: #c8e5ed;
-$blue-2: #338fd3;
-$blue-3: #0467bb;
-$blue-4: #013665;
-$blue-5: #01213b;
-
-// Orange
-$orange-1: #f8d0c3;
-$orange-2: #fc835c;
-$orange-3: #fe6100;
-$orange-4: #c45433;
-$orange-5: #56251a;
-
-// Greys
-$grey-1: #f7f7f7;
-$grey-2: #e8e8e8;
-$grey-3: #777777;
-$grey-4: #383838;
-$grey-5: #222222;
-
-
+@import 'colours';
 
 body {
-	font-family: 'Affogato', Helvetica;
+	font-family: 'Modum', HelveticaNeue, Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	font-size: 1em;
 }
 h1 {
 	color: $blue-3;
