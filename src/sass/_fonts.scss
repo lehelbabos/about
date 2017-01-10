@@ -1,66 +1,43 @@
-////////////////////////////////
-// Affogato
-////////////////////////////////
 @font-face {
-    font-family: 'Korneuburg_Slab', CourierNew, monospace;
-    src: url('../fonts/korneuburg-slab-bold_slanted-webfont.woff2') format('woff2'),
-         url('../fonts/korneuburg-slab-bold_slanted-webfont.woff') format('woff');
-    font-weight: 700;
-    font-style: italic;
+	font-family: 'Rubik';
+	src: url('../fonts/Rubik-Medium.eot');
+	src: url('../fonts/Rubik-Medium.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Rubik-Medium.woff') format('woff'),
+		url('../fonts/Rubik-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
 }
 
-
-
-
 @font-face {
-  font-family: 'Korneuburg_Slab';
-    src: url('../fonts/korneuburg-slab-bold-webfont.woff2') format('woff2'),
-         url('../fonts/korneuburg-slab-bold-webfont.woff') format('woff');
-    font-weight: 700;
+	font-family: 'Rubik';
+	src: url('../fonts/Rubik-MediumItalic.eot');
+	src: url('../fonts/Rubik-MediumItalic.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Rubik-MediumItalic.woff') format('woff'),
+		url('../fonts/Rubik-MediumItalic.ttf') format('truetype');
+	font-weight: 500;
+	font-style: italic;
 }
 
-
-
-
 @font-face {
-  font-family: 'Korneuburg_Slab';
-    src: url('../fonts/korneuburg-slab-light-slanted-webfont.woff2') format('woff2'),
-         url('../fonts/korneuburg-slab-light-slanted-webfont.woff') format('woff');
-    font-weight: 300;
-    font-style: italic;
-
+	font-family: 'Rubik';
+	src: url('../fonts/Rubik-Light.eot');
+	src: url('../fonts/Rubik-Light.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Rubik-Light.woff') format('woff'),
+		url('../fonts/Rubik-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
 }
 
-
-
-
 @font-face {
-  font-family: 'Korneuburg_Slab';
-    src: url('../fonts/korneuburg-slab-light-webfont.woff2') format('woff2'),
-         url('../fonts/korneuburg-slab-light-webfont.woff') format('woff');
-    font-weight: 300;
+	font-family: 'Rubik';
+	src: url('../fonts/Rubik-LightItalic.eot');
+	src: url('../fonts/Rubik-LightItalic.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Rubik-LightItalic.woff') format('woff'),
+		url('../fonts/Rubik-LightItalic.ttf') format('truetype');
+	font-weight: 300;
+	font-style: italic;
 }
 
-
-
-
-@font-face {
-  font-family: 'Korneuburg_Slab';
-    src: url('../fonts/korneuburg-slab-regular-slanted-webfont.woff2') format('woff2'),
-         url('../fonts/korneuburg-slab-regular-slanted-webfont.woff') format('woff');
-    font-weight: 400;
-    font-style: italic;
-}
-
-
-
-
-@font-face {
-  font-family: 'Korneuburg_Slab';
-    src: url('../fonts/korneuburg-slab-regular-webfont.woff2') format('woff2'),
-         url('../fonts/korneuburg-slab-regular-webfont.woff') format('woff');
-    font-weight: 400;
-}
 
 ////////////////////////////////
 // Modum

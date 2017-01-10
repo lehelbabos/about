@@ -2,9 +2,6 @@
 @import 'fonts';
 @import 'colours';
 @import 'variables';
-
-
-
 body {
 	font-family: 'Modum', HelveticaNeue, Helvetica, Arial, sans-serif;
 	font-weight: 400;
@@ -14,10 +11,16 @@ body {
 }
 
 .paragraph, p {
+	font-family: 'Rubik', sans-serif;
   font-size: $baseline * .667; // 16px
   line-height: $baseline;
 	background: $grey-1;
 	padding: $baseline;
+	font-weight: 300;
+}
+
+.bold {
+	font-weight: 500;
 }
 
 .heading-1 {
