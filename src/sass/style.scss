@@ -3,7 +3,7 @@
 @import 'colours';
 @import 'variables';
 body {
-	font-family: 'Modum', HelveticaNeue, Helvetica, Arial, sans-serif;
+	font-family: 'GrandesignNeueSerif', HelveticaNeue, Helvetica, Arial, sans-serif;
 	font-weight: 400;
 	font-size: 1em; // 16px
 	line-height: $baseline;
@@ -14,8 +14,6 @@ body {
 	font-family: 'Rubik', sans-serif;
   font-size: $baseline * .667; // 16px
   line-height: $baseline;
-	background: $grey-1;
-	padding: $baseline;
 	font-weight: 300;
 }
 
@@ -28,7 +26,6 @@ body {
   line-height: $baseline * 2;
 	color: $orange-3;
 	font-weight: 400;
-	padding: $baseline;
 	background: $blue-5;
 }
 
@@ -36,4 +33,14 @@ body {
 .bee {
 	width: 256px;
 	transition: all 2s ease;
+}
+
+.masthead {
+	padding: $baseline;
+	background: $blue-4;
+
+	&_profile {
+		width: 300px;
+		height: auto;
+	}
 }
