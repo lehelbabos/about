@@ -1,7 +1,9 @@
 @import 'reset';
-@import 'fonts';
-@import 'colours';
 @import 'variables';
+@import 'fonts';
+@import 'typesetting';
+@import 'colours';
+@import 'spacing';
 body {
 	font-family: 'GrandesignNeueSerif', HelveticaNeue, Helvetica, Arial, sans-serif;
 	font-weight: 400;
