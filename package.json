@@ -17,14 +17,16 @@
     "gulp-concat": "^2.6.0",
     "gulp-eslint": "^1.0.0",
     "gulp-imagemin": "^3.1.1",
+    "gulp-inject": "^4.2.0",
     "gulp-nodemon": "^2.0.3",
     "gulp-sass": "^2.3.2",
     "gulp-sass-lint": "^1.1.1",
     "gulp-sourcemaps": "^1.5.2",
+    "gulp-svgstore": "^6.1.0",
     "gulp-uglify": "^1.2.0"
   },
   "scripts": {
-  "start": "gulp"
+    "start": "gulp"
   },
   "dependencies": {
     "browser-sync": "^2.18.5",

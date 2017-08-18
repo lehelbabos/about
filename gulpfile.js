@@ -11,9 +11,11 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
     browserSync = require('browser-sync'),
-    nodemon = require('gulp-nodemon');
-
-
+    nodemon = require('gulp-nodemon'),
+    svgstore = require('gulp-svgstore'),
+    svgmin = require('gulp-svgmin'),
+    path = require('path'),
+    inject = require('gulp-inject')
 
 
 //////////////////////////////
@@ -29,8 +31,38 @@ var dirs = {
     '!src/**/*.min.js'
   ],
   'images': 'src/images/*.*',
+  'icons': 'src/images/icons/*.svg',
   'fonts': 'src/fonts/*.*',
 };
+
+
+
+gulp.task('svgstore', function () {
+  var svgs = gulp
+  .src(dirs.icons)
+  .pipe(svgmin(function getOptions (file) {
+    var prefix = path.basename(file.relative, path.extname(file.relative));
+    return {
+        plugins: [{
+            cleanupIDs: {
+                minify: true
+            }
+        }]
+    }
+}))
+  .pipe(svgstore({ inlineSvg: true }));
+
+  function fileContents (filePath, file) {
+    return file.contents.toString();
+  }
+
+  return gulp
+   .src('index.html')
+   .pipe(inject(svgs, { transform: fileContents }))
+   .pipe(gulp.dest('./')
+ );
+});
+
 
 
 //////////////////////////////
