@@ -4,6 +4,14 @@
 @import 'typesetting';
 @import 'colours';
 @import 'spacing';
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
 	font-family: 'GrandesignNeueSerif', HelveticaNeue, Helvetica, Arial, sans-serif;
 	font-weight: 400;
@@ -23,26 +31,56 @@ body {
 	font-weight: 500;
 }
 
-.heading-1 {
-  font-size: $baseline * 1.83; // 29px
-  line-height: $baseline * 2;
-	color: $orange-3;
-	font-weight: 400;
-	background: $blue-5;
-}
-
-
-.bee {
-	width: 256px;
-	transition: all 2s ease;
-}
-
-.masthead {
-	padding: $baseline;
-	background: $blue-4;
-
-	&_profile {
-		width: 300px;
-		height: auto;
+$profileImageSize: $baseline*4.75; //75px
+.about_photo {
+	position: relative;
+	padding: $spacing-s 0 0 0;
+	.photo {
+		width: $profileImageSize;
+		height: $profileImageSize;
+		background: url('/images/profile.jpg');
+		background-size: auto 120%;
+		background-position: 56% 0;
+		border-radius: 50%;
+		margin: 0 auto;
 	}
+	&:before {
+		content: ' ';
+		display: block;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0;
+		height: $profileImageSize+$spacing-s;
+
+		border-bottom: $profileImageSize solid transparent;
+		border-right: 100vw solid $blue-4;
+		z-index: -1;
+	}
+}
+
+.about_contact {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	padding: $spacing-m;
+
+	.contact_item {
+		flex: 0 0 auto;
+		width: $spacing-m;
+		height: $spacing-m;
+	}
+}
+
+
+#icn_twitter path {
+	fill: red;
+}
+
+.visuallyhidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px; width: 1px;
+  margin: -1px; padding: 0; border: 0;
 }
