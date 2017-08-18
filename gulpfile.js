@@ -31,38 +31,9 @@ var dirs = {
     '!src/**/*.min.js'
   ],
   'images': 'src/images/*.*',
-  'icons': 'src/images/icons/*.svg',
+  'icons': 'src/icons/*.svg',
   'fonts': 'src/fonts/*.*',
 };
-
-
-
-gulp.task('svgstore', function () {
-  var svgs = gulp
-  .src(dirs.icons)
-  .pipe(svgmin(function getOptions (file) {
-    var prefix = path.basename(file.relative, path.extname(file.relative));
-    return {
-        plugins: [{
-            cleanupIDs: {
-                minify: true
-            }
-        }]
-    }
-}))
-  .pipe(svgstore({ inlineSvg: true }));
-
-  function fileContents (filePath, file) {
-    return file.contents.toString();
-  }
-
-  return gulp
-   .src('index.html')
-   .pipe(inject(svgs, { transform: fileContents }))
-   .pipe(gulp.dest('./')
- );
-});
-
 
 
 //////////////////////////////
@@ -115,7 +86,38 @@ gulp.task('imagemin:watch', function () {
   gulp.watch(dirs.images, ['imagemin']);
 });
 
+//////////////////////////////
+// SVG Icon Sheet Build and Inject Task
+//////////////////////////////
+gulp.task('svgstore', function () {
+  var svgs = gulp
+  .src(dirs.icons)
+  .pipe(svgmin(function getOptions (file) {
+    var prefix = path.basename(file.relative, path.extname(file.relative));
+    return {
+        plugins: [{
+            cleanupIDs: {
+                minify: true
+            }
+        }]
+    }
+}))
+  .pipe(svgstore({ inlineSvg: true }));
 
+  function fileContents (filePath, file) {
+    return file.contents.toString();
+  }
+
+  return gulp
+   .src('index.html')
+   .pipe(inject(svgs, { transform: fileContents }))
+   .pipe(gulp.dest('./')
+ );
+});
+
+gulp.task('svgstore:watch', function () {
+  gulp.watch(dirs.icons, ['svgstore']);
+});
 
 //////////////////////////////
 // Font Task
@@ -160,4 +162,4 @@ gulp.task('nodemon', function (cb) {
 
 gulp.task('default', ['build', 'watch']);
 gulp.task('build', ['sass', 'js', 'imagemin', 'fonts']);
-gulp.task('watch', ['sass:watch', 'js:watch', 'imagemin:watch', 'fonts:watch', 'browser-sync']);
+gulp.task('watch', ['sass:watch', 'js:watch', 'imagemin:watch', 'svgstore:watch', 'fonts:watch', 'browser-sync']);
