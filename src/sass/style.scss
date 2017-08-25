@@ -18,6 +18,7 @@ body {
 	font-size: 1em; // 16px
 	line-height: $baseline;
 	color: $grey-4;
+  min-width: 325px;
 }
 
 .paragraph, p {
@@ -39,6 +40,7 @@ $profileImageSize: $baseline*4.75; //75px
 		width: $profileImageSize;
 		height: $profileImageSize;
 		background: url('/images/profile.jpg');
+    background-color: $blue-1;
 		background-size: auto 120%;
 		background-position: 56% 0;
 		border-radius: 50%;
@@ -69,14 +71,33 @@ $profileImageSize: $baseline*4.75; //75px
 		flex: 0 0 auto;
 		width: $spacing-m;
 		height: $spacing-m;
+    &-phone:hover {
+      fill: #34BC6E;
+    }
+    &-mail:hover {
+      fill: #E62325;
+    }
+    &-twitter:hover {
+      fill: #1DA1F2;
+    }
+    &-linkedin:hover {
+      fill: #0077B5;
+    }
+    &-dribbble:hover {
+      fill: #EA4C89;
+    }
 	}
 }
 
 
-#icn_twitter path {
-	fill: red;
-}
 
+///////////////////////////
+// SVG Injection Setup
+///////////////////////////
+
+svg path {
+    fill: inherit;
+}
 .visuallyhidden {
   position: absolute;
   overflow: hidden;
