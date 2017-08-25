@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "browser-sync": "^2.18.5",
-    "gulp-nodemon": "^2.2.1"
+    "gulp-nodemon": "^2.2.1",
+    "gulp-svgmin": "^1.2.4"
   }
 }
