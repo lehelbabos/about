@@ -1,42 +1,29 @@
 @import 'reset';
 @import 'variables';
+@import 'colours';
+@import 'scale';
 @import 'fonts';
 @import 'typesetting';
-@import 'colours';
-@import 'spacing';
 
 html {
   box-sizing: border-box;
+	font-size: 16px;
 }
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
 body {
-	font-family: 'GrandesignNeueSerif', HelveticaNeue, Helvetica, Arial, sans-serif;
-	font-weight: 400;
-	font-size: 1em; // 16px
-	line-height: $baseline;
-	color: $grey-4;
+	@extend %type-m;
   min-width: 325px;
-}
-
-.paragraph, p {
-	font-family: 'Rubik', sans-serif;
-  font-size: $baseline * .667; // 16px
-  line-height: $baseline;
 	font-weight: 300;
-}
-
-.bold {
-	font-weight: 500;
 }
 
 $profileImageSize: $baseline*6; //75px
 
 .about_photo {
 	position: relative;
-	padding: $spacing-s 0 0 0;
+	padding: $scale-s 0 0 0;
 	.photo {
 		width: $profileImageSize;
 		height: $profileImageSize;
@@ -54,7 +41,7 @@ $profileImageSize: $baseline*6; //75px
 		bottom: 0;
 		left: 0;
 		width: 0;
-		height: $profileImageSize+$spacing-s;
+		height: $profileImageSize+$scale-s;
 
 		border-bottom: $profileImageSize solid transparent;
 		border-right: 100vw solid $blue-4;
@@ -66,13 +53,13 @@ $profileImageSize: $baseline*6; //75px
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-between;
-	padding: $spacing-l $spacing-m;
+	padding: $scale-l $scale-m;
 	background: $blue-4;
 
 	.contact_item {
 		flex: 0 0 auto;
-		width: $spacing-m;
-		height: $spacing-m;
+		width: $scale-m;
+		height: $scale-m;
 		fill: $grey-1;
     &-phone:hover {
       fill: #34BC6E;
@@ -93,7 +80,7 @@ $profileImageSize: $baseline*6; //75px
 }
 
 .about_bio {
-	padding: 0 $spacing-m;
+	padding: 0 $scale-m;
 	text-align: center;
 }
 
