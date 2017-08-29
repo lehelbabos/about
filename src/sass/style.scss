@@ -32,7 +32,8 @@ body {
 	font-weight: 500;
 }
 
-$profileImageSize: $baseline*4.75; //75px
+$profileImageSize: $baseline*6; //75px
+
 .about_photo {
 	position: relative;
 	padding: $spacing-s 0 0 0;
@@ -65,12 +66,14 @@ $profileImageSize: $baseline*4.75; //75px
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-between;
-	padding: $spacing-m;
+	padding: $spacing-l $spacing-m;
+	background: $blue-4;
 
 	.contact_item {
 		flex: 0 0 auto;
 		width: $spacing-m;
 		height: $spacing-m;
+		fill: $grey-1;
     &-phone:hover {
       fill: #34BC6E;
     }
@@ -89,6 +92,10 @@ $profileImageSize: $baseline*4.75; //75px
 	}
 }
 
+.about_bio {
+	padding: 0 $spacing-m;
+	text-align: center;
+}
 
 
 ///////////////////////////
