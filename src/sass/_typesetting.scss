@@ -1,6 +1,6 @@
 %type {
   font-family: 'Rubik', HelveticaNeue, Helvetica, Arial, sans-serif;
-  &-xs{
+  &-xs {
     @extend %type;
     font-size: .75rem; // 12px
     line-height: $scale-s;  // 20px

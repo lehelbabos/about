@@ -15,46 +15,19 @@ html {
 
 body {
 	@extend %type-m;
-  min-width: 325px;
 	font-weight: 300;
 }
 
-$profileImageSize: $baseline*6; //75px
-
-.about_photo {
-	position: relative;
-	padding: $scale-s 0 0 0;
-	.photo {
-		width: $profileImageSize;
-		height: $profileImageSize;
-		background: url('/images/profile.jpg');
-    background-color: $blue-1;
-		background-size: auto 120%;
-		background-position: 56% 0;
-		border-radius: 50%;
-		margin: 0 auto;
-	}
-	&:before {
-		content: ' ';
-		display: block;
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 0;
-		height: $profileImageSize+$scale-s;
-
-		border-bottom: $profileImageSize solid transparent;
-		border-right: 100vw solid $blue-4;
-		z-index: -1;
-	}
+.about {
 }
 
 .about_contact {
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-between;
-	padding: $scale-l $scale-m;
-	background: $blue-4;
+	padding: $scale-xl $scale-m;
+  background: $grey-4;
+  background: linear-gradient(to right, $blue-5 , $blue-4);
 
 	.contact_item {
 		flex: 0 0 auto;
@@ -79,11 +52,86 @@ $profileImageSize: $baseline*6; //75px
 	}
 }
 
+
+$profileImageSize: $baseline*7; //140px
+
+.about_photo {
+	position: relative;
+	padding: $scale-s 0 0 0;
+  z-index: 1;
+  background: $grey-4;
+  background: linear-gradient(to right, $blue-5 , $blue-4);
+	.photo {
+		width: $profileImageSize;
+		height: $profileImageSize;
+		background: url('/images/profile.jpg');
+    background-color: $blue-1;
+		background-size: auto 120%;
+		background-position: 56% 0;
+		border-radius: 50%;
+		margin: 0 auto;
+	}
+  .icon {
+    width: $profileImageSize;
+    height: $profileImageSize;
+    margin: 0 auto;
+    display: block;
+    background: #FFF;
+    padding: $scale-l;
+    border-radius: 50%;
+    fill: $blue-3;
+  }
+	&:before {
+		content: ' ';
+		display: block;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0;
+		height: $profileImageSize+$scale-s;
+
+		border-top: $profileImageSize solid transparent;
+		border-left: 100vw solid #FFF;
+		z-index: -1;
+	}
+}
+
 .about_bio {
 	padding: 0 $scale-m;
 	text-align: center;
+  margin: -$scale-xs 0 0 0;
+  z-index: 100;
+  position: relative;
+  // &::before { // Profile Pic Mask
+  //   width: $scale-xl*2;
+  //   height:2px;
+  //   content: ' ';
+  //   position: absolute;
+  //   top: 0;
+  //   left: 50%;
+  //   transform: translateX(-50%);
+  //   background: $orange-3;
+  //   z-index: -1;
+  // }
 }
 
+.bio_name {
+  @extend %type-xl;
+  display: block;
+  font-weight: 700;
+  line-height: $scale-xl;
+  color: $blue-4;
+}
+.bio_title {
+  @extend %type-s;
+  display: block;
+  padding: 0 0 $scale-xl 0;
+  color: $blue-4;
+}
+
+.bio_desc {
+  @extend %type-m;
+}
 
 ///////////////////////////
 // SVG Injection Setup
