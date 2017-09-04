@@ -42,6 +42,7 @@ var dirs = {
 gulp.task('sass', function () {
   gulp.src(dirs.sass)
     .pipe(sass({
+      'includePaths': 'node_modules',
       'outputStyle': 'expanded',
     })
       .on('error', sass.logError) // This keeps the rest of the Gulp tasks from stopping if there is an error
