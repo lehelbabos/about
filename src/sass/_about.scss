@@ -1,13 +1,31 @@
 .about {
+	position: relative;
+	flex: 0 0 100%;
+	background: $blue-4;
+	background: linear-gradient(to right, $blue-5 , $blue-4);
+	min-width: 300px;
+	display: flex;
+	flex-flow: column wrap;
+	align-content: flex-start;
+
+	@include media(">tablet") {
+		flex: 1 1 20%;
+		// max-width: 300px;
+	}
+	@include media(">desktop") {
+		flex: 1 1 5%;
+	}
 }
 
 .about_contact {
+	flex: 0 0 auto;
+	width: 100%;
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-between;
 	padding: $scale-xl $scale-m;
-	max-width: 400px;
 	margin: 0 auto;
+	position: relative;
 	&::after {
 		width: 100%;
 		height: $scale-xl*2+$scale-m;
@@ -15,8 +33,6 @@
 		position: absolute;
 		left: 0;
 		top: 0;
-		background: $grey-4;
-	  background: linear-gradient(to right, $blue-5 , $blue-4);
 	}
 
 	.contact_item {
@@ -48,9 +64,7 @@ $profileImageSize: $baseline*7; //140px
 .about_photo {
 	position: relative;
 	padding: $scale-s 0 0 0;
-  z-index: 1;
-  background: $grey-4;
-  background: linear-gradient(to right, $blue-5 , $blue-4);
+	z-index: 1;
 	.photo {
 		width: $profileImageSize;
 		height: $profileImageSize;
@@ -71,28 +85,18 @@ $profileImageSize: $baseline*7; //140px
     border-radius: 50%;
     fill: $blue-3;
   }
-	&:before {
-		content: ' ';
-		display: block;
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 0;
-		height: $profileImageSize+$scale-s;
-
-		border-top: $profileImageSize solid transparent;
-		border-left: 100vw solid #FFF;
-		z-index: -1;
-	}
 }
 
 .about_bio {
-	padding: 0 $scale-m;
+	padding: $scale-s $scale-m;
 	text-align: center;
-  margin: -$scale-xs auto $scale-l auto;
-  z-index: 100;
+  margin: -$scale-l 0 0 0;
   position: relative;
-	max-width: 400px;
+	max-width: 100%;
+	// max-width: 400px;
+	background: #FFF;
+	flex: 1 0 auto;
+	@include slant($scale-xl*2, #FFF);
 }
 
 .bio_name {
