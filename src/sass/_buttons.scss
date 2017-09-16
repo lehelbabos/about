@@ -17,6 +17,20 @@ button {
 @mixin button($style, $colour, $hover) {
   @if $style == 'solid' {
     background: $colour;
+    position: relative;
+    &::after {
+      width: calc(100% - #{$scale-s});
+      height: calc(100% - #{$scale-xs});
+      content: ' ';
+      display: block;
+      background: transparent;
+      position: absolute;
+      top: $scale-xs;
+      left: $scale-xs;
+      border-radius: 50%;
+      box-shadow: 0 0 $scale-s rgba($grey-3,0.80);
+      z-index: -1;
+    }
   }
   @if $style == 'knockout' {
     background: transparent;

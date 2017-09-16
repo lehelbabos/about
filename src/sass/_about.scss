@@ -145,7 +145,7 @@ $profileImageSize: $baseline*7; //140px
 
 .about_email {
 	display: none;
-	@include button('knockout', $orange-4, 'darken');
+	@include button('solid', $orange-4, 'darken');
 	vertical-align: top;
 	svg {
 		height: $scale-s;
