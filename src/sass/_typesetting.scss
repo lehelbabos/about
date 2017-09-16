@@ -1,32 +1,25 @@
-%type {
-  font-family: 'Rubik', HelveticaNeue, Helvetica, Arial, sans-serif;
-  &-xs {
-    @extend %type;
+@mixin type($size) {
+  @if $size == 'xs' {
     font-size: .75rem; // 12px
     line-height: $scale-s;  // 20px
   }
-  &-s {
-    @extend %type;
+  @if $size == 's' {
     font-size: .875rem; // 14px
     line-height: $scale-s; // 20px
   }
-  &-m {
-    @extend %type;
+  @if $size == 'm' {
     font-size: 1.125rem; // 18px
     line-height: $scale-l; // 25px
   }
-  &-l {
-    @extend %type;
+  @if $size == 'l' {
     font-size: 1.375rem; // 16px
     line-height: $scale-l; // 25px
   }
-  &-xl {
-    @extend %type;
+  @if $size == 'xl' {
     font-size: 1.875rem; // 30px
     line-height: $scale-xl; //45px
   }
-  &-xxl {
-    @extend %type;
+  @if $size == 'xxl' {
     font-size: 2.625rem; // 42px
     line-height: $scale-xl; // 45px
   }

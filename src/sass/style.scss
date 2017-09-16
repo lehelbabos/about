@@ -9,6 +9,9 @@
 // node modules
 @import 'include-media/dist/include-media';
 
+// Components
+@import 'buttons';
+
 // Sections
 @import 'about';
 
@@ -26,7 +29,8 @@ html {
 body {
   width: 100%;
   height: 100%;
-	@extend %type-m;
+  font-family: 'Rubik', HelveticaNeue, Helvetica, Arial, sans-serif;
+  @include type('m');
 	font-weight: 300;
   display: flex;
   flex-flow: row wrap;
