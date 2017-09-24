@@ -11,6 +11,7 @@
 
 // Components
 @import 'buttons';
+@import 'swiper';
 
 // Sections
 @import 'about';
@@ -32,26 +33,20 @@ body {
   font-family: 'Rubik', HelveticaNeue, Helvetica, Arial, sans-serif;
   @include type('m');
 	font-weight: 300;
-  display: flex;
-  flex-flow: row wrap;
-  align-items: stretch;
-  align-content: stretch;
-  justify-content: flex-start;
 }
 
 .wid {
 	display: block;
 	position: relative;
-	flex: 0 0 100%;
+  width: 100%;
 	@include media(">tablet") {
-		display: flex;
-		flex-flow: column nowrap;
-		align-items: stretch;
-		align-content: stretch;
-		flex: 3 0 auto;
+    display: inline-block;
+    width: calc(100% - 275px);
+    height: 100%;
+    vertical-align: top;
+    background: red;
 	}
   @include media(">desktop") {
-    flex-flow: row nowrap;
   }
 }
 
@@ -59,10 +54,12 @@ body {
   height: 400px;
   background: $blue-1;
   @include media(">tablet") {
-    flex: 1 0 50%;
+    height: 50%;
   }
   @include media(">desktop") {
     height: 100%;
+    width: 50%;
+    display: inline-block;
   }
 }
 
@@ -70,16 +67,17 @@ body {
   height: 400px;
   background: $orange-1;
   @include media(">tablet") {
-    flex: 1 0 50%;
+    height: 50%;
   }
   @include media(">desktop") {
     height: 100%;
+    width: 50%;
+    display: inline-block;
   }
 }
 
 
 footer {
-  flex: 1 0 100%;
   @include media(">tablet") {
     position: fixed;
     bottom: 0;

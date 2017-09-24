@@ -1,19 +1,21 @@
+$panelWidth: 275px;
+
 .about {
 	position: relative;
-	flex: 0 0 100%;
 	background: $blue-4;
 	background: linear-gradient(to right, $blue-5 , $blue-4);
 	// min-width: 300px;
 	display: flex;
-	flex-flow: column wrap;
+	flex-flow: column nowrap;
 	align-content: flex-start;
+	vertical-align: top;
 
 	@include media(">tablet") {
-		flex: 1 1 20%;
-		max-width: 275px;
+		display: inline-flex;
+		max-width: $panelWidth;
+		height: 100%;
 	}
 	@include media(">desktop") {
-		flex: 1 1 5%;
 	}
 }
 
