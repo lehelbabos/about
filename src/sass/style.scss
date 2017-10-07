@@ -61,6 +61,57 @@ body {
 }
 
 .work {
+  &_item {
+    background: $grey-4;
+    width: calc(100% - 190px);
+    max-width: 480px;
+    text-align: center;
+    padding: $size-s;
+    color: #FFF;
+    // height: 40vh !important;
+    min-height: 240px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    align-content: center;
+    justify-content: center;
+
+
+    .item_title {
+      @include type('l');
+      font-weight: bold;
+      margin: 0 auto $size-xs auto;
+      flex: 1 0 100%;
+    }
+
+    .item_tags {
+      @include type('s');
+      margin: 0 auto $size-l auto;
+      flex: 1  100%;
+
+      @include media (">tablet") {
+        margin: 0 auto $size-l auto;
+      }
+    }
+
+    .item_cta {
+      @include button('knockout', $grey-1, 'lighten');
+      display: block;
+      margin: 0 auto;
+
+      @include media ("<tablet") {
+        box-shadow: none;
+        padding-left: 0;
+        padding-right: 0;
+        position: absolute;
+        bottom: $size-s;
+        &:hover {
+          background: transparent;
+        }
+      }
+    }
+  }
+
   @include media(">tablet") {
     flex: 1 0 50%;
   }
@@ -153,13 +204,6 @@ svg path {
     padding-bottom: $size-xs;
 }
 
-.swiper-slide {
-  background: $grey-1;
-  width: calc(100% - 190px);
-  max-width: 480px;
-  text-align: center;
-  padding: $size-xl;
-}
 .swiper-pagination.swiper-pagination {
   bottom: 0;
   height: 2px;
@@ -169,7 +213,7 @@ svg path {
 .swiper-pagination-bullet {
   width: $size-l;
   height: 2px;
-  background: $grey-1;
+  background: $grey-2;
   border-radius: initial;
   opacity: 1;
   vertical-align: top;

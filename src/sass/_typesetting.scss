@@ -30,7 +30,7 @@
   @include type(xl);
   font-weight: bold;
   padding: 0 0 $size-s 0;
-  margin: 0 $size-s $size-l;
+  margin: $size-xl $size-s $size-l $size-s;
   position: relative;
   text-align: center;
   &:after {

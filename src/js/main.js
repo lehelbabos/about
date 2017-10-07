@@ -5360,7 +5360,7 @@ var mySwiper = new Swiper ('.swiper-container', {
   // Optional parameters
   loop: true,
   direction: 'horizontal',
-  spaceBetween: 24,
+  spaceBetween: 8,
   // And if we need scrollbar
   // freeMode: true,
   // freeModeSticky: true,
