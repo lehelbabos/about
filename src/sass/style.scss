@@ -107,6 +107,7 @@ body {
         bottom: $size-s;
         &:hover {
           background: transparent;
+          color: $blue-1 !important;
         }
       }
     }
@@ -225,4 +226,21 @@ svg path {
 
 .swiper-pagination-bullet-active {
   background: $blue-4;
+}
+
+.swiper-1row {
+  background: red;
+  @include media(">=tablet") {
+    display: none !important;
+  }
+}
+
+.swiper-2row {
+  // background: blue;
+  @include media("<tablet") {
+    display: none;
+  }
+  @include media(">tablet") {
+    display: block !important;
+  }
 }

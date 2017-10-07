@@ -5356,15 +5356,10 @@ else if (typeof define === 'function' && define.amd) {
 
 //# sourceMappingURL=maps/swiper.js.map
 
-var mySwiper = new Swiper ('.swiper-container', {
+var mySwiper = new Swiper ('.swiper-1row', {
   // Optional parameters
-  loop: true,
   direction: 'horizontal',
   spaceBetween: 8,
-  // And if we need scrollbar
-  // freeMode: true,
-  // freeModeSticky: true,
-  // mousewheelControl: true,
   slidesPerView: 'auto',
   loop: true,
   loopedSlides: false,
@@ -5373,4 +5368,20 @@ var mySwiper = new Swiper ('.swiper-container', {
   scrollbarHide: false,
   pagination: '.swiper-pagination',
   paginationType: 'bullets',
+})
+
+var mySwiper = new Swiper ('.swiper-2row', {
+  direction: 'horizontal',
+  spaceBetween: 16,
+  slidesPerView: 'auto',
+  slidesPerColumn: 2,
+  slidesPerColumnFill: 'row',
+  slidesOffsetBefore: 16,
+  slidesOffsetAfter: 16,
+  // centeredSlides: true,
+  pagination: '.swiper-pagination',
+  paginationType: 'bullets',
+  freeMode: true,
+  freeModeMomentum: true,
+  // mousewheelControl: true,
 })
