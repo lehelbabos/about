@@ -1,7 +1,7 @@
 button {
-  min-width: $scale-m*5;
+  min-width: $size-m*5;
   border: none;
-  padding: $scale-xs $scale-l;
+  padding: $size-xs $size-l;
   @include type('s');
   font-weight: bold;
   color: #FFF;
@@ -19,16 +19,16 @@ button {
     background: $colour;
     position: relative;
     &::after {
-      width: calc(100% - #{$scale-s});
-      height: calc(100% - #{$scale-xs});
+      width: calc(100% - #{$size-s});
+      height: calc(100% - #{$size-xs});
       content: ' ';
       display: block;
       background: transparent;
       position: absolute;
-      top: $scale-xs;
-      left: $scale-xs;
+      top: $size-xs;
+      left: $size-xs;
       border-radius: 50%;
-      box-shadow: 0 0 $scale-s rgba($grey-3,0.80);
+      box-shadow: 0 0 $size-s rgba($grey-3,0.80);
       z-index: -1;
     }
   }

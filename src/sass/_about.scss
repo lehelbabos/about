@@ -9,11 +9,21 @@
 	align-content: flex-start;
 
 	@include media(">tablet") {
-		flex: 1 1 20%;
+		flex: 1 0 auto;
 		max-width: 275px;
+		&:after {
+			position: absolute;
+			right: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			content: ' ';
+			width: 2px;
+			height: 70%;
+			background: $grey-1;
+		}
 	}
 	@include media(">desktop") {
-		flex: 1 1 5%;
+		flex: 1 0 auto;
 	}
 }
 
@@ -23,12 +33,12 @@
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-between;
-	padding: $scale-xl $scale-m;
+	padding: $size-xl $size-m;
 	margin: 0 auto;
 	position: relative;
 	&::after {
 		width: 100%;
-		height: $scale-xl*2+$scale-m;
+		height: $size-xl*2+$size-m;
 		content: ' ';
 		position: absolute;
 		left: 0;
@@ -41,8 +51,8 @@
 
 	.contact_item {
 		flex: 0 0 auto;
-		width: $scale-m;
-		height: $scale-m;
+		width: $size-m;
+		height: $size-m;
 		fill: $grey-1;
 		z-index: 1;
 		@include media('>tablet') {
@@ -75,7 +85,7 @@ $profileImageSize: $baseline*7; //140px
 
 .about_photo {
 	position: relative;
-	padding: $scale-s 0 0 0;
+	padding: $size-s 0 0 0;
 	z-index: 1;
   .icon {
     width: $profileImageSize;
@@ -83,34 +93,34 @@ $profileImageSize: $baseline*7; //140px
     margin: 0 auto;
     display: block;
     background: #FFF;
-    padding: $scale-l;
+    padding: $size-l;
     border-radius: 50%;
     fill: $blue-3;
 		@include media('>tablet') {
 			width: $profileImageSize / 1.5;
 			height: $profileImageSize / 1.5;
-			padding: $scale-s;
+			padding: $size-s;
 		}
   }
 	@include media('>tablet') {
-		padding: $scale-xl 0 0 0;
+		padding: $size-xl 0 0 0;
 	}
 }
 
 .about_bio {
-	padding: $scale-s $scale-m;
+	padding: $size-s $size-m;
 	text-align: center;
-  margin: -$scale-l 0 0 0;
+  margin: -$size-l 0 0 0;
   position: relative;
 	max-width: 100%;
 	// max-width: 400px;
 	background: #FFF;
 	flex: 1 0 auto;
 	z-index: 0;
-	@include slant($scale-xl*2, #FFF);
+	@include slant($size-xl*2, #FFF);
 	@include media('>tablet'){
-		margin: -$scale-m 0 0 0;
-		@include slant($scale-xl, #FFF);
+		margin: -$size-m 0 0 0;
+		@include slant($size-xl, #FFF);
 	}
 }
 
@@ -118,7 +128,7 @@ $profileImageSize: $baseline*7; //140px
 	@include type('xl');
   display: block;
   font-weight: 700;
-  line-height: $scale-xl;
+  line-height: $size-xl;
   color: $blue-4;
 	z-index: 2000;
 	@include media('>tablet'){
@@ -128,10 +138,10 @@ $profileImageSize: $baseline*7; //140px
 .bio_title {
 	@include type('s');
   display: block;
-  padding: 0 0 $scale-xl 0;
+  padding: 0 0 $size-xl 0;
   color: $blue-4;
 	@include media('>tablet'){
-		padding: 0 0 $scale-m 0;
+		padding: 0 0 $size-m 0;
 	}
 }
 
@@ -139,7 +149,7 @@ $profileImageSize: $baseline*7; //140px
 	@include type('m');
 	@include media('>tablet'){
 		@include type('s');
-		margin: 0 0 $scale-m;
+		margin: 0 0 $size-m;
 	}
 }
 
@@ -148,9 +158,9 @@ $profileImageSize: $baseline*7; //140px
 	@include button('solid', $orange-4, 'darken');
 	vertical-align: top;
 	svg {
-		height: $scale-s;
+		height: $size-s;
 		vertical-align: top;
-		margin: 0 $scale-xs 0 0;
+		margin: 0 $size-xs 0 0;
 	}
 	@include media('>tablet') {
 		display: inline-block;
