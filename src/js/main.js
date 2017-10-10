@@ -5368,6 +5368,7 @@ var mySwiper = new Swiper ('.swiper-1row', {
   scrollbarHide: false,
   pagination: '.swiper-pagination',
   paginationType: 'bullets',
+  grabCursor: true,
 })
 
 var mySwiper = new Swiper ('.swiper-2row', {
@@ -5384,4 +5385,7 @@ var mySwiper = new Swiper ('.swiper-2row', {
   freeMode: true,
   freeModeMomentum: true,
   // mousewheelControl: true,
+  grabCursor: true,
+  nextButton: '.swiper-button-next',
+  prevButton: '.swiper-button-prev',
 })

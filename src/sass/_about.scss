@@ -22,7 +22,7 @@
 			background: $grey-1;
 		}
 	}
-	@include media(">desktop") {
+	@include media(">MDPI") {
 		flex: 1 0 auto;
 	}
 }

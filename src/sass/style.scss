@@ -16,7 +16,6 @@
 // Sections
 @import 'about';
 
-
 html {
   width: 100%;
   height: 100%;
@@ -55,7 +54,7 @@ body {
 		align-content: stretch;
 		flex: 3 0 50%;
 	}
-  @include media(">desktop") {
+  @include media(">MDPI") {
     // flex-flow: row nowrap;
   }
 }
@@ -116,7 +115,7 @@ body {
   @include media(">tablet") {
     flex: 1 0 50%;
   }
-  @include media(">desktop") {
+  @include media(">MDPI") {
     // height: 100%;
   }
 }
@@ -127,7 +126,7 @@ body {
   @include media(">tablet") {
     flex: 1 0 50%;
   }
-  @include media(">desktop") {
+  @include media(">MDPI") {
     // height: 100%;
   }
 
@@ -230,17 +229,15 @@ svg path {
 
 .swiper-1row {
   background: red;
-  @include media(">=tablet") {
-    display: none !important;
+  @include media(">tablet") {
+    // display: none !important;
   }
 }
 
 .swiper-2row {
   // background: blue;
-  @include media("<tablet") {
-    display: none;
-  }
+  display: none;
   @include media(">tablet") {
-    display: block !important;
+    // display: block !important;
   }
 }
