@@ -5,9 +5,16 @@
 @import 'fonts';
 @import 'typesetting';
 @import "mixins";
+@import "breakpoints";
 
-// node modules
-@import 'include-media/dist/include-media';
+$breakpoints: (
+  'phone': 320px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'MDPI': 1280px,
+  'HDPI': 1440px
+) !default;
+
 
 // Components
 @import 'buttons';
