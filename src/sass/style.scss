@@ -5,16 +5,7 @@
 @import 'fonts';
 @import 'typesetting';
 @import "mixins";
-@import "breakpoints";
-
-$breakpoints: (
-  'phone': 320px,
-  'tablet': 768px,
-  'desktop': 1024px,
-  'MDPI': 1280px,
-  'HDPI': 1440px
-) !default;
-
+@import "breakpoints"; // from Include-Media
 
 // Components
 @import 'buttons';
@@ -52,14 +43,12 @@ body {
 .wid {
 	display: block;
 	position: relative;
-	flex: 0 0 100%;
-  overflow-x: hidden;
+  width:100%;
 	@include media(">tablet") {
-		display: flex;
-		flex-flow: column nowrap;
-		align-items: stretch;
-		align-content: stretch;
-		flex: 3 0 50%;
+		display: inline-block;
+    height: 100%;
+    max-height: calc(100% - #{$size-m});
+    max-width: calc(100% - 275px);
 	}
   @include media(">MDPI") {
     // flex-flow: row nowrap;
@@ -69,18 +58,15 @@ body {
 .work {
   &_item {
     background: $grey-4;
-    width: calc(100% - 190px);
-    max-width: 480px;
     text-align: center;
     padding: $size-s;
     color: #FFF;
-    // height: 40vh !important;
-    min-height: 240px;
-    display: flex;
+    display: inline-flex;
     flex-flow: row wrap;
     align-items: flex-start;
     align-content: center;
     justify-content: center;
+
 
 
     .item_title {
@@ -104,12 +90,14 @@ body {
       @include button('knockout', $grey-1, 'lighten');
       display: block;
       margin: 0 auto;
+      position: absolute;
+      bottom: $size-l*2;
+
 
       @include media ("<tablet") {
         box-shadow: none;
         padding-left: 0;
         padding-right: 0;
-        position: absolute;
         bottom: $size-s;
         &:hover {
           background: transparent;
@@ -118,9 +106,19 @@ body {
       }
     }
   }
+  .swiper-container {
+    .work_item {
+      width: calc(100% - 190px);
+      height: 30vh;
+      max-width: 480px;
+      min-height: 240px;
+    }
+  }
+
 
   @include media(">tablet") {
-    flex: 1 0 50%;
+    height: 50%;
+    overflow: hidden;
   }
   @include media(">MDPI") {
     // height: 100%;
@@ -131,7 +129,9 @@ body {
   padding: $size-l 0;
 
   @include media(">tablet") {
-    flex: 1 0 50%;
+    height: 50%;
+    overflow: hidden;
+    padding: 0;
   }
   @include media(">MDPI") {
     // height: 100%;
@@ -209,6 +209,9 @@ svg path {
 .swiper-container {
     width: 100%;
     padding-bottom: $size-xs;
+    @include media(">MDPI") {
+      display: none !important;
+    }
 }
 
 .swiper-pagination.swiper-pagination {
@@ -232,19 +235,4 @@ svg path {
 
 .swiper-pagination-bullet-active {
   background: $blue-4;
-}
-
-.swiper-1row {
-  background: red;
-  @include media(">tablet") {
-    // display: none !important;
-  }
-}
-
-.swiper-2row {
-  // background: blue;
-  display: none;
-  @include media(">tablet") {
-    // display: block !important;
-  }
 }

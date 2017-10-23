@@ -9,6 +9,7 @@
 	align-content: flex-start;
 
 	@include media(">tablet") {
+		display: inline-flex;
 		flex: 1 0 auto;
 		max-width: 275px;
 		&:after {
