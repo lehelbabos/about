@@ -1,0 +1,112 @@
+.work {
+  &_item {
+    background: $grey-4;
+    text-align: center;
+    padding: $size-s;
+    color: #FFF;
+    display: inline-flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    align-content: center;
+    justify-content: center;
+
+
+
+    .item_title {
+      @include type('l');
+      font-weight: bold;
+      margin: 0 auto $size-xs auto;
+      flex: 1 0 100%;
+    }
+
+    .item_tags {
+      @include type('s');
+      margin: 0 auto $size-l auto;
+      flex: 1  100%;
+
+      @include media (">tablet") {
+        margin: 0 auto $size-l auto;
+      }
+    }
+
+    .item_cta {
+      @include button('knockout', $grey-1, 'lighten');
+      display: block;
+      margin: 0 auto;
+      position: absolute;
+      bottom: $size-l*2;
+
+
+      @include media ("<tablet") {
+        box-shadow: none;
+        padding-left: 0;
+        padding-right: 0;
+        bottom: $size-s;
+        &:hover {
+          background: transparent;
+          color: $blue-1 !important;
+        }
+      }
+    }
+  }
+  .swiper-container {
+    .work_item {
+      width: calc(100% - 190px);
+      height: 30vh;
+      max-width: 480px;
+      min-height: 240px;
+    }
+  }
+
+
+  @include media(">tablet") {
+    height: 50%;
+    overflow: hidden;
+  }
+  @include media(">MDPI") {
+    height: 100%;
+    width: calc(50% - 3px);
+    display: inline-block;
+    background: blue;
+  }
+}
+
+///// Swiper Overrides
+
+.swiper-hor {
+    width: 100%;
+    padding-bottom: $size-xs;
+    @include media(">MDPI") {
+      display: none !important;
+    }
+}
+
+.swiper-vert {
+  display: none;
+  @include media(">MDPI") {
+    display: block !important;
+  }
+}
+
+.swiper-pagination.swiper-pagination {
+  bottom: 0;
+  height: 2px;
+  background: #FFF;
+}
+
+.swiper-pagination-bullet {
+  width: $size-l;
+  height: 2px;
+  background: $grey-2;
+  border-radius: initial;
+  opacity: 1;
+  vertical-align: top;
+}
+
+.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+  margin: 0;
+}
+
+.swiper-pagination-bullet-active {
+  background: $blue-4;
+}

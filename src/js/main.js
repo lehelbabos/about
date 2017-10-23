@@ -5369,6 +5369,7 @@ var mySwiper = new Swiper ('.swiper-hor', {
   grabCursor: true,
   slidesPerView: 3,
   spaceBetween: 16,
+  mousewheel: true,
   // Responsive breakpoints
   breakpoints: {
     1080: {
@@ -5376,4 +5377,4 @@ var mySwiper = new Swiper ('.swiper-hor', {
       slidesPerView: 'auto',
     }
   }
-})
+});

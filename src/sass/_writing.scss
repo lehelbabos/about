@@ -1,0 +1,53 @@
+.writing{
+  padding: $size-l 0;
+
+  @include media(">tablet") {
+    height: 50%;
+    overflow: hidden;
+    padding: 0;
+  }
+  @include media(">MDPI") {
+    height: 100%;
+    width: calc(50% - 3px);
+    display: inline-block;
+  }
+
+  .posts {
+  }
+
+  .post {
+    display: block;
+    text-decoration: none;
+    padding: $size-s;
+    color: $grey-4;
+    position: relative;
+    &:after {
+      position: absolute;
+      content: ' ';
+      height: 1px;
+      width: calc(100% - #{$size-xl});
+      left: 50%;
+      bottom: 0;
+      border-bottom: 1px dotted $grey-2;
+      transform: translateX(-50%);
+    }
+    &:last-child::after {
+      border: none;
+    }
+
+
+    &_title {
+      @include type(l);
+      font-weight: bold;
+      line-height: $size-m;
+    }
+    &_preview {
+      @include type(s);
+    }
+    &_readTime {
+      display: block;
+      @include type(xs);
+      color: $grey-3;
+    }
+  }
+}
