@@ -6,10 +6,9 @@
     overflow: hidden;
     padding: 0;
   }
-  @include media(">MDPI") {
+  @include media(">HDPI") {
     height: 100%;
-    width: calc(50% - 3px);
-    display: inline-block;
+    width: 50%;
   }
 
   .posts {

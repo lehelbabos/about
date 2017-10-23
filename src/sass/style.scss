@@ -52,8 +52,15 @@ body {
     max-height: calc(100% - #{$size-m});
     max-width: calc(100% - 275px);
 	}
-  @include media(">MDPI") {
-    // flex-flow: row nowrap;
+  @include media(">HDPI") {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    align-content: stretch;
+
+    div {
+      flex: 0 0 100%;
+    }
   }
 }
 

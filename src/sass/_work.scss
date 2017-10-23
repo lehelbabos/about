@@ -1,6 +1,10 @@
 .work {
+  .section_title {
+    flex: 0 1 auto;
+  }
   &_item {
-    background: $grey-4;
+    background: $grey-3;
+    position: relative;
     text-align: center;
     padding: $size-s;
     color: #FFF;
@@ -9,6 +13,21 @@
     align-items: flex-start;
     align-content: center;
     justify-content: center;
+    box-shadow: 0 0 $size-m rgba($grey-3, 0.80);
+    &::after {
+      width: calc(100% - #{$size-s});
+      height: calc(100% - #{$size-s});
+      content: ' ';
+      display: block;
+      background: transparent;
+      position: absolute;
+      top: $size-s;
+      left: $size-xs;
+      border-radius: 50%;
+      box-shadow: 0 0 $size-s rgba($grey-3,0.80);
+      z-index: -1;
+    }
+
 
 
 
@@ -34,7 +53,7 @@
       display: block;
       margin: 0 auto;
       position: absolute;
-      bottom: $size-l*2;
+      bottom: $size-s*3;
 
 
       @include media ("<tablet") {
@@ -49,7 +68,7 @@
       }
     }
   }
-  .swiper-container {
+  .swiper-hor {
     .work_item {
       width: calc(100% - 190px);
       height: 30vh;
@@ -58,16 +77,38 @@
     }
   }
 
+.swiper-vert {
+  width: 100%;
+  max-width: 1000px;
+  overflow-y: scroll;
+  flex: 1 0 50%;
+  height: 100%;
+  align-self: stretch;
+  padding: 0 $size-s;
+  .work_item {
+    width: 100%;
+    text-align: center;
+    height: 30vh;
+    min-height: 240px;
+    display: flex;
+    margin: 0 0 $size-s 0;
+
+    .item_cta {
+      position: relative;
+      bottom: 0;
+    }
+  }
+}
 
   @include media(">tablet") {
     height: 50%;
-    overflow: hidden;
   }
-  @include media(">MDPI") {
+  @include media(">HDPI") {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
     height: 100%;
-    width: calc(50% - 3px);
-    display: inline-block;
-    background: blue;
+    width: 50%;
   }
 }
 
@@ -76,14 +117,14 @@
 .swiper-hor {
     width: 100%;
     padding-bottom: $size-xs;
-    @include media(">MDPI") {
+    @include media(">HDPI") {
       display: none !important;
     }
 }
 
 .swiper-vert {
   display: none;
-  @include media(">MDPI") {
+  @include media(">HDPI") {
     display: block !important;
   }
 }
