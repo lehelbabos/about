@@ -5356,12 +5356,12 @@ else if (typeof define === 'function' && define.amd) {
 
 //# sourceMappingURL=maps/swiper.js.map
 
-var mySwiper = new Swiper ('.swiper-hor', {
+var mySwiper = new Swiper ('.portfolio-hor', {
   // Optional parameters
   direction: 'horizontal',
-  loop: true,
+  loop: false,
   loopedSlides: false,
-  centeredSlides: true,
+  centeredSlides: false,
   autoHeight: true,
   scrollbarHide: false,
   pagination: '.swiper-pagination',
@@ -5369,12 +5369,19 @@ var mySwiper = new Swiper ('.swiper-hor', {
   grabCursor: true,
   slidesPerView: 3,
   spaceBetween: 16,
-  mouseWheel: true,
+  mousewheelControl: true,
+  freeMode: true,
+  slidesOffsetBefore: 20,
+  slidesOffsetAfter: 220,
   // Responsive breakpoints
   breakpoints: {
     1080: {
+      loop: true,
       spaceBetween: 8,
       slidesPerView: 'auto',
+      centeredSlides: true,
+      slidesOffsetBefore: 0,
+      slidesOffsetAfter: 0,
     }
   }
 });
