@@ -57,8 +57,11 @@
       @include type(l);
       font-weight: bold;
       line-height: $size-m;
+      position: relative;
+      display: inline-block;
     }
     &_preview {
+      display: block;
       @include type(s);
     }
     &_readTime {
