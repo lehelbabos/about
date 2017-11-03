@@ -97,6 +97,9 @@
       bottom: 0;
     }
   }
+  @include media(">HDPI") {
+    padding: $size-l $size-xs 0 $size-s;
+  }
 }
 
   @include media(">tablet") {
