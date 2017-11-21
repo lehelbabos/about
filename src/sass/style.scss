@@ -47,7 +47,8 @@ body {
 	position: relative;
   width:100%;
 	@include media(">tablet") {
-		display: inline-block;
+		display: inline-flex;
+    flex-flow: column nowrap;
     height: 100%;
     max-height: calc(100% - #{$size-m});
     max-width: calc(100% - 275px);
@@ -57,9 +58,21 @@ body {
     flex-flow: row nowrap;
     align-items: stretch;
     align-content: stretch;
+  }
+  section {
+    padding: $size-l 0 0 0;
+    @include media(">tablet") {
+      flex: 0 0 50%;
+      height: 50%;
+    }
 
-    div {
-      flex: 0 0 100%;
+    @include media(">HDPI") {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: flex-start;
+      height: 100% !important;
+      width: 50%;
+      padding: $size-l $size-s 0;
     }
   }
 }

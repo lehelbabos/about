@@ -1,36 +1,23 @@
 .writing{
-  padding: $size-l 0;
   .section_title {
     flex: 0 1 auto;
   }
 
 
   @include media(">tablet") {
-    height: 50%;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-content: stretch;
+
     overflow: hidden;
     padding: 0;
   }
-  @include media(">HDPI") {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    height: 100%;
-    width: 50%;
-  }
-
   .posts {
     width: 100%;
-    max-width: 800px;
     overflow-y: scroll;
-    flex: 1 0 50%;
-    height: 100%;
-    align-self: stretch;
-    padding: $size-l $size-s 0 $size-s;
     margin: 0 auto;
-
-    @include media(">HDPI") {
-      padding: $size-l $size-s 0 $size-xs;
-    }
+    flex: 1;
   }
 
   .post {

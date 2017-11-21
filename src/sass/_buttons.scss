@@ -2,6 +2,7 @@ button {
   min-width: $size-m*5;
   border: none;
   padding: $size-xs $size-l;
+  border-radius: 0;
   @include type('s');
   font-weight: bold;
   color: #FFF;

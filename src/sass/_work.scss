@@ -44,6 +44,9 @@
       @include media (">tablet") {
         margin: 0 auto $size-l auto;
       }
+      @include media (">tablet", "height<780px") {
+        margin: 0 auto;
+      }
     }
 
     .item_cta {
@@ -64,6 +67,9 @@
           color: $blue-1 !important;
         }
       }
+      @include media (">tablet", "height<780px") {
+        display: none;
+      }
     }
   }
   .portfolio-hor {
@@ -72,45 +78,32 @@
       height: 30vh;
       max-width: 480px;
       min-height: 240px;
+      @include media(">tablet") {
+        height: calc(50vh - 170px);
+        min-height: 100px;
+      }
     }
   }
 
-.portfolio-vert {
-  width: 100%;
-  max-width: 800px;
-  overflow-y: scroll;
-  flex: 1 0 50%;
-  height: 100%;
-  align-self: stretch;
-  padding: $size-l $size-s 0 $size-s;
-  margin: 0 auto;
-  .work_item {
+  .portfolio-vert {
     width: 100%;
-    text-align: center;
-    height: 30vh;
-    min-height: 240px;
-    display: flex;
-    margin: 0 0 $size-s 0;
-
-    .item_cta {
-      position: relative;
-      bottom: 0;
-    }
-  }
-  @include media(">HDPI") {
-    padding: $size-l $size-xs 0 $size-s;
-  }
-}
-
-  @include media(">tablet") {
-    height: 50%;
-  }
-  @include media(">HDPI") {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
+    overflow-y: scroll;
     height: 100%;
-    width: 50%;
+    margin: 0 auto;
+    padding: $size-s 0;
+    .work_item {
+      width: 100%;
+      text-align: center;
+      height: 30vh;
+      min-height: 240px;
+      display: flex;
+      margin: 0 0 $size-s 0;
+
+      .item_cta {
+        position: relative;
+        bottom: 0;
+      }
+    }
   }
 }
 
@@ -118,7 +111,7 @@
 
 .portfolio-hor {
     width: 100%;
-    padding-bottom: $size-xs;
+    padding: $size-xs 0;
     display: block;
     @include media(">HDPI") {
       display: none !important;
