@@ -68,6 +68,9 @@
         min-height: 30px;
         white-space: nowrap;
       }
+      @include media (">HDPI") {
+        min-height: 50px;
+      }
     }
 
     .item_tags {
@@ -80,6 +83,9 @@
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
+      @include media (">HDPI") {
+        min-height: 30px;
+      }
     }
   }
   .portfolio-hor {
@@ -108,11 +114,6 @@
       min-height: 240px;
       display: flex;
       margin: 0 0 $size-s 0;
-
-      .item_cta {
-        position: relative;
-        bottom: 0;
-      }
     }
   }
 }
