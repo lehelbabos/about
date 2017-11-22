@@ -3,17 +3,14 @@
     flex: 0 1 auto;
   }
   &_item {
-    background: $grey-3;
+    background: $grey-5;
     position: relative;
-    text-align: center;
-    padding: $size-s;
-    color: #FFF;
+    color: $grey-5;
     display: inline-flex;
-    flex-flow: row wrap;
-    align-items: flex-start;
-    align-content: center;
-    justify-content: center;
+    flex-flow: column;
+    justify-content: flex-end;
     text-decoration: none;
+    min-width: 190px;
 
     &.brewbox {
       background-image: url('../images/brewbox.jpg');
@@ -41,60 +38,48 @@
     }
 
     &::after {
-      width: calc(100% - #{$size-s});
-      height: calc(100% - #{$size-s});
+      width: calc(100% - #{$size-l});
+      height: calc(100% - #{$size-l});
       content: ' ';
       display: block;
       background: transparent;
       position: absolute;
-      top: $size-s;
-      left: $size-xs;
-      border-radius: 50%;
-      box-shadow: 0 0 $size-s rgba($grey-3,0.80);
+      bottom: $size-xs;
+      left: $size-s;
+      border-radius: $size-xl*3;
+      box-shadow: 0 0 $size-xl rgba($grey-3,0.70);
       z-index: -1;
     }
 
     .item_title {
+      background: $grey-1;
       @include type('l');
       font-weight: bold;
-      margin: 0 auto $size-xs auto;
-      flex: 1 0 100%;
+      margin: 0;
+      padding: $size-xs;
+      flex: 0;
+      min-height: 60px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      @include media ("<460px") {
+        font-size: $size-s;
+      }
+      @include media (">580px") {
+        min-height: 30px;
+        white-space: nowrap;
+      }
     }
 
     .item_tags {
+      background: $grey-1;
       @include type('s');
-      margin: 0 auto $size-l auto;
-      flex: 1  100%;
-
-      @include media (">tablet") {
-        margin: 0 auto $size-l auto;
-      }
-      @include media (">tablet", "height<780px") {
-        margin: 0 auto;
-      }
-    }
-
-    .item_cta {
-      @include button('knockout', $grey-1, 'lighten');
-      display: block;
-      margin: 0 auto;
-      position: absolute;
-      bottom: $size-s*3;
-
-
-      @include media ("<tablet") {
-        box-shadow: none;
-        padding-left: 0;
-        padding-right: 0;
-        bottom: $size-s;
-        &:hover {
-          background: transparent;
-          color: $blue-1 !important;
-        }
-      }
-      @include media (">tablet", "height<780px") {
-        display: none;
-      }
+      margin: 0;
+      padding: 0 $size-xs $size-s;
+      flex: 0;
+      min-height: 20px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
   }
   .portfolio-hor {
@@ -136,7 +121,7 @@
 
 .portfolio-hor {
     width: 100%;
-    padding: $size-xs 0;
+    padding: $size-xs 0 $size-s;
     display: block;
     @include media(">HDPI") {
       display: none !important;
