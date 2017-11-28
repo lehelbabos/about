@@ -21,9 +21,9 @@
       .ear {
         border-left: $size-l/2 solid transparent;
         border-right: $size-l/2 solid transparent;
-        border-top: $size-l/2 solid $orange-3;
+        border-top: $size-l/2 solid $yellow-2;
         border-bottom: $size-l/2 solid transparent;
-        transform: rotate(45deg) translateY(0px);
+        transform: rotate(45deg) translateY(2px);
         transition: border-top 200ms 75ms ease, transform 200ms 75ms ease;
       }
       }
@@ -80,13 +80,11 @@
       transition: margin 200ms ease;
 
       span {
-        background: $orange-4;
-        color: #FFF;
+        background: $yellow-4;
         display: block;
         width: 100%;
         text-align: center;
         line-height: $size-l;
-        fill: #FFF;
         transition: border-radius 200ms ease;
       }
 
@@ -94,6 +92,7 @@
         height: $size-s;
         margin: 0 $size-xs;
         vertical-align: middle;
+        fill: $grey-4;
       }
 
       .ear {
@@ -101,10 +100,10 @@
         height: 30px;
         border-left: $size-l/2 solid transparent;
         border-right: $size-l/2 solid transparent;
-        border-top: $size-l/2 solid $orange-3;
+        border-top: $size-l/2 solid $yellow-2;
         border-bottom: $size-l/2 solid transparent;
         position: absolute;
-        background: $orange-4;
+        background: $yellow-4;
         right: 0;
         top: 0;
         transition: border-top 200ms ease, transform 200ms ease;
