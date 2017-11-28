@@ -12,6 +12,23 @@
     text-decoration: none;
     min-width: 190px;
 
+    &:hover {
+      .item_cta {
+        margin-bottom: 0px;
+        span {
+          border-top-right-radius: $size-s;
+        }
+      .ear {
+        border-left: $size-l/2 solid transparent;
+        border-right: $size-l/2 solid transparent;
+        border-top: $size-l/2 solid $orange-3;
+        border-bottom: $size-l/2 solid transparent;
+        transform: rotate(45deg) translateY(0px);
+        transition: border-top 200ms 75ms ease, transform 200ms 75ms ease;
+      }
+      }
+    }
+
     &.brewbox {
       background-image: url('../images/brewbox.jpg');
       background-size: cover;
@@ -51,16 +68,61 @@
       z-index: -1;
     }
 
+    .item_cta {
+      @include type('s');
+      height: $size-l;
+      font-weight: bold;
+      overflow: hidden;
+      height: $size-l;
+      position: relative;
+      text-align: left;
+      margin-bottom: -26px;
+      transition: margin 200ms ease;
+
+      span {
+        background: $orange-4;
+        color: #FFF;
+        display: block;
+        width: 100%;
+        text-align: center;
+        line-height: $size-l;
+        fill: #FFF;
+        transition: border-radius 200ms ease;
+      }
+
+      svg {
+        height: $size-s;
+        margin: 0 $size-xs;
+        vertical-align: middle;
+      }
+
+      .ear {
+        width: 0;
+        height: 30px;
+        border-left: $size-l/2 solid transparent;
+        border-right: $size-l/2 solid transparent;
+        border-top: $size-l/2 solid $orange-3;
+        border-bottom: $size-l/2 solid transparent;
+        position: absolute;
+        background: $orange-4;
+        right: 0;
+        top: 0;
+        transition: border-top 200ms ease, transform 200ms ease;
+        transform: rotate(45deg) translateY(-30px);
+      }
+    }
+
     .item_title {
       background: $grey-1;
       @include type('l');
       font-weight: bold;
       margin: 0;
-      padding: $size-xs;
+      padding: $size-xs $size-xs 0 $size-xs;
       flex: 0;
       min-height: 60px;
       text-overflow: ellipsis;
       overflow: hidden;
+      transform: translate3d(0,0,0);
       @include media ("<460px") {
         font-size: $size-s;
       }
@@ -109,11 +171,12 @@
     padding: $size-s 0;
     .work_item {
       width: 100%;
+      max-width: 570px;
       text-align: center;
       height: 30vh;
       min-height: 240px;
       display: flex;
-      margin: 0 0 $size-s 0;
+      margin: 0 auto $size-s auto;
     }
   }
 }
