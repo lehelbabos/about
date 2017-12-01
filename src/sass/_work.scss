@@ -18,14 +18,11 @@
         span {
           border-top-right-radius: $size-s;
         }
-      .ear {
-        border-left: $size-l/2 solid transparent;
-        border-right: $size-l/2 solid transparent;
-        border-top: $size-l/2 solid $yellow-2;
-        border-bottom: $size-l/2 solid transparent;
-        transform: rotate(45deg) translateY(2px);
-        transition: border-top 200ms 75ms ease, transform 200ms 75ms ease;
-      }
+        .ear {
+          .bottom {
+            transform: translate(7px, -7px);
+          }
+        }
       }
     }
 
@@ -38,10 +35,6 @@
       background-size: cover;
     }
     &.h2h {
-      background-image: url('../images/brewbox.jpg');
-      background-size: cover;
-    }
-    &.brewbox {
       background-image: url('../images/h2h.jpg');
       background-size: cover;
     }
@@ -78,6 +71,9 @@
       text-align: left;
       margin-bottom: -26px;
       transition: margin 200ms ease;
+      &:hover svg #arrow{
+        transform: translate(2px, -2px);
+      }
 
       span {
         background: $yellow-4;
@@ -85,29 +81,33 @@
         width: 100%;
         text-align: center;
         line-height: $size-l;
-        transition: border-radius 200ms ease;
-      }
+        transition: border-radius 200ms 50ms ease;
 
-      svg {
-        height: $size-s;
-        margin: 0 $size-xs;
-        vertical-align: middle;
-        fill: $grey-4;
+        svg {
+          height: $size-s;
+          margin: 0 $size-xs;
+          vertical-align: middle;
+          fill: $grey-4;
+          #arrow {
+            transition: transform 200ms ease;
+          }
+        }
       }
 
       .ear {
-        width: 0;
-        height: 30px;
-        border-left: $size-l/2 solid transparent;
-        border-right: $size-l/2 solid transparent;
-        border-top: $size-l/2 solid $yellow-2;
-        border-bottom: $size-l/2 solid transparent;
+        height: $size-l;
         position: absolute;
-        background: $yellow-4;
         right: 0;
         top: 0;
-        transition: border-top 200ms ease, transform 200ms ease;
-        transform: rotate(45deg) translateY(-30px);
+
+        .top {
+          fill: transparent;
+        }
+        .bottom {
+          transform: translate(20px, -20px);
+          transition: transform 200ms 50ms ease;
+          fill: $yellow-1;
+        }
       }
     }
 
