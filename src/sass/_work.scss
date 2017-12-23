@@ -22,8 +22,8 @@ $trans-fold-delay: $trans-cta/2;
     transition: transform $trans-card ease $trans-card-delay;
 
     &:hover {
-      transform: scale(1.02);
-      transition: transform $trans-card ease 0;
+      transform: scale(1.05);
+      transition: transform $trans-card ease;
     }
 
     &:nth-child(1) {
@@ -48,23 +48,24 @@ $trans-fold-delay: $trans-cta/2;
 
     &:hover {
       .item_cta {
-        margin-bottom: 0;
+        margin-bottom: 0px;
         transition: margin $trans-cta ease;
 
-        &:before {
-          // bottom
+        &:before { // bottom
           border-right: $size-l/2 solid transparent;
           border-top: $size-l/2 solid transparent;
-          transition: border-color $trans-fold/2 ease $trans-fold-delay - ($trans-fold/2), transform 0 ease $trans-fold-delay - ($trans-fold/2);
+          transition: border-color $trans-fold/2 ease $trans-fold-delay - ($trans-fold/2),
+                      transform 0ms ease $trans-fold-delay - ($trans-fold/2);
         }
 
-        &:after {
-          // top
+        &:after { // top
           transform: rotate3d(-1, -1, 0, 180deg);
           border-right: $size-l/2 solid $yellow-2;
           border-top: $size-l/2 solid $yellow-2;
-          box-shadow: 0 2px $size-xs rgba($grey-5,0.5);
-          transition: transform $trans-fold ease-out $trans-fold-delay, box-shadow $trans-fold ease $trans-fold-delay+($trans-fold/2), border-color 0 ease $trans-fold-delay+($trans-fold/2);
+          box-shadow: 0px 2px $size-xs rgba($grey-5,0.5);
+          transition: transform $trans-fold ease-out $trans-fold-delay,
+                      box-shadow $trans-fold ease $trans-fold-delay+($trans-fold/2),
+                      border-color 0ms ease $trans-fold-delay+($trans-fold/2);
         }
       }
     }
@@ -118,8 +119,7 @@ $trans-fold-delay: $trans-cta/2;
         top: 0;
       }
 
-      &:before {
-        // bottom
+      &:before { // bottom
         border-left: $size-l/2 solid $yellow-4;
         border-right: $size-l/2 solid $yellow-4;
         border-top: $size-l/2 solid $yellow-4;
@@ -127,17 +127,19 @@ $trans-fold-delay: $trans-cta/2;
         transition: border-color $trans-fold ease $trans-fold;
       }
 
-      &:after {
-        // top
+      &:after { // top
         border-left: $size-l/2 solid transparent;
         border-right: $size-l/2 solid $yellow-4;
         border-top: $size-l/2 solid $yellow-4;
         border-bottom: $size-l/2 solid transparent;
-        box-shadow: 0 0 0 rgba($grey-5,0);
+        box-shadow: 0px 0px 0px rgba($grey-5,0);
         transform-origin: center center;
         transform: rotate3d(-1, -1, 0, 0deg) translateX(-1px);
-        transition: transform $trans-fold ease, box-shadow $trans-fold ease, border-color 0 ease $trans-fold/2;
+        transition: transform $trans-fold ease,
+                    box-shadow $trans-fold ease,
+                    border-color 0ms ease $trans-fold/2;
       }
+
 
       span {
         background: $yellow-4;
@@ -151,7 +153,6 @@ $trans-fold-delay: $trans-cta/2;
           margin: 0 $size-xs;
           vertical-align: middle;
           fill: $grey-4;
-
           #arrow {
             transition: transform $trans-s ease;
           }
@@ -164,7 +165,7 @@ $trans-fold-delay: $trans-cta/2;
       @include type('l');
       font-weight: bold;
       margin: 0;
-      padding: $size-xs $size-xs 0;
+      padding: $size-xs $size-xs 0 $size-xs;
       flex: 0;
       min-height: 60px;
       text-overflow: ellipsis;
@@ -225,11 +226,13 @@ $trans-fold-delay: $trans-cta/2;
       height: 30vh;
       min-height: 240px;
       display: flex;
-      margin: 0 auto $size-s;
+      margin: 0 auto $size-s auto;
     }
   }
 }
+
 ///// Swiper Overrides
+
 .portfolio-hor {
   width: 100%;
   padding: $size-xs 0 $size-s;
