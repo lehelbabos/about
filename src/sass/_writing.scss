@@ -26,6 +26,28 @@
     padding: $size-s;
     color: $grey-4;
     position: relative;
+
+    &:nth-child(1) {
+      animation: fade-scale-in 500ms;
+      animation-delay: 500ms;
+    }
+    &:nth-child(2) {
+      animation: fade-scale-in 750ms;
+      animation-delay: 500ms;
+    }
+    &:nth-child(3) {
+      animation: fade-scale-in 1000ms;
+      animation-delay: 500ms;
+    }
+    &:nth-child(4) {
+      animation: fade-scale-in 1250ms;
+      animation-delay: 500ms;
+    }
+    &:nth-child(5) {
+      animation: fade-scale-in 1500ms;
+      animation-delay: 500ms;
+    }
+
     &:hover {
       background: $grey-1;
       .post_title {

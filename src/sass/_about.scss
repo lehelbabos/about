@@ -29,6 +29,7 @@
 	}
 	@include media(">MDPI") {
 		flex: 1 0 auto;
+		animation: slide-left-to-right 400ms;
 	}
 }
 
@@ -171,3 +172,11 @@ $profileImageSize: $baseline*7; //140px
 		display: inline-block;
 	}
 }
+
+@keyframes slide-left-to-right {
+  0% {
+    transform: translateX(-100%); }
+  100% {
+		transform: translateX(0%);
+    }
+  }
