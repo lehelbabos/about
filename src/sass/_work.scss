@@ -1,7 +1,6 @@
 $trans-card: $trans-r;
 $trans-cta: $trans-s;
 $trans-fold: $trans-r;
-
 $trans-card-delay: $trans-cta;
 $trans-cta-delay: $trans-fold*.75;
 $trans-fold-delay: $trans-cta/2;
@@ -10,6 +9,7 @@ $trans-fold-delay: $trans-cta/2;
   .section_title {
     flex: 0 1 auto;
   }
+
   &_item {
     background: $grey-5;
     position: relative;
@@ -20,67 +20,77 @@ $trans-fold-delay: $trans-cta/2;
     text-decoration: none;
     min-width: 190px;
     transition: transform $trans-card ease $trans-card-delay;
+
     &:hover {
-      transform: scale(1.05);
-      transition: transform $trans-card ease 0ms;
+      transform: scale(1.02);
+      transition: transform $trans-card ease 0;
     }
 
     &:nth-child(1) {
       animation: fade-scale-in 500ms;
     }
+
     &:nth-child(2) {
       animation: fade-scale-in 750ms;
     }
+
     &:nth-child(3) {
       animation: fade-scale-in 1000ms;
     }
+
     &:nth-child(4) {
       animation: fade-scale-in 1250ms;
     }
+
     &:nth-child(5) {
       animation: fade-scale-in 1500ms;
     }
 
     &:hover {
       .item_cta {
-        margin-bottom: 0px;
+        margin-bottom: 0;
         transition: margin $trans-cta ease;
-        &:before { // bottom
+
+        &:before {
+          // bottom
           border-right: $size-l/2 solid transparent;
           border-top: $size-l/2 solid transparent;
-          transition: border-color $trans-fold/2 ease $trans-fold-delay - ($trans-fold/2),
-                      transform 0ms ease $trans-fold-delay - ($trans-fold/2);
+          transition: border-color $trans-fold/2 ease $trans-fold-delay - ($trans-fold/2), transform 0 ease $trans-fold-delay - ($trans-fold/2);
         }
-        &:after { // top
+
+        &:after {
+          // top
           transform: rotate3d(-1, -1, 0, 180deg);
           border-right: $size-l/2 solid $yellow-2;
           border-top: $size-l/2 solid $yellow-2;
-          box-shadow: 0px 2px $size-xs rgba($grey-5,0.5);
-          transition: transform $trans-fold ease-out $trans-fold-delay,
-                      box-shadow $trans-fold ease $trans-fold-delay+($trans-fold/2),
-                      border-color 0ms ease $trans-fold-delay+($trans-fold/2);
+          box-shadow: 0 2px $size-xs rgba($grey-5,0.5);
+          transition: transform $trans-fold ease-out $trans-fold-delay, box-shadow $trans-fold ease $trans-fold-delay+($trans-fold/2), border-color 0 ease $trans-fold-delay+($trans-fold/2);
         }
       }
     }
 
     &.brewbox {
-      background-image: url('../images/brewbox.jpg');
+      background-image: url("../images/brewbox.jpg");
       background-size: cover;
     }
+
     &.cci {
-      background-image: url('../images/cci.png');
+      background-image: url("../images/cci.png");
       background-size: cover;
     }
+
     &.h2h {
-      background-image: url('../images/h2h.jpg');
+      background-image: url("../images/h2h.jpg");
       background-size: cover;
     }
+
     &.base5 {
-      background-image: url('../images/base5.jpg');
+      background-image: url("../images/base5.jpg");
       background-size: cover;
     }
+
     &.wasm {
-      background-image: url('../images/wasm.jpg');
+      background-image: url("../images/wasm.jpg");
       background-size: cover;
     }
 
@@ -93,10 +103,13 @@ $trans-fold-delay: $trans-cta/2;
       text-align: left;
       margin-bottom: -26px;
       transition: margin $trans-cta $trans-cta-delay ease;
-      &:hover svg #arrow{
+
+      &:hover svg #arrow {
         transform: translate(2px, -2px);
       }
-      &:before, &:after {
+
+      &:after,
+      &:before {
         width: 0;
         height: 0;
         content: ' ';
@@ -105,26 +118,26 @@ $trans-fold-delay: $trans-cta/2;
         top: 0;
       }
 
-      &:before { // bottom
+      &:before {
+        // bottom
         border-left: $size-l/2 solid $yellow-4;
         border-right: $size-l/2 solid $yellow-4;
         border-top: $size-l/2 solid $yellow-4;
         border-bottom: $size-l/2 solid $yellow-4;
         transition: border-color $trans-fold ease $trans-fold;
       }
-      &:after { // top
+
+      &:after {
+        // top
         border-left: $size-l/2 solid transparent;
         border-right: $size-l/2 solid $yellow-4;
         border-top: $size-l/2 solid $yellow-4;
         border-bottom: $size-l/2 solid transparent;
-        box-shadow: 0px 0px 0px rgba($grey-5,0);
+        box-shadow: 0 0 0 rgba($grey-5,0);
         transform-origin: center center;
         transform: rotate3d(-1, -1, 0, 0deg) translateX(-1px);
-        transition: transform $trans-fold ease,
-                    box-shadow $trans-fold ease,
-                    border-color 0ms ease $trans-fold/2;
+        transition: transform $trans-fold ease, box-shadow $trans-fold ease, border-color 0 ease $trans-fold/2;
       }
-
 
       span {
         background: $yellow-4;
@@ -138,6 +151,7 @@ $trans-fold-delay: $trans-cta/2;
           margin: 0 $size-xs;
           vertical-align: middle;
           fill: $grey-4;
+
           #arrow {
             transition: transform $trans-s ease;
           }
@@ -150,7 +164,7 @@ $trans-fold-delay: $trans-cta/2;
       @include type('l');
       font-weight: bold;
       margin: 0;
-      padding: $size-xs $size-xs 0 $size-xs;
+      padding: $size-xs $size-xs 0;
       flex: 0;
       min-height: 60px;
       text-overflow: ellipsis;
@@ -183,6 +197,7 @@ $trans-fold-delay: $trans-cta/2;
       }
     }
   }
+
   .portfolio-hor {
     .work_item {
       width: calc(100% - 190px);
@@ -202,6 +217,7 @@ $trans-fold-delay: $trans-cta/2;
     height: 100%;
     margin: 0 auto;
     padding: $size-s 0;
+
     .work_item {
       width: 100%;
       max-width: 570px;
@@ -209,20 +225,18 @@ $trans-fold-delay: $trans-cta/2;
       height: 30vh;
       min-height: 240px;
       display: flex;
-      margin: 0 auto $size-s auto;
+      margin: 0 auto $size-s;
     }
   }
 }
-
 ///// Swiper Overrides
-
 .portfolio-hor {
-    width: 100%;
-    padding: $size-xs 0 $size-s;
-    display: block;
-    @include media(">HDPI") {
-      display: none !important;
-    }
+  width: 100%;
+  padding: $size-xs 0 $size-s;
+  display: block;
+  @include media(">HDPI") {
+    display: none !important;
+  }
 }
 
 .portfolio-vert {
@@ -254,13 +268,13 @@ $trans-fold-delay: $trans-cta/2;
 .swiper-pagination-bullet-active {
   background: $blue-4;
 }
-
 /////////
-
 @keyframes fade-scale-in {
   0% {
-    transform: scale(0.8); }
+    transform: scale(0.8);
+  }
+
   100% {
     transform: scale(1);
-    }
   }
+}
