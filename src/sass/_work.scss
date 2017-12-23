@@ -11,7 +11,7 @@
     justify-content: flex-end;
     text-decoration: none;
     min-width: 190px;
-    transition: transform 300ms ease;
+    transition: transform $trans-r ease;
     &:hover {
       transform: scale(1.05);
     }
@@ -35,18 +35,18 @@
     &:hover {
       .item_cta {
         margin-bottom: 0px;
-        transition: margin 200ms 400ms ease;
-        &:after {
+        transition: margin $trans-s ease;
+        &:before { // bottom
+          border-right: $size-l/2 solid transparent;
+          border-top: $size-l/2 solid transparent;
+          transition: border-color $trans-s $trans-r ease;
+        }
+        &:after { // top
           transform: rotate3d(-1, -1, 0, 180deg);
           border-right: $size-l/2 solid $yellow-2;
           border-top: $size-l/2 solid $yellow-2;
           box-shadow: 0px 2px $size-xs rgba($grey-5,0.5);
-          transition: transform 400ms 150ms ease, box-shadow 400ms 200ms ease;
-        }
-        &:before {
-          border-right: $size-l/2 solid transparent;
-          border-top: $size-l/2 solid transparent;
-          transition: border-color 0ms 150ms ease;
+          transition: transform $trans-l $trans-r ease, box-shadow $trans-l $trans-l ease, border-color 0ms $trans-l ease;
         }
       }
     }
@@ -80,7 +80,7 @@
       position: relative;
       text-align: left;
       margin-bottom: -26px;
-      transition: margin 200ms 400ms ease;
+      transition: margin $trans-s ease;
       &:hover svg #arrow{
         transform: translate(2px, -2px);
       }
@@ -98,17 +98,17 @@
         border-right: $size-l/2 solid $yellow-4;
         border-top: $size-l/2 solid $yellow-4;
         border-bottom: $size-l/2 solid $yellow-4;
-        transition: border-color 0ms 400ms ease;
+        transition: border-color $trans-xs $trans-s ease;
       }
       &:after { // top
         border-left: $size-l/2 solid transparent;
         border-right: $size-l/2 solid $yellow-4;
         border-top: $size-l/2 solid $yellow-4;
         border-bottom: $size-l/2 solid transparent;
-        transition: transform 400ms 150ms ease;
         box-shadow: 0px 0px 0px rgba($grey-5,0);
         transform-origin: center center;
         transform: rotate3d(-1, -1, 0, 0deg);
+        transition: transform $trans-l ease;
       }
 
 
@@ -125,7 +125,7 @@
           vertical-align: middle;
           fill: $grey-4;
           #arrow {
-            transition: transform 200ms ease;
+            transition: transform $trans-s ease;
           }
         }
       }
