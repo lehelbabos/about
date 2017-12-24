@@ -20,6 +20,7 @@ $trans-fold-delay: $trans-cta/2;
     text-decoration: none;
     min-width: 190px;
     transition: transform $trans-card ease $trans-card-delay;
+    box-shadow: 0 0 $size-l -10px $grey-3;
 
     &:nth-child(1) {
       animation: fade-scale-in 500ms;
@@ -42,11 +43,11 @@ $trans-fold-delay: $trans-cta/2;
     }
 
     &:hover {
-      transform: scale(1.05);
+      transform: translateY(-$size-xs);
       transition: transform $trans-card ease;
 
       .item_cta {
-        margin-bottom: 0px;
+        margin-bottom: -1px;
         transition: margin $trans-cta ease;
 
         &:before { // bottom
@@ -60,7 +61,7 @@ $trans-fold-delay: $trans-cta/2;
           transform: rotate3d(-1, -1, 0, 180deg);
           border-right: $size-l/2 solid $yellow-2;
           border-top: $size-l/2 solid $yellow-2;
-          box-shadow: 0px 2px $size-xs rgba($grey-5,0.5);
+          box-shadow: 5px -2.5px 10px -2.5px rgba($grey-5,0.5);
           transition: transform $trans-fold ease-out $trans-fold-delay,
                       box-shadow $trans-fold ease $trans-fold-delay+($trans-fold/2),
                       border-color 0ms ease $trans-fold-delay+($trans-fold/2);
@@ -94,22 +95,24 @@ $trans-fold-delay: $trans-cta/2;
     }
 
     .item_cta {
+      position: relative;
+      margin-bottom: -26px;
+      transition: margin $trans-cta $trans-cta-delay ease;
       @include type('s');
       height: $size-l;
       font-weight: bold;
-      overflow: hidden;
-      position: relative;
-      text-align: left;
-      margin-bottom: -26px;
-      transition: margin $trans-cta $trans-cta-delay ease;
-
+      background: $yellow-4;
+      display: block;
+      width: calc(100% - 30px);
+      text-align: center;
+      line-height: $size-l;
       &:after,
       &:before {
         width: 0;
         height: 0;
         content: ' ';
         position: absolute;
-        right: 0;
+        right: -$size-l;
         top: 0;
       }
 
@@ -126,7 +129,7 @@ $trans-fold-delay: $trans-cta/2;
         border-right: $size-l/2 solid $yellow-4;
         border-top: $size-l/2 solid $yellow-4;
         border-bottom: $size-l/2 solid transparent;
-        box-shadow: 0px 0px 0px rgba($grey-5,0);
+        box-shadow: 5px -2.5px 10px -2.5px rgba($grey-5,0);
         transform-origin: center center;
         transform: rotate3d(-1, -1, 0, 0deg) translateX(-1px);
         transition: transform $trans-fold ease,
@@ -135,33 +138,31 @@ $trans-fold-delay: $trans-cta/2;
       }
 
 
-      span {
-        background: $yellow-4;
-        display: block;
-        width: calc(100% - 30px);
-        text-align: center;
-        line-height: $size-l;
-
-        svg {
-          height: $size-s;
-          margin: 0 $size-xs;
-          vertical-align: middle;
-          fill: $grey-4;
-        }
+      svg {
+        height: $size-s;
+        margin: 0 $size-xs;
+        vertical-align: middle;
+        fill: $grey-4;
       }
     }
 
-    .item_title {
+    .item_meta {
       background: $grey-1;
+      flex: 0;
+    	transform-style: preserve-3d;
+      bottom: -1px;
+      position: relative;
+    }
+
+
+    .item_title {
       @include type('l');
       font-weight: bold;
       margin: 0;
       padding: $size-xs $size-xs 0 $size-xs;
-      flex: 0;
       min-height: 60px;
       text-overflow: ellipsis;
       overflow: hidden;
-      transform: translate3d(0,0,0);
       @include media ("<460px") {
         font-size: $size-s;
       }
@@ -175,15 +176,14 @@ $trans-fold-delay: $trans-cta/2;
     }
 
     .item_tags {
-      background: $grey-1;
       @include type('s');
       margin: 0;
       padding: 0 $size-xs $size-s;
-      flex: 0;
       min-height: 20px;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
+      display: block;
       @include media (">HDPI") {
         min-height: 30px;
       }
@@ -226,7 +226,7 @@ $trans-fold-delay: $trans-cta/2;
 
 .portfolio-hor {
   width: 100%;
-  padding: $size-xs 0 $size-s;
+  padding: $size-s 0 $size-s;
   display: block;
   @include media(">HDPI") {
     display: none !important;
