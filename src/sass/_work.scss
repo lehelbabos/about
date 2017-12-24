@@ -21,11 +21,6 @@ $trans-fold-delay: $trans-cta/2;
     min-width: 190px;
     transition: transform $trans-card ease $trans-card-delay;
 
-    &:hover {
-      transform: scale(1.05);
-      transition: transform $trans-card ease;
-    }
-
     &:nth-child(1) {
       animation: fade-scale-in 500ms;
     }
@@ -47,6 +42,9 @@ $trans-fold-delay: $trans-cta/2;
     }
 
     &:hover {
+      transform: scale(1.05);
+      transition: transform $trans-card ease;
+
       .item_cta {
         margin-bottom: 0px;
         transition: margin $trans-cta ease;
@@ -105,10 +103,6 @@ $trans-fold-delay: $trans-cta/2;
       margin-bottom: -26px;
       transition: margin $trans-cta $trans-cta-delay ease;
 
-      &:hover svg #arrow {
-        transform: translate(2px, -2px);
-      }
-
       &:after,
       &:before {
         width: 0;
@@ -153,9 +147,6 @@ $trans-fold-delay: $trans-cta/2;
           margin: 0 $size-xs;
           vertical-align: middle;
           fill: $grey-4;
-          #arrow {
-            transition: transform $trans-s ease;
-          }
         }
       }
     }
