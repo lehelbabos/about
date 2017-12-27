@@ -206,17 +206,18 @@ $trans-fold-delay: $trans-cta/2;
   .portfolio-vert {
     width: 100%;
     margin: 0 auto;
-    text-align: center;
 
     display: none;
+    animation: fade-slide-in 1750ms;
 
     @include media(">tablet") {
       display: block !important;
+      padding-top: $size-m;
 
       .work_item {
         width: 100%;
         max-width: 800px;
-        text-align: center;
+        text-align: left;
         height: 30vh;
         min-height: 480px;
         display: flex;
@@ -237,6 +238,10 @@ $trans-fold-delay: $trans-cta/2;
 
         &:nth-child(odd) {
           margin-right: $size-l;
+        }
+
+        &:nth-child(even) {
+          top: 20vh;
         }
       }
     }
@@ -275,14 +280,4 @@ $trans-fold-delay: $trans-cta/2;
 
 .swiper-pagination-bullet-active {
   background: $blue-4;
-}
-/////////
-@keyframes fade-scale-in {
-  0% {
-    transform: scale(0.8);
-  }
-
-  100% {
-    transform: scale(1);
-  }
 }
