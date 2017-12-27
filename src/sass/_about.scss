@@ -1,35 +1,19 @@
 .about {
-	position: relative;
-	flex: 0 0 100%;
-	background: $blue-4;
-	background: linear-gradient(to right, $blue-5 , $blue-4);
-	// min-width: 300px;
-	display: flex;
-	flex-flow: column wrap;
-	align-content: flex-start;
-
-	@include media(">tablet") {
-		display: inline-flex;
-		flex: 1 0 auto;
-		max-width: 275px;
+	@include media('>tablet') {
 		&::after {
-      width: calc(100% - #{$size-s});
-      height: 90%;
-      content: ' ';
-      display: block;
-      background: transparent;
-      position: absolute;
-      top: 50%;
+			width: calc(100% - #{$size-s});
+			height: 90%;
+			content: ' ';
+			display: block;
+			background: transparent;
+			position: absolute;
+			top: 50%;
 			transform: translate(45%, -50%) scaleX(.1);
-      left: $size-s;
-      border-radius: 90%;
-      box-shadow: 0 0 $size-l rgba($grey-3,0.80);
-      z-index: -1;
-    }
-	}
-	@include media(">MDPI") {
-		flex: 1 0 auto;
-		animation: slide-left-to-right 400ms;
+			left: $size-s;
+			border-radius: 90%;
+			box-shadow: 0 0 $size-l rgba($grey-3,0.80);
+			z-index: -1;
+		}
 	}
 }
 
@@ -172,11 +156,3 @@ $profileImageSize: $baseline*7; //140px
 		display: inline-block;
 	}
 }
-
-@keyframes slide-left-to-right {
-  0% {
-    transform: translateX(-100%); }
-  100% {
-		transform: translateX(0%);
-    }
-  }

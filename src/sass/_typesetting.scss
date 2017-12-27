@@ -43,4 +43,7 @@
     border-bottom: 1px dotted $orange-4;
     transform: translateX(-50%);
   }
+  @include media(">tablet") {
+    margin: 0 0 $size-l 0;    
+  }
 }

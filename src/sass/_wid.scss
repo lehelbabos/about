@@ -1,0 +1,36 @@
+
+.wid {
+
+  section {
+    padding: $size-l 0 0 0;
+  }
+
+  @include media(">tablet") {
+    overflow-y: scroll;
+    height: calc(100% - #{$footerHeight});
+
+    section {
+      flex: 0 0 auto;
+    }
+
+    .writing {
+      display: flex;
+      flex-flow: column;
+      justify-content: flex-start;
+      align-content: stretch;
+      padding: 0;
+    }
+  }
+
+  @include media(">tablet") {
+    padding: 0 $size-l;
+  }
+
+  @include media(">1000") {
+    padding: 0 $size-xl;
+  }
+
+  @include media(">MDPI") {
+    padding: 0 $size-l*2;
+  }
+}

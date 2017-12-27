@@ -3,19 +3,8 @@
     flex: 0 1 auto;
   }
 
-
-  @include media(">tablet") {
-    display: flex;
-    flex-flow: column;
-    justify-content: flex-start;
-    align-content: stretch;
-
-    overflow: hidden;
-    padding: 0;
-  }
   .posts {
     width: 100%;
-    overflow-y: scroll;
     margin: 0 auto;
     flex: 1;
   }

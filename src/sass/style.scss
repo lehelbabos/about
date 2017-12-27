@@ -1,20 +1,22 @@
 @import 'reset';
 @import 'variables';
+@import "breakpoints"; // from Include-Media
 @import 'colours';
 @import 'scale';
 @import 'fonts';
 @import 'typesetting';
 @import "mixins";
-@import "breakpoints"; // from Include-Media
-
+@import "animations";
 // Components
 @import 'buttons';
 @import 'swiper';
 
 // Sections
 @import 'about';
-@import 'work';
-@import 'writing';
+@import 'wid';
+  @import 'work';
+  @import 'writing';
+@import 'footer';
 
 html {
   width: 100%;
@@ -38,58 +40,72 @@ body {
   align-items: stretch;
   align-content: stretch;
   justify-content: flex-start;
-  @include media(">tablet") {
-    flex-flow: row nowrap;
-  }
-}
 
-.wid {
-	display: block;
-	position: relative;
-  width:100%;
-	@include media(">tablet") {
-		display: inline-flex;
-    flex-flow: column nowrap;
-    height: 100%;
-    max-height: calc(100% - #{$size-m});
-    max-width: calc(100% - 275px);
-	}
-  @include media(">HDPI") {
+  .about {
+    flex: 0 0 100%;
+  	position: relative;
+    width: 100%;
+
+  	background: $blue-4;
+  	background: linear-gradient(to right, $blue-5 , $blue-4);
+  	// min-width: 300px;
+
     display: flex;
-    flex-flow: row nowrap;
-    align-items: stretch;
-    align-content: stretch;
+  	flex-flow: column wrap;
+  	align-content: flex-start;
   }
-  section {
-    padding: $size-l 0 0 0;
-    @include media(">tablet") {
-      flex: 0 0 50%;
-      height: 50%;
+
+  .wid {
+    flex: 0 0 100%;
+    position: relative;
+
+    width:100%;
+  }
+
+
+  @include media(">tablet") {
+    .about {
+      display: flex;
+      flex: 1 0 auto;
+      width: 50%;
+      animation: slide-left-to-right 400ms;
     }
 
-    @include media(">HDPI") {
+    .wid {
       display: flex;
-      flex-flow: column nowrap;
-      justify-content: flex-start;
-      height: 100% !important;
+      flex: 1 0 auto;
       width: 50%;
-      padding: $size-l $size-s 0;
+
+      flex-flow: column nowrap;
+      overflow-y: scroll;
     }
   }
+
+  @include media(">1000px") {
+    .about {
+      width: 38%;
+    }
+
+    .wid {
+      width: 62%;
+    }
+  }
+
+  // @include media(">HDPI") {
+  //   .about {
+  //     width: 33%;
+  //   }
+  //   .wid {
+  //     width: 67%;
+  //     overflow-x: hidden;
+  //   }
+  // }
 }
 
 footer {
   flex: 1 0 100%;
-  @include media(">tablet") {
-    position: fixed;
-    bottom: 0;
-  }
-  width: 100%;
-  height: $size-m;
-  background: $grey-4;
-  align-self: flex-end;
-  z-index: 100;
 }
+
 ///////////////////////////
 // SVG Injection Setup
 ///////////////////////////

@@ -47,8 +47,8 @@ $trans-fold-delay: $trans-cta/2;
       transition: transform $trans-card ease;
 
       .item_cta {
-        margin-bottom: -1px;
-        transition: margin $trans-cta ease;
+        transform: translateY(1px);
+        transition: transform $trans-cta ease;
 
         &:before { // bottom
           border-right: $size-l/2 solid transparent;
@@ -96,8 +96,8 @@ $trans-fold-delay: $trans-cta/2;
 
     .item_cta {
       position: relative;
-      margin-bottom: -26px;
-      transition: margin $trans-cta $trans-cta-delay ease;
+      transform: translateY(26px);
+      transition: transform $trans-cta $trans-cta-delay ease;
       @include type('s');
       height: $size-l;
       font-weight: bold;
@@ -205,19 +205,40 @@ $trans-fold-delay: $trans-cta/2;
 
   .portfolio-vert {
     width: 100%;
-    overflow-y: scroll;
-    height: 100%;
     margin: 0 auto;
-    padding: $size-s 0;
+    text-align: center;
 
-    .work_item {
-      width: 100%;
-      max-width: 570px;
-      text-align: center;
-      height: 30vh;
-      min-height: 240px;
-      display: flex;
-      margin: 0 auto $size-s auto;
+    display: none;
+
+    @include media(">tablet") {
+      display: block !important;
+
+      .work_item {
+        width: 100%;
+        max-width: 800px;
+        text-align: center;
+        height: 30vh;
+        min-height: 480px;
+        display: flex;
+        margin: 0 auto $size-l auto;
+      }
+    }
+
+    @include media(">1000px") {
+      .work_item {
+        margin: 0 auto $size-l*2 auto;
+      }
+    }
+
+    @include media(">HDPI") {
+      .work_item {
+        display: inline-flex;
+        width: calc(50% - #{$size-xl/2});
+
+        &:nth-child(odd) {
+          margin-right: $size-l;
+        }
+      }
     }
   }
 }
@@ -228,15 +249,8 @@ $trans-fold-delay: $trans-cta/2;
   width: 100%;
   padding: $size-s 0 $size-s;
   display: block;
-  @include media(">HDPI") {
+  @include media(">tablet") {
     display: none !important;
-  }
-}
-
-.portfolio-vert {
-  display: none;
-  @include media(">HDPI") {
-    display: block !important;
   }
 }
 
