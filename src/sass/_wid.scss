@@ -7,7 +7,6 @@
 
   @include media(">tablet") {
     overflow-y: scroll;
-    height: calc(100% - #{$footerHeight});
 
     section {
       flex: 0 0 auto;

@@ -106,6 +106,7 @@ $trans-fold-delay: $trans-cta/2;
       width: calc(100% - 30px);
       text-align: center;
       line-height: $size-l;
+
       &:after,
       &:before {
         width: 0;
@@ -152,6 +153,8 @@ $trans-fold-delay: $trans-cta/2;
     	transform-style: preserve-3d;
       bottom: -1px;
       position: relative;
+      z-index: 10;
+      transform: translateZ(100px);
     }
 
 

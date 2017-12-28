@@ -42,17 +42,7 @@ body {
   justify-content: flex-start;
 
   .about {
-    flex: 0 0 100%;
-  	position: relative;
     width: 100%;
-
-  	background: $blue-4;
-  	background: linear-gradient(to right, $blue-5 , $blue-4);
-  	// min-width: 300px;
-
-    display: flex;
-  	flex-flow: column wrap;
-  	align-content: flex-start;
   }
 
   .wid {
@@ -65,16 +55,16 @@ body {
 
   @include media(">tablet") {
     .about {
-      display: flex;
       flex: 1 0 auto;
       width: 50%;
-      animation: slide-left-to-right 400ms;
+      height: 100%;
     }
 
     .wid {
       display: flex;
       flex: 1 0 auto;
       width: 50%;
+      height: calc(100% - #{$footerHeight});
 
       flex-flow: column nowrap;
       overflow-y: scroll;

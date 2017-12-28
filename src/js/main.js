@@ -5385,3 +5385,18 @@ var mySwiper = new Swiper ('.portfolio-hor', {
     }
   }
 });
+
+
+//
+
+function expandBio () {
+  var aboutSection = document.getElementById("expandBio-js");
+  var expandButton = document.getElementById("removeButton-js");
+
+  function removeButton () {
+      expandButton.remove();
+  };
+
+  aboutSection.classList.add("bio_details-expanded");
+  setTimeout(removeButton, 250)
+};

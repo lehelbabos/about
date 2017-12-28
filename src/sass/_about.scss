@@ -1,18 +1,26 @@
 .about {
+	flex: 0 0 100%;
+	position: relative;
+
+	display: flex;
+	flex-flow: column nowrap;
+	align-content: flex-start;
+	background: $blue-4;
+	background: linear-gradient(to right, $blue-5 , $blue-4);
+
 	@include media('>tablet') {
-		&::after {
-			width: calc(100% - #{$size-s});
-			height: 90%;
-			content: ' ';
-			display: block;
-			background: transparent;
-			position: absolute;
-			top: 50%;
-			transform: translate(45%, -50%) scaleX(.1);
-			left: $size-s;
-			border-radius: 90%;
-			box-shadow: 0 0 $size-l rgba($grey-3,0.80);
-			z-index: -1;
+		overflow-y: scroll;
+		box-shadow: $size-l 0px $size-xl -50px rgba($grey-5,0.5);
+		max-height: calc(100% - #{$footerHeight});
+
+		.bio_details {
+			max-height: 1000px;
+			overflow-y: auto;
+			border-bottom: none;
+		}
+
+		.bio_details_expand_button {
+			display: none;
 		}
 	}
 }
@@ -37,9 +45,20 @@
 	@include media('>tablet') {
 		order: 2;
 		background: #FFF;
+		justify-content: space-evenly;
+		max-width: 50vw;
+		position: fixed;
+		bottom: $footerHeight;
+		z-index: 10;
+		padding: $size-l $size-m;
+	}
+
+	@include media('>1000px') {
+		max-width: 38vw;
 	}
 
 	.contact_item {
+		animation: fade-slide-in 800ms;
 		flex: 0 0 auto;
 		width: $size-m;
 		height: $size-m;
@@ -51,10 +70,8 @@
     &-phone:hover {
       fill: #34BC6E;
     }
-		&-mail {
-			@include media('>tablet') {
-				display: none;
-			}
+		&-mail:hover {
+			fill: $orange-3;
 		}
     &-mail:hover {
       fill: #E62325;
@@ -74,6 +91,7 @@
 $profileImageSize: $baseline*7; //140px
 
 .about_photo {
+	animation: slide-up 800ms;
 	position: relative;
 	padding: $size-s 0 0 0;
 	z-index: 1;
@@ -98,6 +116,7 @@ $profileImageSize: $baseline*7; //140px
 }
 
 .about_bio {
+	animation: slide-up 800ms;
 	padding: $size-s $size-m;
 	text-align: center;
   margin: -$size-l 0 0 0;
@@ -115,6 +134,7 @@ $profileImageSize: $baseline*7; //140px
 }
 
 .bio_name {
+	animation: fade-slide-in 800ms;
 	@include type('xl');
   display: block;
   font-weight: 700;
@@ -126,6 +146,7 @@ $profileImageSize: $baseline*7; //140px
 	}
 }
 .bio_title {
+	animation: fade-slide-in 800ms;
 	@include type('s');
   display: block;
   padding: 0 0 $size-xl 0;
@@ -135,24 +156,74 @@ $profileImageSize: $baseline*7; //140px
 	}
 }
 
-.bio_desc {
+.bio_summary, .bio_details p {
+	animation: fade-slide-in 800ms;
 	@include type('m');
+	margin: 0 0 $size-m;
 	@include media('>tablet'){
-		@include type('s');
-		margin: 0 0 $size-m;
+		// @include type('s');
+		margin: 0 0 $size-xl;
 	}
 }
 
-.about_email {
-	display: none;
-	@include button('solid', $orange-4, 'darken');
-	vertical-align: top;
-	svg {
-		height: $size-s;
-		vertical-align: top;
-		margin: 0 $size-xs 0 0;
+.bio_details {
+	overflow-y: hidden;
+	max-height: $size-m*10;
+	border-bottom: 1px solid $grey-2;
+	position: relative;
+	margin-bottom: $size-l;
+	transition: max-height $trans-xl*2 ease-out $trans-xs;
+
+	&:after {
+		width: 100%;
+		height: $size-xs;
+		content: ' ';
+		background: #FFF;
+		bottom: 0px;
+		left: 0;
+		position: absolute;
 	}
-	@include media('>tablet') {
-		display: inline-block;
+}
+
+.bio_details-expanded {
+	.bio_details {
+		max-height: 1000px;
+		overflow-y: auto;
+		border-bottom: none;
+	}
+
+	.bio_details_expand_button {
+		opacity: 0;
+	}
+}
+
+.bio_details_expand_button {
+	display: block;
+	color: $blue-3;
+	background: #FFF;
+	transform: translateY(-$size-xl) translateX(-50%);
+	text-align: center;
+	box-shadow: 0 -7.5px 10px -5px rgba($grey-5,0.5);
+	transition: transform $trans-s ease-out, box-shadow $trans-s ease-out, opacity $trans-s ease-out;
+	margin: 0 auto;
+	position: absolute;
+	left: 50%;
+	opacity: 1;
+	svg {
+		display: block;
+		width: $size-xs;
+		margin: $size-xs/2 auto;
+		fill: $blue-3;
+		transition: transform $trans-s ease-out;
+	}
+	&:hover {
+		color: $blue-2;
+		transform: translateY(-$size-xl+$size-xs/2) translateX(-50%);
+		box-shadow: 0 -10px 10px -5px rgba($grey-5,0.35);
+
+		svg {
+			fill: $blue-2;
+			transform: translateY($size-xs/2);
+		}
 	}
 }
