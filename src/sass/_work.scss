@@ -199,10 +199,6 @@ $trans-fold-delay: $trans-cta/2;
       height: 30vh;
       max-width: 480px;
       min-height: 240px;
-      @include media(">tablet") {
-        height: calc(50vh - 170px);
-        min-height: 100px;
-      }
     }
   }
 
@@ -257,6 +253,7 @@ $trans-fold-delay: $trans-cta/2;
   width: 100%;
   padding: $size-s 0 $size-s;
   display: block;
+  margin-bottom: $size-l;
   @include media(">tablet") {
     display: none !important;
   }

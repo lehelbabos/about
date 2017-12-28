@@ -129,7 +129,14 @@ $profileImageSize: $baseline*7; //140px
 	@include slant($size-xl*2, #FFF);
 	@include media('>tablet'){
 		margin: -$size-m 0 0 0;
+		padding: $size-s $size-m;
 		@include slant($size-xl, #FFF);
+	}
+	@include media('>1000px'){
+		padding: $size-s $size-xl;
+	}
+	@include media('>MDPI'){
+		padding: $size-s $size-xl*1.5;
 	}
 }
 
@@ -203,12 +210,13 @@ $profileImageSize: $baseline*7; //140px
 	background: #FFF;
 	transform: translateY(-$size-xl) translateX(-50%);
 	text-align: center;
-	box-shadow: 0 -7.5px 10px -5px rgba($grey-5,0.5);
+	box-shadow: 0 -7.5px 30px -10px rgba($grey-4,0.4);
 	transition: transform $trans-s ease-out, box-shadow $trans-s ease-out, opacity $trans-s ease-out;
 	margin: 0 auto;
 	position: absolute;
 	left: 50%;
 	opacity: 1;
+	height: $size-xl;
 	svg {
 		display: block;
 		width: $size-xs;
@@ -219,7 +227,6 @@ $profileImageSize: $baseline*7; //140px
 	&:hover {
 		color: $blue-2;
 		transform: translateY(-$size-xl+$size-xs/2) translateX(-50%);
-		box-shadow: 0 -10px 10px -5px rgba($grey-5,0.35);
 
 		svg {
 			fill: $blue-2;

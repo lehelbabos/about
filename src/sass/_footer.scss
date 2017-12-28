@@ -1,7 +1,11 @@
 footer {
   width: 100%;
   height: $footerHeight;
-  background: $grey-4;
+  background: $grey-2;
   align-self: flex-end;
   z-index: 100;
+  text-align: center;
+  @include type('xs');
+  line-height: $footerHeight;
+  color: $grey-4;
 }
