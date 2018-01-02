@@ -5,13 +5,15 @@
 	display: flex;
 	flex-flow: column nowrap;
 	align-content: flex-start;
-	background: $blue-4;
-	background: linear-gradient(to right, $blue-5 , $blue-4);
+	background: rgba($blue-4, 1);
+	background: linear-gradient(to right, rgba($blue-5, 1) , rgba($blue-4, 1));
 
 	@include media('>tablet') {
 		overflow-y: scroll;
 		box-shadow: $size-l 0px $size-xl -50px rgba($grey-5,0.5);
 		max-height: calc(100% - #{$footerHeight});
+		background: rgba($blue-4, 1);
+		background: linear-gradient(to right, rgba($blue-5, 0.6) , rgba($blue-4, 0.6));
 
 		.bio_details {
 			max-height: 2000px;
@@ -21,6 +23,23 @@
 
 		.bio_details_expand_button {
 			display: none;
+		}
+		&::after {
+			width: 50%;
+			height: calc(30vh + #{$size-xl*2});
+			content: ' ';
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			background-image: url("../images/profile-3.jpg");
+			background-size: cover;
+			background-position: top center;
+		}
+	}
+	@include media('>MDPI') {
+		&::after {
+			width: 38%;
 		}
 	}
 }
@@ -54,7 +73,7 @@
 		padding: $size-m;
 	}
 
-	@include media('>1000px') {
+	@include media('>MDPI') {
 		max-width: 38vw;
 	}
 
@@ -113,7 +132,7 @@ $profileImageSize: $baseline*7; //140px
 		}
   }
 	@include media('>tablet') {
-		padding: $size-xl 0 0 0;
+		padding: 30vh 0 0 0;
 	}
 }
 
@@ -134,7 +153,7 @@ $profileImageSize: $baseline*7; //140px
 		padding: $size-s $size-m;
 		@include slant($size-xl, #FFF);
 	}
-	@include media('>1000px'){
+	@include media('>desktop'){
 		padding: $size-s $size-xl;
 	}
 	@include media('>MDPI'){
@@ -222,7 +241,7 @@ $profileImageSize: $baseline*7; //140px
 		transition: box-shadow $trans-s ease;
 
 		&:visited {
-			color: $grey-4;	
+			color: $grey-4;
 		}
 
 		&:hover {
@@ -278,4 +297,16 @@ $profileImageSize: $baseline*7; //140px
 			transform: translateY($size-xs/2);
 		}
 	}
+}
+
+
+#icn-logo path {
+	opacity: 0;
+	stroke: #0467bb;
+	stroke-width: 4px;
+	stroke-dasharray: 500;
+	stroke-dashoffset: 800;
+	fill: transparent;
+	animation: logo-render 1000ms cubic-bezier(.35,.01,.96,.72);
+	animation-fill-mode: forwards;
 }

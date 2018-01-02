@@ -21,6 +21,8 @@ $trans-fold-delay: $trans-cta/2;
     min-width: 190px;
     transition: transform $trans-card ease $trans-card-delay;
     box-shadow: 0 0 $size-l -10px $grey-3;
+    background-size: cover;
+    background-position: center;
 
     &:nth-child(1) {
       animation: fade-scale-in 500ms;
@@ -71,27 +73,22 @@ $trans-fold-delay: $trans-cta/2;
 
     &.brewbox {
       background-image: url("../images/brewbox.jpg");
-      background-size: cover;
     }
 
     &.cci {
-      background-image: url("../images/cci.png");
-      background-size: cover;
+      background-image: url("../images/cci.jpg");
     }
 
     &.h2h {
       background-image: url("../images/h2h.jpg");
-      background-size: cover;
     }
 
     &.base5 {
       background-image: url("../images/base5.jpg");
-      background-size: cover;
     }
 
     &.wasm {
       background-image: url("../images/wasm.jpg");
-      background-size: cover;
     }
 
     .item_cta {
@@ -225,7 +222,7 @@ $trans-fold-delay: $trans-cta/2;
       }
     }
 
-    @include media(">1000px") {
+    @include media(">desktop") {
       .work_item {
         margin: 0 auto $size-l*2 auto;
       }
@@ -242,6 +239,9 @@ $trans-fold-delay: $trans-cta/2;
 
         &:nth-child(even) {
           top: 20vh;
+        }
+        &:last-child:nth-child(even) {
+          margin-bottom: calc(20vh + #{$size-xl});
         }
       }
     }

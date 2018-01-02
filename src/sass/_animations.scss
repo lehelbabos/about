@@ -37,3 +37,28 @@
     opacity: 1;
   }
 }
+
+@keyframes logo-render {
+	0% {
+		opacity: 0;
+		stroke-width: 4px;
+		stroke-dasharray: 500;
+		stroke-dashoffset: 800;
+		fill: transparent;
+	}
+
+	70% {
+		opacity: 1;
+		stroke-width: 4px;
+		stroke-dashoffset: 0;
+		stroke-dasharray: 500 0;
+		fill: transparent;
+	}
+	100% {
+		opacity: 1;
+		stroke-width: 0px;
+		stroke-dashoffset: 0;
+		stroke-dasharray: 500 0;
+		fill: #0467bb;
+	}
+}
