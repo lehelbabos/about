@@ -1,29 +1,11 @@
 # README #
+#Welcome
+You've found my portfolio! Nothing fancy – feel free to have a look around. I apologize in advance about the mostly uncommented spaghetti code.
 
-This README would normally document whatever steps are necessary to get your application up and running.
+## Setup
+Pretty simple... 'git clone git@github.com:lehelbabos/portfolio.git && cd portfolio/ && npm install'... You'll also need to install `gulp-cli` and a few other things... If it's throwing you errors and you can't get it sorted gimmie a shout. 
 
-### What is this repository for? ###
+## Run local
+Once you're done setting up just hit `npm start` which will load up `grunt` start `watching` all the source files and spin up a `server` and opens the page in the browser. *Might* need to refresh first time you load.
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+Bon voyage!
