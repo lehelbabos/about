@@ -61,7 +61,7 @@
 
     &_title {
       @include type(l);
-      font-weight: bold;
+      font-weight: 500;
       line-height: $size-m;
       position: relative;
       display: inline-block;

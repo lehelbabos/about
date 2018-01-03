@@ -25,6 +25,7 @@ var gulp = require('gulp'),
 var dirs = {
   'sass': ['src/components/**/*.scss','src/sass/**/*.scss' ],
   'dist': 'dist/',
+  'docs': 'docs/',
   'js': [
     'src/js/**/*.js',
     'src/components/**/*.js',
@@ -53,6 +54,18 @@ gulp.task('sass', function () {
 
 gulp.task('sass:watch', function () {
   gulp.watch(dirs.sass, ['sass']);
+});
+
+gulp.task('sass:publish', function () {
+  gulp.src(dirs.sass)
+    .pipe(sass({
+      'includePaths': 'node_modules',
+      'outputStyle': 'compressed',
+    })
+      .on('error', sass.logError) // This keeps the rest of the Gulp tasks from stopping if there is an error
+    )
+    .pipe(autoprefixer()) // Run output through autoprefixer
+    .pipe(gulp.dest(dirs.dist + 'css')) // Spit out CSS to docs folder
 });
 
 //////////////////////////////
@@ -133,6 +146,17 @@ gulp.task('fonts:watch', function () {
 });
 
 //////////////////////////////
+// Copy
+//////////////////////////////
+
+gulp.task('copy', function () {
+  gulp.src('index.html')
+  .pipe(gulp.dest(dirs.docs));
+  gulp.src(dirs.dist + '*/**')
+  .pipe(gulp.dest(dirs.docs));
+});
+
+//////////////////////////////
 // Browser Sync
 //////////////////////////////
 gulp.task('browser-sync', ['nodemon'], function() {
@@ -164,3 +188,4 @@ gulp.task('nodemon', function (cb) {
 gulp.task('default', ['build', 'watch']);
 gulp.task('build', ['sass', 'js', 'imagemin', 'fonts']);
 gulp.task('watch', ['sass:watch', 'js:watch', 'imagemin:watch', 'svgstore:watch', 'fonts:watch', 'browser-sync']);
+gulp.task('publish',['sass:publish', 'js', 'imagemin', 'fonts', 'copy']);

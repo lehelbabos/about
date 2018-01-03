@@ -4,7 +4,7 @@
   "description": "This is the package file for the build of my portfolio",
   "repository": {
     "type": "git",
-    "url": "https://Lehel@bitbucket.org/Lehel/sherlock.git"
+    "url": "git@github.com:lehelbabos/portfolio.git"
   },
   "author": "Lehel Babos",
   "license": "ISC",

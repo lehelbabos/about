@@ -4,7 +4,7 @@ button {
   padding: $size-xs $size-l;
   border-radius: 0;
   @include type('s');
-  font-weight: bold;
+  font-weight: 500;
   color: #FFF;
   transition: background 250ms ease-in-out;
   svg {
