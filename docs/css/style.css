@@ -905,6 +905,7 @@ button.swiper-pagination-bullet {
   padding: 45px 25px;
   margin: 0 auto;
   position: relative;
+  text-align: center;
 }
 
 .about_contact::after {
@@ -949,6 +950,7 @@ button.swiper-pagination-bullet {
   height: 25px;
   fill: #f8f8f8;
   z-index: 1;
+  margin: 0 auto;
 }
 
 @media (min-width: 821px) {
@@ -1196,8 +1198,7 @@ button.swiper-pagination-bullet {
           transform: translateY(-45px) translateX(-50%);
   text-align: center;
   box-shadow: 0 -7.5px 20px -15px rgba(56, 56, 56, 0.4);
-  transition: -webkit-transform 200ms ease-out, box-shadow 200ms ease-out, opacity 200ms ease-out;
-  transition: transform 200ms ease-out, box-shadow 200ms ease-out, opacity 200ms ease-out;
+  transition: box-shadow 200ms ease-out, opacity 200ms ease-out;
   margin: 0 auto;
   position: absolute;
   left: 50%;
@@ -1216,8 +1217,6 @@ button.swiper-pagination-bullet {
 
 .bio_details_expand_button:hover {
   color: #2d96e4;
-  -webkit-transform: translateY(-40px) translateX(-50%);
-          transform: translateY(-40px) translateX(-50%);
 }
 
 .bio_details_expand_button:hover svg {
@@ -1587,6 +1586,27 @@ button.swiper-pagination-bullet {
   background: #013665;
 }
 
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+  .item_cta svg {
+    display: none !important;
+  }
+  .portfolio-hor {
+    padding-bottom: 100px;
+  }
+  .item_meta * {
+    background-color: #f8f8f8;
+  }
+  .portfolio-vert .work_item {
+    margin-bottom: 120px !important;
+  }
+}
+
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) and (min-width: 1440px) {
+  .wid .work {
+    padding-bottom: 180px;
+  }
+}
+
 .writing .section_title {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 auto;
@@ -1714,6 +1734,7 @@ footer {
 
 html {
   width: 100%;
+  overflow-x: hidden;
   height: 100%;
   box-sizing: border-box;
   font-size: 16px;
@@ -1725,6 +1746,8 @@ html {
 
 body {
   width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   height: 100%;
   font-family: 'Rubik', HelveticaNeue, Helvetica, Arial, sans-serif;
   font-size: 1.125rem;
