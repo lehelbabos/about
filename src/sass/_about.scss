@@ -274,7 +274,7 @@ $profileImageSize: $baseline*7; //140px
 	background: #FFF;
 	transform: translateY(-$size-xl) translateX(-50%);
 	text-align: center;
-	box-shadow: 0 -7.5px 30px -10px rgba($grey-4,0.4);
+	box-shadow: 0 -7.5px 20px -15px rgba($grey-4,0.4);
 	transition: transform $trans-s ease-out, box-shadow $trans-s ease-out, opacity $trans-s ease-out;
 	margin: 0 auto;
 	position: absolute;
@@ -297,16 +297,4 @@ $profileImageSize: $baseline*7; //140px
 			transform: translateY($size-xs/2);
 		}
 	}
-}
-
-
-#icn-logo path {
-	opacity: 0;
-	stroke: #0467bb;
-	stroke-width: 4px;
-	stroke-dasharray: 500;
-	stroke-dashoffset: 800;
-	fill: transparent;
-	animation: logo-render 1000ms cubic-bezier(.35,.01,.96,.72);
-	animation-fill-mode: forwards;
 }
