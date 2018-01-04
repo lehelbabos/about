@@ -296,4 +296,14 @@ $trans-fold-delay: $trans-cta/2;
   .item_meta * {
     background-color: $grey-1;
   }
+
+  .portfolio-vert .work_item {
+    margin-bottom: 120px !important;
+  }
+}
+
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) and (min-width: 1440px) {
+  .wid .work {
+    padding-bottom: 180px;
+  }
 }
