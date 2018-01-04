@@ -275,7 +275,7 @@ $profileImageSize: $baseline*7; //140px
 	transform: translateY(-$size-xl) translateX(-50%);
 	text-align: center;
 	box-shadow: 0 -7.5px 20px -15px rgba($grey-4,0.4);
-	transition: transform $trans-s ease-out, box-shadow $trans-s ease-out, opacity $trans-s ease-out;
+	transition: box-shadow $trans-s ease-out, opacity $trans-s ease-out;
 	margin: 0 auto;
 	position: absolute;
 	left: 50%;
@@ -290,7 +290,6 @@ $profileImageSize: $baseline*7; //140px
 	}
 	&:hover {
 		color: $blue-2;
-		transform: translateY(-$size-xl+$size-xs/2) translateX(-50%);
 
 		svg {
 			fill: $blue-2;
