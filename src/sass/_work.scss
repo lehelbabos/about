@@ -282,3 +282,18 @@ $trans-fold-delay: $trans-cta/2;
 .swiper-pagination-bullet-active {
   background: $blue-4;
 }
+
+
+
+/////// IE10 fixes and sadness
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+  .item_cta svg {
+    display: none !important;
+  }
+  .portfolio-hor {
+    padding-bottom: 100px;
+  }
+  .item_meta * {
+    background-color: $grey-1;
+  }
+}

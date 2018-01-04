@@ -53,6 +53,7 @@
 	padding: $size-xl $size-m;
 	margin: 0 auto;
 	position: relative;
+	text-align: center;
 	&::after {
 		width: 100%;
 		height: $size-xl*2+$size-m;
@@ -84,6 +85,7 @@
 		height: $size-m;
 		fill: $grey-1;
 		z-index: 1;
+		margin: 0 auto;
 		@include media('>tablet') {
 			margin: 0 $size-m;
 			fill: $blue-4;
