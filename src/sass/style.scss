@@ -20,6 +20,7 @@
 
 html {
   width: 100%;
+  overflow-x: hidden;
   height: 100%;
   box-sizing: border-box;
 	font-size: 16px;
@@ -31,6 +32,8 @@ html {
 
 body {
   width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   height: 100%;
   font-family: 'Rubik', HelveticaNeue, Helvetica, Arial, sans-serif;
   @include type('m');
