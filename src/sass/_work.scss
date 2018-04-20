@@ -71,6 +71,10 @@ $trans-fold-delay: $trans-cta/2;
       }
     }
 
+    &.query {
+      background-image: url("../images/query.jpg");
+    }
+
     &.brewbox {
       background-image: url("../images/brewbox.jpg");
     }
