@@ -1229,8 +1229,8 @@ button.swiper-pagination-bullet {
   background-image: url("../images/base5.jpg");
 }
 
-.work_item.wasm {
-  background-image: url("../images/wasm.jpg");
+.work_item.wasm-data {
+  background-image: url("../images/wasm-data.jpg");
 }
 
 .work_item .item_cta {
