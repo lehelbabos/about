@@ -156,7 +156,7 @@ $trans-fold-delay: $trans-cta/2;
       position: relative;
       z-index: 10;
       transform: translateZ(100px);
-      text-align: center;
+      text-align: left;
     }
 
 
@@ -183,7 +183,7 @@ $trans-fold-delay: $trans-cta/2;
     .item_tags {
       @include type('s');
       margin: 0;
-      padding: 0 $size-xs $size-s;
+      padding: 0 $size-xs;
       min-height: 20px;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -192,6 +192,17 @@ $trans-fold-delay: $trans-cta/2;
       @include media (">HDPI") {
         min-height: 30px;
       }
+    }
+
+    .item_product {
+      @include type('s');
+      font-weight: 500;
+      background: $blue-1;
+      padding: $size-xs/2 $size-xs;
+      border-radius: $size-s;
+      color: $blue-4;
+      margin: 0 0 $size-s $size-xs;
+      display: inline-block;
     }
   }
 
