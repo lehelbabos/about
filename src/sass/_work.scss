@@ -150,13 +150,19 @@ $trans-fold-delay: $trans-cta/2;
 
     .item_meta {
       background: $grey-1;
-      flex: 0;
+      flex: 0 0 auto;
     	transform-style: preserve-3d;
       bottom: -1px;
       position: relative;
       z-index: 10;
       transform: translateZ(100px);
       text-align: left;
+      display: flex;
+      flex-flow: row wrap;
+      padding: $size-s $size-s $size-m $size-s;
+      align-items: flex-end;
+      align-content: flex-end;
+      justify-content: flex-start;
     }
 
 
@@ -164,45 +170,57 @@ $trans-fold-delay: $trans-cta/2;
       @include type('l');
       font-weight: 500;
       margin: 0;
-      padding: $size-xs $size-xs 0 $size-xs;
+      padding: 0;
       min-height: 60px;
       text-overflow: ellipsis;
       overflow: hidden;
+      flex: 0 0 100%;
       @include media ("<460px") {
         font-size: $size-s;
       }
       @include media (">580px") {
         min-height: 30px;
-        white-space: nowrap;
+        overflow: visible;
       }
       @include media (">HDPI") {
-        min-height: 50px;
+        // min-height: 50px;
       }
     }
 
     .item_tags {
-      @include type('s');
+      @include type('xs');
       margin: 0;
-      padding: 0 $size-xs;
+      padding: 0;
       min-height: 20px;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
       display: block;
+      flex: 0 0 100%;
+
+      li {
+        display: inline-block;
+        border:1px solid $grey-3;
+        color: $grey-4;
+        border-radius: $size-s;
+        padding: 0 $size-xs/2;
+        margin: 0 $size-xs/2 0 0;
+        font-weight: 500;
+      }
+
       @include media (">HDPI") {
         min-height: 30px;
       }
     }
 
     .item_product {
-      @include type('s');
+      @include type('s  ');
       font-weight: 500;
-      background: $blue-1;
-      padding: $size-xs/2 $size-xs;
+      padding: 0;
       border-radius: $size-s;
-      color: $blue-4;
-      margin: 0 0 $size-s $size-xs;
-      display: inline-block;
+      color: $grey-4;
+      margin: 0 0 $size-s;
+      flex: 0 0 auto;
     }
   }
 
