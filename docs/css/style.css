@@ -1285,14 +1285,25 @@ button.swiper-pagination-bullet {
 
 .work_item .item_meta {
   background: #f8f8f8;
-  -ms-flex: 0;
-      flex: 0;
+  -ms-flex: 0 0 auto;
+      flex: 0 0 auto;
   transform-style: preserve-3d;
   bottom: -1px;
   position: relative;
   z-index: 10;
   transform: translateZ(100px);
-  text-align: center;
+  text-align: left;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+  padding: 20px 20px 25px 20px;
+  -ms-flex-align: end;
+      align-items: flex-end;
+  -ms-flex-line-pack: end;
+      align-content: flex-end;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
 }
 
 .work_item .item_title {
@@ -1300,10 +1311,12 @@ button.swiper-pagination-bullet {
   line-height: 30px;
   font-weight: 500;
   margin: 0;
-  padding: 10px 10px 0 10px;
+  padding: 0;
   min-height: 60px;
   text-overflow: ellipsis;
   overflow: hidden;
+  -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
 }
 
 @media (max-width: 459px) {
@@ -1315,31 +1328,62 @@ button.swiper-pagination-bullet {
 @media (min-width: 581px) {
   .work_item .item_title {
     min-height: 30px;
-    white-space: nowrap;
-  }
-}
-
-@media (min-width: 1441px) {
-  .work_item .item_title {
-    min-height: 50px;
+    overflow: visible;
   }
 }
 
 .work_item .item_tags {
-  font-size: .875rem;
+  font-size: .75rem;
   line-height: 20px;
   margin: 0;
-  padding: 0 10px 20px;
+  padding: 0;
   min-height: 20px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   display: block;
+  -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+  display: none;
+}
+
+.work_item .item_tags li {
+  display: inline-block;
+  border: 1px solid #777777;
+  color: #383838;
+  border-radius: 20px;
+  padding: 0 5px;
+  margin: 0 5px 0 0;
+  font-weight: 500;
+}
+
+@media (min-width: 821px) {
+  .work_item .item_tags {
+    display: block;
+  }
 }
 
 @media (min-width: 1441px) {
   .work_item .item_tags {
     min-height: 30px;
+  }
+}
+
+.work_item .item_product {
+  font-size: .875rem;
+  line-height: 20px;
+  font-weight: 500;
+  padding: 0;
+  border-radius: 20px;
+  color: #777777;
+  margin: 0;
+  -ms-flex: 0 0 auto;
+      flex: 0 0 auto;
+}
+
+@media (min-width: 821px) {
+  .work_item .item_product {
+    margin-bottom: 20px;
   }
 }
 
