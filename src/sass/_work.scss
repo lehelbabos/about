@@ -99,6 +99,10 @@ $trans-fold-delay: $trans-cta/2;
       background-image: url("../images/ca-dataconnections.jpg");     
     }
 
+    &.ca-datascience {
+      background-image: url("../images/ca-datascience.jpg");     
+    }
+
     .item_cta {
       position: relative;
       transform: translateY(26px);
