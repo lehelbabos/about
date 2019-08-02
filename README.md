@@ -7,4 +7,4 @@ Pretty simple... `git clone git@github.com:lehelbabos/about.git && cd about/ && 
 ## Run local
 Once you're done setting up just hit `npm start` which will load up `grunt` start `watching` all the source files and spin up a `server` and opens the page in the browser. *Might* need to refresh first time you load.
 
-Bon voyage!
+Bon voyage!!
