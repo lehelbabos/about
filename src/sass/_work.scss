@@ -103,6 +103,10 @@ $trans-fold-delay: $trans-cta/2;
       background-image: url("../images/ca-datascience.jpg");     
     }
 
+    &.suikakeibo {
+      background-image: url("../images/suikakeibo.jpg");     
+    }
+
     .item_cta {
       position: relative;
       transform: translateY(26px);
