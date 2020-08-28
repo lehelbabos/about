@@ -107,6 +107,10 @@ $trans-fold-delay: $trans-cta/2;
       background-image: url("../images/suikakeibo.jpg");     
     }
 
+    &.tablekit {
+      background-image: url("../images/tablekit.jpg");     
+    }
+
     .item_cta {
       position: relative;
       transform: translateY(26px);
