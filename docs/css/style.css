@@ -1244,6 +1244,10 @@ button.swiper-pagination-bullet {
   background-image: url("../images/suikakeibo.jpg");
 }
 
+.work_item.tablekit {
+  background-image: url("../images/tablekit.jpg");
+}
+
 .work_item .item_cta {
   position: relative;
   transform: translateY(26px);
