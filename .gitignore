@@ -9,3 +9,6 @@ docs/case-studies/robots.txt
 docs/case-studies/index.html
 docs/case-studies/rss
 docs/case-studies/author
+
+posts/.ghost-cli
+posts/.ghostpid
