@@ -26,7 +26,9 @@
     "gulp-uglify": "^1.2.0"
   },
   "scripts": {
-    "start": "gulp"
+    "dev": "gulp",
+    "write": "cd posts/ && ghost start",
+    "publish": "wget -r -nH -P docs/case-studies -E -T 2 -np -k http://localhost:2368/ && gulp publish"
   },
   "dependencies": {
     "browser-sync": "^2.18.5",
