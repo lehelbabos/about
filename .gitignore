@@ -5,7 +5,7 @@ dist/
 npm-debug.log
 
 # Ignore unnecessary stuff pulled from Ghost
-docs/posts/robots.txt
-docs/posts/index.html
-docs/posts/rss
-docs/posts/author
+docs/case-studies/robots.txt
+docs/case-studies/index.html
+docs/case-studies/rss
+docs/case-studies/author
