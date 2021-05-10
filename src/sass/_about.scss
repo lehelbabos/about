@@ -139,6 +139,7 @@ $profileImageSize: $baseline*7; //140px
 }
 
 .about_bio {
+	min-height: calc(100% - 37vh);
 	animation: slide-up 800ms;
 	padding: $size-s $size-m;
 	text-align: center;

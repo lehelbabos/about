@@ -899,6 +899,7 @@ button.swiper-pagination-bullet {
 }
 
 .about_bio {
+  min-height: calc(100% - 37vh);
   animation: slide-up 800ms;
   padding: 20px 25px;
   text-align: center;
