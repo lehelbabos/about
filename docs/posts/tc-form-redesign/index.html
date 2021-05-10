@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>TableCheck Reservation Form Redesign</title>
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="stylesheet" type="text/css" href="../assets/css/style.css%3Fv=ad37a075e1.css" />
+
+	<script>
+			var siteUrl = 'http://localhost:2368';
+	</script>
+
+	<script>
+			var localTheme = localStorage.getItem('attila_theme');
+			switch (localTheme) {
+					case 'dark':
+							document.documentElement.classList.add('theme-dark');
+							break;
+					case 'light':
+							document.documentElement.classList.add('theme-light');
+							break;
+					default:
+							break;
+			}
+	</script>
+
+	<link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="Lehel Babos" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="TableCheck Reservation Form Redesign" />
+    <meta property="og:description" content="A case study looking at our process for the design and delivery of the new TableCheck reservation experience." />
+    <meta property="og:url" content="http://localhost:2368/tc-form-redesign/" />
+    <meta property="article:published_time" content="2021-05-09T15:16:41.000Z" />
+    <meta property="article:modified_time" content="2021-05-10T15:15:25.000Z" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="TableCheck Reservation Form Redesign" />
+    <meta name="twitter:description" content="A case study looking at our process for the design and delivery of the new TableCheck reservation experience." />
+    <meta name="twitter:url" content="http://localhost:2368/tc-form-redesign/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Lehel" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Lehel Babos",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Lehel",
+        "url": "http://localhost:2368/author/lehel/",
+        "sameAs": []
+    },
+    "headline": "TableCheck Reservation Form Redesign",
+    "url": "http://localhost:2368/tc-form-redesign/",
+    "datePublished": "2021-05-09T15:16:41.000Z",
+    "dateModified": "2021-05-10T15:15:25.000Z",
+    "description": "A case study looking at our process for the design and delivery of the new TableCheck reservation experience. ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+<style>:root {--ghost-accent-color: #0467bb;}</style>
+    <meta name="generator" content="Ghost 4.4" />
+    <link rel="alternate" type="application/rss+xml" title="Lehel Babos" href="../rss/index.html" />
+</head>
+
+<body class="post-template">
+
+	<div class="nav-header">
+		<nav class="nav-wrapper" aria-label="Main">
+				<ul>
+		<li class="nav-back-to-portfolio"><a href="http://lehelbabos.com"><span>Back to Portfolio</span></a></li>
+</ul>
+
+				<ul class="nav-meta">
+  <li class="nav-search" style="display: none;">
+    <a title="Search">
+      <i class="icon icon-search" aria-hidden="true"></i>
+      <span>Search</span>
+    </a>
+  </li>
+  <!--
+    <li class="nav-subscribe">
+      <a href="#/portal">Subscribe</a>
+    </li>
+  -->
+</ul>
+		</nav>
+
+		<div class="nav-wrapper-control">
+			<div class="inner">
+				<a class="nav-menu" role="button"><i class="icon icon-menu" aria-hidden="true"></i>Menu</a>
+				<a class="nav-search" style="display: none;" title="Search" role="button"><i class="icon icon-search" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-close" role="button" aria-label="Close"></div>
+
+	<section class="page-wrapper">
+
+		   <div
+	class="progress-container">
+	<span class="progress-bar"></span>
+	</div>
+
+	<header class="post-header ">
+		<div class="inner">
+			<h1 class="post-title">TableCheck Reservation Form Redesign</h1>
+		</div>
+	</header>
+
+	<main class="content" role="main">
+		<article class="post no-image">
+			<div class="inner">
+
+				<section class="post-content">
+					<h2 id="some-context">Some context</h2><h3 id="a-bit-about-tablecheck">A bit about TableCheck</h3><p>TableCheck is a Tokyo based SaaS company, offering a suite of products to help high end restaurants streamline their operations and increase their profits. Some of their products include:</p><ul><li>In-restaurant software to help restaurant staff manage orders, reservations and tables</li><li>Analytics and data visualization tools to help owners and managers track things like RevPash, dinging trends and improve restaurant performance</li><li>CRM and Survey applications to help marketing teams craft more effective campaigns, and for front-house staff to better tailor dining experiences for high value diners.</li></ul><p>Though most of TableCheck’s reservation traffic comes from their integrations with various third party online booking platforms such as OpenTable, Tabelog etc… one of the first products the team released alongside the in-restaurant software was their own online reservations form, that let diners book directly with TableCheck. <br><br>This was the piece of the puzzle we were looking to rebuild.</p><h3 id="the-value-proposition">The value proposition</h3><p>With a plethora of online booking platforms and table management software options out there, why would restaurants choose TableCheck? Our value proposition was simple.</p><ul><li>Your own your data: We’re not in the business of trying to monetize your restaurant or your client data. TableCheck puts your business’ privacy first.</li><li>Flat monthly fee. No charges for reservations: We won’t nickel and dime you or charge you a percentage on your reservations. Pay a flat monthly fee for the services you want and we’ll get out of your way.</li><li>Tailored for your niche: We’ve built features and workflows that are uniquely tailored to high end restaurants in the APAC and some European markets.</li></ul><p>For restaurants looking specifically at leveraging our reservation form, here’s what this meant:</p><ul><li>A white label solution. Your brand, our tech. Where you can customize as much or as little as you want.</li><li>Ability to sell and promote multi-course meals with the option to require a full or partial payment ahead of time.</li><li>The ability to have separate, easily customizable booking forms you can promote independently for special promotions.</li><li>Free as in beer… If you’re a TableCheck customer, you automatically have access to this feature and reservations booked through this form don’t incur any additional fee.</li></ul><p>Sounds great right? The experience and the value for restaurants is super compelling. There was just one problem; the experience of booking a reservation using the form, aka the diner experience – sucked.</p><h3 id="understanding-the-problem">Understanding the problem</h3><p>Why does this matter? Well… the form is only as good as its conversion rate. If diners come to the form, but can’t figure it out, or are put off by it and abandon their booking, we’ve failed. And unfortunately, that’s what we were finding. Though the system was very flexible and  allowed restaurants a great deal of flexibility, the execution and implementation of these features on the diner side needed to be improved. <br><br>So here is how we went about solving the problem.</p><h2 id="our-process">Our process</h2><h3 id="personas-and-needs-statements">Personas and Needs Statements</h3><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image.png" class="kg-image" alt loading="lazy" width="1840" height="692" srcset="../content/images/size/w600/2021/05/image.png 600w, ../content/images/size/w1000/2021/05/image.png 1000w, ../content/images/size/w1600/2021/05/image.png 1600w, ../content/images/2021/05/image.png 1840w" sizes="(min-width: 720px) 720px"></figure><p>We built two sets of personas to help us better target our solutions (not just on this project but all our design work as a whole). The first set of personas helped us better understand the various different professionals working in these restaurants and using our products. These personas were built on research and discussions with our sales and support teams, our own interactions with clients, as well as analytics from our various sites and tools showing things like what percentage of our clients were small business owners vs parts of a broader chain of restaurants (usually associated with hotels).</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-1.png" class="kg-image" alt loading="lazy"></figure><p>The second set of personas were about the diners who ate at these restaurants and would be the primary users of the form we were redesigning. For the diner personas, we had the benefit of having direct access to our clients’ customer meta-data so we were able to build a fairly accurate picture of some common groups of people that our clients served and we based out work off that. Above are some examples of the personas and use cases we built to help guide us on our journey and level set across our team.</p><h3 id="highlighting-the-pain-points">Highlighting the pain points</h3><p>To help better define the specific pain points diners were experiencing, we took the most common journey and walked through an “As-Is Scenario Map” to both get a better understanding of the structure of the current flow as well as where the main problem areas are.</p><figure class="kg-card kg-image-card kg-width-full"><img src="../content/images/2021/05/As-Is-Scenario.png" class="kg-image" alt loading="lazy" width="2000" height="734" srcset="../content/images/size/w600/2021/05/As-Is-Scenario.png 600w, ../content/images/size/w1000/2021/05/As-Is-Scenario.png 1000w, ../content/images/size/w1600/2021/05/As-Is-Scenario.png 1600w, ../content/images/size/w2400/2021/05/As-Is-Scenario.png 2400w"></figure><p>We did the first, most common journey’s map as a team, as a way to again level set around some of the common pain points and elements. After this, I went through the additional journeys, focusing on different type of booking scenarios from different entry points such as a social media post, the restaurants own site, or Google Reservations, and seeing where the unique pain points and requirements are.</p><figure class="kg-card kg-embed-card kg-card-hascaption"><iframe style="border: none;" height="450" width="800" src="https://www.figma.com/embed?embed_host=oembed&url=https://www.figma.com/file/BtbL4LDf7uyLbDi0NuJPw4/0814-As-Is-Scenario-Maps?node-id=0:1"></iframe><figcaption>To view additional journeys etc… <a href="https://www.figma.com/file/BtbL4LDf7uyLbDi0NuJPw4/0814-As-Is-Scenario-Maps?node-id=0%3A1">please open in Figma</a></figcaption></figure><h3 id="mapping-out-a-solution">Mapping out a solution</h3><p>Once we’ve taken stock of how things were, it was time to start planning out how we wanted them to be. We took some of these same scenarios and without focusing on the UI itself just yet, started mapping out the higher level form structure and information architecture of each step. The focus here was to maintain feature parity with the existing experience, but organize the content in a way that is</p><ul><li>Modular – some of these screens can be shown in different order, depending on the entry point or if the user has certain fields pre-populated for them</li><li>Familiar – Makes sense and presents the right information at the right time.</li></ul><figure class="kg-card kg-embed-card kg-card-hascaption"><iframe style="border: none;" height="450" width="800" src="https://www.figma.com/embed?embed_host=oembed&url=https://www.figma.com/file/UxDCs0lgf1uDIX169FaHjv/0822-To-Be-Scenario-Map-Highlights?node-id=0:268"></iframe><figcaption>Please <a href="https://www.figma.com/file/UxDCs0lgf1uDIX169FaHjv/0822-To-Be-Scenario-Map-Highlights">open in Figma</a> to see some additional journeys and how they compare</figcaption></figure><p>Each card in the middle and right columns corresponds to a different view or screen. Items in the Expected column are things that the user would expect to see on that page ; they’re table stakes. Familiar are the elements that wouldn’t subvert user expectations and are familiar but may not be part of their core set up or relevant to everyone. Items that are grayed out are functions we had to keep in the flow but would be de-prioritized in the UI.</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="../content/images/2021/05/image-2.png" class="kg-image" alt loading="lazy" width="2000" height="1057" srcset="../content/images/size/w600/2021/05/image-2.png 600w, ../content/images/size/w1000/2021/05/image-2.png 1000w, ../content/images/size/w1600/2021/05/image-2.png 1600w, ../content/images/size/w2400/2021/05/image-2.png 2400w" sizes="(min-width: 1200px) 1200px"><figcaption>Please <a href="https://miro.com/app/board/o9J_lJMTvj4=/">open in Miro </a>to view the full task flows and different scenarios</figcaption></figure><p>As we were doing this, we also mapped out the more detailed task flows, to make sure we captured not just the “happy paths” but provided guardrails and ramps for users to get back on track if they run into any issues (such as not finding an available date at first).</p><h3 id="prototype">Prototype</h3><p>One benefit of this being a fairly late stage project is that our design system and component library was relatively well fleshed out. While we initially started with wireframing we realized we can just jump to high fidelity and use the IA diagrams above as a guide for overall UI structure – so that’s exactly what we did. We put together a rapid prototype to give our stakeholders a better sense of the general direction we were going.</p><p><br>This allowed us to test internally and more importantly, put this in front of some clients we had a closer relationship with and gather their feedback. The idea was that we knew we weren’t getting everything perfect and some of this still needed work, but it’s better to make a decision and validate, than to be stuck in a cycle of endless tweaks with no outside set of eyes to provide feedback.</p><figure class="kg-card kg-embed-card kg-card-hascaption"><iframe style="border: none;" height="450" width="800" src="https://www.figma.com/embed?embed_host=oembed&url=https://www.figma.com/file/a08ZYSLeANrrXklUsgNSPn/0903-TC-Redesign?node-id=0:1"></iframe><figcaption>Please <a href="https://www.figma.com/file/a08ZYSLeANrrXklUsgNSPn/0903-TC-Redesign?node-id=0%3A1">Open in Figma</a> to view prototype</figcaption></figure><h3 id="iterate">Iterate</h3><p>Luckily the feedback from our clients was generally positive! But we did get some feedback on some things we needed to adjust. This included:</p><ul><li>Switching to a non-stepped progress indicator</li><li>The option for providing a cleaner separation of Course Selected vs Time selected journeys first for users who come in through the general form</li><li>The ability to add images to show examples of what different seating arrangements look like. (Semi-Private for example, could mean a chest high separator, a booth or an entire sliding wall</li><li>Greater prominence for the restaurant’s brand within the booking flow itself. (In other words, more white labeling).</li></ul><figure class="kg-card kg-embed-card kg-card-hascaption"><iframe style="border: none;" height="450" width="800" src="https://www.figma.com/embed?embed_host=oembed&url=https://www.figma.com/file/x9kHK7MXSyAwmuIStn9XRE/1015-Standard-form-Journey-Lehel?node-id=0:1"></iframe><figcaption>Please <a href="https://www.figma.com/file/x9kHK7MXSyAwmuIStn9XRE/1015-Standard-form-Journey-Lehel?node-id=0%3A1">open in Figma</a> to view in more detail</figcaption></figure><h3 id="outcomes">Outcomes</h3><p>While there was more we could do, this was polished and well defined enough for us to get signoff on a v1 of this release. At this stage, my involvement with the project was at an end, since I was leaving TableCheck. The engineering team had begun to do the backend work to deliver what we had designed, and have begun on some frontend prototyping as well.</p><p>Though there were still things we wanted to test, some of the early outcomes of sharing these prototypes with clients and some limited diners have been:</p><ul><li>2 contracts saved and 2 new ones booked. (The new ones being large enterprise)</li><li>The successful completion of a form that had a notoriously high abandonment rate</li></ul>
+				</section>
+
+			</div>
+		</article>
+	</main>
+
+
+
+
+
+		<div class="search-wrapper">
+			<div class="search">
+		    <form class="search-form">
+          <input class="search-field" type="text" placeholder="Search …">
+          <button class="search-button" type="submit">
+						<i class="icon icon-search" aria-hidden="true"></i>
+					</button>
+		    </form>
+				<div class="popular-wrapper">
+					<h4 class="popular-title">Topics</h4>
+					<span class="popular-tags post-tags">
+					</span>
+				</div>
+				<div class="search-result"></div>
+			</div>
+			<button class="search-wrapper-close" aria-label="Close"></button>
+		</div>
+
+		<div class="nav-footer">
+			<nav class="nav-wrapper" aria-label="Footer">
+				<span class="nav-copy">Lehel Babos &copy; 2021</span>
+			</nav>
+		</div>
+
+	</section>
+
+	<script type="text/javascript" src="../assets/js/script.js%3Fv=ad37a075e1"></script>
+
+		<script>
+		$(document).ready(function () {
+			var viewport = $(window);
+			var post = $('.post-content');
+			// Responsive videos with fitVids
+			post.fitVids();
+			// Format code blocks and add line numbers
+			function codestyling() {
+				$('pre code').each(function (i, e) {
+					// Code highlight
+					hljs.highlightBlock(e);
+					// No lines for plain text blocks
+					if (!$(this).hasClass('language-text')) {
+						var code = $(this);
+						// Calculate amount of lines
+						var lines = code.html().split(/\n(?!$)/g).length;
+						var numbers = [];
+						if (lines > 1) {
+							lines++;
+						}
+						for (i = 1; i < lines; i++) {
+							numbers += '<span class="line" aria-hidden="true">' + i + '</span>';
+						}
+						code.parent().append('<div class="lines">' + numbers + '</div>');
+					}
+				});
+			}
+			codestyling();
+			// Reading progress bar on window top
+			function readingProgress() {
+				var postBottom = post.offset().top + post.height();
+				var viewportHeight = viewport.height();
+				var progress = 100 - (((postBottom - (viewport.scrollTop() + viewportHeight) + viewportHeight / 3) / (postBottom - viewportHeight + viewportHeight / 3)) * 100);
+				$('.progress-bar').css('width', progress + '%');
+				(progress > 100) ? $('.progress-container').addClass('complete') : $('.progress-container').removeClass('complete');
+			}
+			readingProgress();
+			// Trigger reading progress
+			viewport.on({
+				'scroll': function () {
+					readingProgress();
+				},
+				'resize': function () {
+					readingProgress();
+				},
+				'orientationchange': function () {
+					readingProgress();
+				}
+			});
+			// Check if disqus is defined by code injection
+			if (typeof disqus === 'undefined') {
+				// hide comment section
+				$('.post-comments').css({
+					'display': 'none'
+				});
+			} else {
+				$('#show-disqus').on('click', function () {
+					$.ajax({
+						type: "GET",
+						url: "//" + disqus + ".disqus.com/embed.js",
+						dataType: "script",
+						cache: true
+					});
+					$(this).parent().addClass('activated');
+				});
+			}
+		});
+	</script>
+
+
+	
+
+</body>
+</html>

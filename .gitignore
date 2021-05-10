@@ -3,3 +3,9 @@
 node_modules/
 dist/
 npm-debug.log
+
+# Ignore unnecessary stuff pulled from Ghost
+docs/posts/robots.txt
+docs/posts/index.html
+docs/posts/rss
+docs/posts/author
