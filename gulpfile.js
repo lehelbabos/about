@@ -186,6 +186,6 @@ gulp.task('nodemon', function (cb) {
 });
 
 gulp.task('default', ['build', 'watch']);
-gulp.task('build', ['sass', 'js', 'imagemin', 'fonts']);
-gulp.task('watch', ['sass:watch', 'js:watch', 'imagemin:watch', 'svgstore:watch', 'fonts:watch', 'browser-sync']);
-gulp.task('publish',['sass:publish', 'js', 'imagemin', 'fonts', 'copy']);
+gulp.task('build', ['sass', 'js', 'imagemin']);
+gulp.task('watch', ['sass:watch', 'js:watch', 'imagemin:watch', 'svgstore:watch', 'browser-sync']);
+gulp.task('publish',['sass:publish', 'js', 'imagemin', 'copy']);
