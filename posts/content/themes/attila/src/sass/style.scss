@@ -17,6 +17,14 @@ $inner: calc(40rem + 10vw);
    Basics
    ========================================================================== */
 :root {
+	--color-background-main: #FFF;
+	--color-background-secondary: #F8F8F8;
+	--color-background-contrast: #E1E3E6;
+	--color-background-overlay: rgba(37,40,43,0.9);
+	--color-content-lead: #232323;
+	--color-content-main: #323232;
+	--color-content-secondary: #73777D;
+	
 	--font-primary: 'Rubik', HelveticaNeue, Helvetica, Arial, sans-serif;
 	--font-secondary: 'Work Sans', HelveticaNeue, Helvetica, Arial, sans-serif;
 	--font-weight-regular: 400;
