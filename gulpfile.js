@@ -4,7 +4,7 @@
 // Requires
 //////////////////////////////
 var gulp = require('gulp'),
-    sass = require('gulp-sass'),
+    sass = require('gulp-sass')(require('sass')),
     autoprefixer = require('gulp-autoprefixer'),
     concat = require('gulp-concat'),
     eslint = require('gulp-eslint'),
