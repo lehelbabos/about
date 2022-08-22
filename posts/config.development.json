@@ -7,11 +7,19 @@
   "database": {
     "client": "sqlite3",
     "connection": {
-      "filename": "/Users/lehel/Projects/about/posts/content/data/ghost-local.db"
+      "filename": "/Users/lbabos/Repos/about/posts/content/data/ghost-local.db"
     }
   },
   "mail": {
-    "transport": "Direct"
+    "transport": "SMTP",
+    "from": "contact@lehelbabos.com",
+    "options": {
+      "service": "Mailgun",
+      "auth": {
+        "user": "Log in to mailgun.com to get this",
+        "pass": "Log in to mailgun.com to get this"
+      }
+    }
   },
   "logging": {
     "transports": [
@@ -21,6 +29,6 @@
   },
   "process": "local",
   "paths": {
-    "contentPath": "/Users/lehel/Projects/about/posts/content"
+    "contentPath": "/Users/lbabos/Repos/about/posts/content"
   }
 }
