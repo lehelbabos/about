@@ -24,7 +24,7 @@ $inner: calc(40rem + 10vw);
 	--color-content-lead: #232323;
 	--color-content-main: #323232;
 	--color-content-secondary: #73777D;
-	
+
 	--font-primary: 'Rubik', HelveticaNeue, Helvetica, Arial, sans-serif;
 	--font-secondary: 'Work Sans', HelveticaNeue, Helvetica, Arial, sans-serif;
 	--font-weight-regular: 400;
@@ -2603,3 +2603,17 @@ textarea {
 		border-bottom: 1px solid var(--color-background-contrast);
 	}
 }
+
+.split {
+    display: flex;
+    width: 100%;
+    flex-flow: column wrap;
+    align-items: stretch;
+	background-color: red !important;
+  }
+  .half {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 1 auto;
+    justify-content: center;
+  } 
