@@ -12,7 +12,7 @@
   "devDependencies": {
     "browser-sync": "^2.8.2",
     "express": "^4.14.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-autoprefixer": "^2.3.1",
     "gulp-concat": "^2.6.0",
     "gulp-eslint": "^1.0.0",
