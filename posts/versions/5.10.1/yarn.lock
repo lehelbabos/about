@@ -8717,6 +8717,21 @@ node-jose@2.1.1:
     process "^0.11.10"
     uuid "^8.3.2"
 
+node-jose@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/node-jose/-/node-jose-2.2.0.tgz#b64f3225ad6bec328509a420800de597ba2bf3ed"
+  integrity sha512-XPCvJRr94SjLrSIm4pbYHKLEaOsDvJCpyFw/6V/KK/IXmyZ6SFBzAUDO9HQf4DB/nTEFcRGH87mNciOP23kFjw==
+  dependencies:
+    base64url "^3.0.1"
+    buffer "^6.0.3"
+    es6-promise "^4.2.8"
+    lodash "^4.17.21"
+    long "^5.2.0"
+    node-forge "^1.2.1"
+    pako "^2.0.4"
+    process "^0.11.10"
+    uuid "^9.0.0"
+
 node-loggly-bulk@^2.2.4:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/node-loggly-bulk/-/node-loggly-bulk-2.2.5.tgz#6f41136f91b363d1b50612e8be0063859226967e"
@@ -11584,6 +11599,11 @@ uuid@^7.0.1:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
   integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
+
+uuid@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.0.tgz#592f550650024a38ceb0c562f2f6aa435761efb5"
+  integrity sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==
 
 v8-compile-cache@^2.0.3:
   version "2.3.0"
