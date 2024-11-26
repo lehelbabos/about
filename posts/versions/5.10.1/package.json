@@ -161,7 +161,7 @@
     "lodash": "4.17.21",
     "luxon": "3.0.1",
     "moment": "2.24.0",
-    "moment-timezone": "0.5.23",
+    "moment-timezone": "0.5.35",
     "multer": "1.4.4",
     "mysql2": "2.3.3",
     "nconf": "0.12.0",
@@ -210,7 +210,7 @@
   "resolutions": {
     "@tryghost/logging": "2.2.4",
     "moment": "2.24.0",
-    "moment-timezone": "0.5.23",
+    "moment-timezone": "0.5.35",
     "@tryghost/adapter-manager": "file:components/tryghost-adapter-manager-5.10.1.tgz",
     "@tryghost/api-framework": "file:components/tryghost-api-framework-5.10.1.tgz",
     "@tryghost/api-version-compatibility-service": "file:components/tryghost-api-version-compatibility-service-5.10.1.tgz",
