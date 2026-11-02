@@ -1,0 +1,131 @@
+---
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import Site from '../layouts/Site.astro';
+import { renderStudy, previewHTML, projectRoot } from '../../scripts/study-core.mjs';
+import '../styles/studies.css';
+
+export async function getStaticPaths() {
+  const names = new Set((await fs.readdir(path.join(projectRoot, 'public/protected'))).filter(f => f.endsWith('.json')).map(f => f.slice(0, -5)));
+  if (import.meta.env.DEV) {
+    try { for (const f of await fs.readdir(path.join(projectRoot, '.private/studies'), { withFileTypes: true })) if (f.isDirectory()) names.add(f.name); } catch {}
+  }
+  return [...names].map(study => ({ params: { study } }));
+}
+const { study } = Astro.params;
+let preview = '';
+let title = 'Lehel Babos — Secure';
+if (import.meta.env.DEV) {
+  const dir = path.join(projectRoot, '.private/studies', study!);
+  // Only an unlocked working copy gets a plaintext preview, and only in the local dev server.
+  try { await fs.access(dir); } catch {}
+  const exists = await fs.stat(dir).then(s => s.isDirectory()).catch(() => false);
+  if (exists) {
+    const payload = await renderStudy(dir);
+    preview = previewHTML(payload);
+    title = `${payload.metadata.title} — Lehel Babos`;
+  }
+}
+const base = import.meta.env.BASE_URL;
+---
+<Site title={title} description="A selected product design case study by Lehel Babos." protectedPage>
+  <section class="unlock-panel" hidden={!!preview} data-bundle={`${base}protected/${study}.json`}>
+    <h1>Restricted Access</h1>
+    <p>Enter your password to view this case study</p>
+    <form id="unlock-form">
+      <label for="study-password" class="visually-hidden">Case-study password</label>
+      <div class="password-field"><input id="study-password" name="password" type="password" autocomplete="current-password" required /><button type="submit">Submit</button></div>
+      <label class="remember"><input type="checkbox" id="remember-unlock" /> Keep unlocked in this tab</label>
+      <p class="unlock-status" role="status" aria-live="polite"></p>
+    </form>
+    <noscript>JavaScript is required to unlock this encrypted case study.</noscript>
+  </section>
+  <div id="study-content" set:html={preview} hidden={!preview}></div>
+  <dialog class="image-dialog" aria-label="Fullsize image"><button type="button" aria-label="Close fullsize image">×</button><img alt="" /></dialog>
+</Site>
+<style>.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }</style>
+<script>
+  const panel = document.querySelector<HTMLElement>('.unlock-panel')!;
+  const form = document.querySelector<HTMLFormElement>('#unlock-form')!;
+  const input = document.querySelector<HTMLInputElement>('#study-password')!;
+  const remember = document.querySelector<HTMLInputElement>('#remember-unlock')!;
+  const status = document.querySelector<HTMLElement>('.unlock-status')!;
+  const content = document.querySelector<HTMLElement>('#study-content')!;
+  const button = form.querySelector<HTMLButtonElement>('button')!;
+  const decode = (text: string) => Uint8Array.from(atob(text), c => c.charCodeAt(0));
+  const encode = (bytes: Uint8Array) => { let result = ''; for (const byte of bytes) result += String.fromCharCode(byte); return btoa(result); };
+  let bundlePromise: Promise<any> | undefined;
+  let blobURLs: string[] = [];
+  function getBundle() {
+    return bundlePromise ??= fetch(panel.dataset.bundle!).then(response => {
+      if (!response.ok) throw new Error('The case study could not be loaded. Please try again.');
+      return response.json();
+    }).catch(error => { bundlePromise = undefined; throw error; });
+  }
+  function savedKey(salt: string) { try { return sessionStorage.getItem('portfolio-unlock-' + salt); } catch { return null; } }
+  async function unlock(envelope: any, key: CryptoKey) {
+    const bytes = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: decode(envelope.iv) }, key, decode(envelope.ciphertext));
+    const payload = JSON.parse(new TextDecoder().decode(bytes));
+    let html: string = payload.html;
+    for (const [name, entry] of Object.entries<any>(payload.files)) {
+      if (entry.encoding !== 'base64') continue;
+      const url = URL.createObjectURL(new Blob([decode(entry.data)], { type: entry.mime }));
+      blobURLs.push(url);
+      const token = '__PRIVATE_ASSET_' + encode(new TextEncoder().encode(name)).replaceAll('+', '-').replaceAll('/', '_').replaceAll('=', '') + '__';
+      html = html.replaceAll(token, url);
+    }
+    content.innerHTML = html;
+    content.hidden = false;
+    panel.hidden = true;
+    input.value = '';
+    document.title = payload.metadata.title + ' — Lehel Babos';
+    if (remember.checked) {
+      try { sessionStorage.setItem('portfolio-unlock-' + envelope.salt, encode(new Uint8Array(await crypto.subtle.exportKey('raw', key)))); } catch {}
+    }
+    content.querySelector('h1')?.setAttribute('tabindex', '-1');
+    content.querySelector<HTMLElement>('h1')?.focus({ preventScroll: true });
+  }
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    button.disabled = true;
+    status.removeAttribute('data-error');
+    status.textContent = 'Unlocking…';
+    try {
+      if (!crypto.subtle) throw new Error('Please open this page using HTTPS.');
+      const envelope = await getBundle();
+      const material = await crypto.subtle.importKey('raw', new TextEncoder().encode(input.value), 'PBKDF2', false, ['deriveKey']);
+      const key = await crypto.subtle.deriveKey({ name: 'PBKDF2', salt: decode(envelope.salt), iterations: envelope.iterations, hash: 'SHA-256' }, material, { name: 'AES-GCM', length: 256 }, true, ['decrypt']);
+      try { await unlock(envelope, key); } catch (error: any) { if (error.name === 'OperationError') throw new Error('That password didn’t work. Please try again.'); throw error; }
+      status.textContent = '';
+    } catch (error: any) { status.textContent = error.message || 'Unable to unlock. Please try again.'; status.setAttribute('data-error', ''); input.focus(); }
+    finally { button.disabled = false; }
+  });
+  if (panel.hidden === false) {
+    // Auto-unlock only if a prior explicit opt-in saved a key for this collection.
+    let stored: string[] = [];
+    try { stored = Object.keys(sessionStorage).filter(k => k.startsWith('portfolio-unlock-')); } catch {}
+    if (stored.length) getBundle().then(async envelope => {
+      const raw = savedKey(envelope.salt);
+      if (!raw) return;
+      const key = await crypto.subtle.importKey('raw', decode(raw), 'AES-GCM', true, ['decrypt']);
+      remember.checked = true;
+      await unlock(envelope, key);
+    }).catch(() => {});
+  }
+  const dialog = document.querySelector<HTMLDialogElement>('.image-dialog')!;
+  const dialogImage = dialog.querySelector<HTMLImageElement>('img')!;
+  let opener: HTMLElement | null = null;
+  content.addEventListener('click', event => {
+    const target = (event.target as Element).closest<HTMLButtonElement>('.image-zoom');
+    const image = target?.querySelector('img');
+    if (!image) return;
+    opener = target;
+    dialogImage.src = image.src;
+    dialogImage.alt = image.alt;
+    dialog.showModal();
+  });
+  dialog.querySelector('button')?.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+  dialog.addEventListener('close', () => { dialogImage.removeAttribute('src'); opener?.focus(); });
+  window.addEventListener('pagehide', event => { if (!event.persisted) { blobURLs.forEach(url => URL.revokeObjectURL(url)); blobURLs = []; } });
+</script>

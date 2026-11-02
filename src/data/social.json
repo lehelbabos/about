@@ -1,0 +1,27 @@
+[
+  {
+    "label": "Instagram",
+    "href": "https://www.instagram.com/whereislehel",
+    "icon": "#instagram-unauth-icon"
+  },
+  {
+    "label": "LinkedIn",
+    "href": "https://www.linkedin.com/in/lehel/",
+    "icon": "#linkedin-unauth-icon"
+  },
+  {
+    "label": "Medium",
+    "href": "https://medium.com/@lehel",
+    "icon": "#medium-icon"
+  },
+  {
+    "label": "contact@lehelbabos.com",
+    "href": "mailto:contact@lehelbabos.com",
+    "icon": "#email-icon"
+  },
+  {
+    "label": "Connect to Dribbble",
+    "href": "https://dribbble.com/lehelbabos",
+    "icon": "#dribbble-icon"
+  }
+]

@@ -1,0 +1,44 @@
+@import './fonts.css';
+
+:root {
+  --sqs-site-gutter: 2vw;
+  --sqs-mobile-site-gutter: 6vw;
+  --sqs-site-max-width: 2560px;
+  --type-unit: min(1.2vw, 30.72px);
+  --text: #323232;
+  --link: #3268a4;
+  color: var(--text);
+  background: #fff;
+  font-synthesis: none;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: 'Work Sans', sans-serif; font-size: calc(16px + .2 * var(--type-unit)); font-weight: 400; line-height: 1.8; }
+button, input { font: inherit; }
+a { color: var(--link); text-underline-offset: .17em; text-decoration-thickness: 1px; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--link); outline-offset: 5px; }
+img { max-width: 100%; }
+h1, h2, h3, h4 { font-family: 'Rubik', sans-serif; font-weight: 700; letter-spacing: 0; margin: 2rem 0; }
+h1 { font-size: calc(16px + 3 * var(--type-unit)); line-height: 1.232; }
+h2 { font-size: calc(16px + 1.8 * var(--type-unit)); line-height: 1.2992; }
+h3 { font-size: calc(16px + 1.2 * var(--type-unit)); line-height: 1.3328; }
+h4 { font-size: calc(16px + .6 * var(--type-unit)); line-height: 1.3664; }
+p { margin: 1rem 0; }
+.sqsrte-large { font-size: calc(16px + .4 * var(--type-unit)); }
+.sqsrte-small { font-size: calc(16px - .1 * var(--type-unit)); }
+.block > :first-child, .sqs-html-content > :first-child { margin-top: 0; }
+.block > :last-child, .sqs-html-content > :last-child { margin-bottom: 0; }
+.block { display: flex; flex-direction: column; width: 100%; height: 100%; }
+.grid-block { min-width: 0; }
+.page-section { position: relative; display: flex; flex-direction: column; justify-content: center; }
+.section-content { width: 100%; }
+.site-footer { text-align: center; font-size: calc(16px + .1 * var(--type-unit)); padding: 2.7vw 6vw 1.4vw; }
+.site-footer p { margin: 0; }
+.skip-link { position: fixed; top: -100px; left: 16px; z-index: 100; padding: 8px 16px; background: white; }
+.skip-link:focus { top: 12px; }
+@media (max-width: 767px) {
+  :root { --type-unit: calc(.012 * min(100vh, 900px)); }
+  .site-footer { padding: 30px 6vw; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }

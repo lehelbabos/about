@@ -1,39 +1,23 @@
 {
-  "name": "lehelbabos-com",
-  "version": "2.0.0",
-  "description": "This is the package file for the build of my portfolio",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:lehelbabos/about.git"
-  },
-  "author": "Lehel Babos",
-  "license": "ISC",
-  "main": "server.js",
-  "devDependencies": {
-    "browser-sync": "^2.8.2",
-    "express": "^4.14.0",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^2.3.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-eslint": "^1.0.0",
-    "gulp-imagemin": "^3.1.1",
-    "gulp-inject": "^4.2.0",
-    "gulp-nodemon": "^2.0.3",
-    "gulp-sourcemaps": "^1.5.2",
-    "gulp-svgstore": "^6.1.0",
-    "gulp-uglify": "^1.2.0"
-  },
+  "name": "lehel-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "gulp",
-    "write": "cd posts/ && ghost start",
-    "publish": "wget -r -nH -P docs/case-studies -E -T 2 -np -k http://localhost:2368/ && gulp publish"
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1",
+    "studies:unlock": "node scripts/studies.mjs unlock",
+    "studies:seal": "node scripts/studies.mjs seal",
+    "study:new": "node scripts/studies.mjs new",
+    "test": "node --test tests/*.test.mjs"
   },
   "dependencies": {
-    "browser-sync": "^2.18.5",
-    "gulp-sass": "^5.1.0",
-    "gulp-svgmin": "^1.2.4",
-    "include-media": "^1.4.9",
-    "sass": "^1.54.5",
-    "swipejs": "^2.2.10"
+    "astro": "^7.4.5",
+    "gray-matter": "^4.0.3",
+    "marked": "^17.0.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
   }
 }
