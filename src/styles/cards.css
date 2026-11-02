@@ -13,36 +13,36 @@
   justify-content:flex-end;
   text-decoration:none;
   min-width:190px;
-  transition:transform 300ms ease 200ms;
+  transition:transform calc(300ms / var(--motion-speed)) ease calc(200ms / var(--motion-speed));
   box-shadow:0 0 30px -10px #777;
   border-radius:12px;
   overflow:hidden
 }
 .work_item:hover,.work_item:focus-visible {
   transform:translatey(-10px);
-  transition:transform 300ms ease
+  transition:transform calc(300ms / var(--motion-speed)) ease
 }
 .work_item:hover .item_cta,.work_item:focus-visible .item_cta {
   transform:translatey(1px);
-  transition:transform 200ms ease
+  transition:transform calc(200ms / var(--motion-speed)) ease
 }
 .work_item:hover .item_cta:before {
   border-right:15px solid transparent;
   border-top:15px solid transparent;
-  transition:border-color 150ms ease -50ms,transform 0ms ease -50ms
+  transition:border-color calc(150ms / var(--motion-speed)) ease calc(-50ms / var(--motion-speed)),transform calc(0ms / var(--motion-speed)) ease calc(-50ms / var(--motion-speed))
 }
 .work_item:hover .item_cta:after {
   transform:rotate3d(-1,-1,0,180deg);
   border-right:15px solid #fff598;
   border-top:15px solid #fff598;
   box-shadow:5px -2.5px 10px -2.5px rgba(37,37,37,.5);
-  transition:transform 300ms ease-out 100ms,box-shadow 300ms ease 250ms,border-color 0ms ease 250ms
+  transition:transform calc(300ms / var(--motion-speed)) ease-out calc(100ms / var(--motion-speed)),box-shadow calc(300ms / var(--motion-speed)) ease calc(250ms / var(--motion-speed)),border-color calc(0ms / var(--motion-speed)) ease calc(250ms / var(--motion-speed))
 }
 .work_item .item_cta {
   position:relative;
   z-index:1;
   transform:translatey(26px);
-  transition:transform 200ms 225ms ease;
+  transition:transform calc(200ms / var(--motion-speed)) calc(225ms / var(--motion-speed)) ease;
   font-size:.875rem;
   height:30px;
   font-weight:500;
@@ -66,7 +66,7 @@
   border-right:15px solid #f6e118;
   border-top:15px solid #f6e118;
   border-bottom:15px solid #f6e118;
-  transition:border-color 300ms ease 300ms
+  transition:border-color calc(300ms / var(--motion-speed)) ease calc(300ms / var(--motion-speed))
 }
 .work_item .item_cta:after {
   border-left:15px solid transparent;
@@ -76,7 +76,7 @@
   box-shadow:5px -2.5px 10px -2.5px rgba(37,37,37,0);
   transform-origin:center center;
   transform:rotate3d(-1,-1,0,0deg) translatex(-1px);
-  transition:transform 300ms ease,box-shadow 300ms ease,border-color 0ms ease 150ms
+  transition:transform calc(300ms / var(--motion-speed)) ease,box-shadow calc(300ms / var(--motion-speed)) ease,border-color calc(0ms / var(--motion-speed)) ease calc(150ms / var(--motion-speed))
 }
 .launch-icon {
   vertical-align:sub
