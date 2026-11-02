@@ -2,7 +2,12 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import Site from '../layouts/Site.astro';
+import StudyImages from '../components/StudyImages.astro';
+import RelatedStudies from '../components/RelatedStudies.astro';
+import projects from '../data/projects.json';
+import { publicStudies } from '../lib/public-studies.mjs';
 import { renderStudy, previewHTML, projectRoot } from '../../scripts/study-core.mjs';
+import '../styles/public-studies.css';
 import '../styles/studies.css';
 
 export async function getStaticPaths() {
@@ -13,6 +18,9 @@ export async function getStaticPaths() {
   return [...names].map(study => ({ params: { study } }));
 }
 const { study } = Astro.params;
+const base = import.meta.env.BASE_URL;
+const publishedIds = (await publicStudies(base)).map(study => study.projectId);
+const siblings = projects.filter(project => project.local && publishedIds.includes(project.id));
 let preview = '';
 let title = 'Lehel Babos — Secure';
 if (import.meta.env.DEV) {
@@ -22,11 +30,10 @@ if (import.meta.env.DEV) {
   const exists = await fs.stat(dir).then(s => s.isDirectory()).catch(() => false);
   if (exists) {
     const payload = await renderStudy(dir);
-    preview = previewHTML(payload);
+    preview = previewHTML(payload, base);
     title = `${payload.metadata.title} — Lehel Babos`;
   }
 }
-const base = import.meta.env.BASE_URL;
 ---
 <Site title={title} description="A selected product design case study by Lehel Babos." protectedPage>
   <section class="unlock-panel" hidden={!!preview} data-bundle={`${base}protected/${study}.json`}>
@@ -39,16 +46,19 @@ const base = import.meta.env.BASE_URL;
     <noscript>JavaScript is required to unlock this encrypted case study.</noscript>
   </section>
   <div id="study-content" set:html={preview} hidden={!preview}></div>
-  <dialog class="image-dialog" aria-label="Fullsize image"><button type="button" aria-label="Close fullsize image">×</button><img alt="" /></dialog>
+  <div id="study-related" hidden={!preview}><RelatedStudies projects={siblings} /></div>
+  <StudyImages />
 </Site>
 <style>.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }</style>
 <script>
   import { hasAccess, readAccess, rememberAccess, forgetAccess } from '../scripts/study-access.mjs';
+  import { resolveStoryBase } from '../lib/story-layout.mjs';
   const panel = document.querySelector<HTMLElement>('.unlock-panel')!;
   const form = document.querySelector<HTMLFormElement>('#unlock-form')!;
   const input = document.querySelector<HTMLInputElement>('#study-password')!;
   const status = document.querySelector<HTMLElement>('.unlock-status')!;
   const content = document.querySelector<HTMLElement>('#study-content')!;
+  const related = document.querySelector<HTMLElement>('#study-related')!;
   const button = form.querySelector<HTMLButtonElement>('button')!;
   const decode = (text: string) => Uint8Array.from(atob(text), c => c.charCodeAt(0));
   const encode = (bytes: Uint8Array) => { let result = ''; for (const byte of bytes) result += String.fromCharCode(byte); return btoa(result); };
@@ -66,7 +76,7 @@ const base = import.meta.env.BASE_URL;
   async function unlock(envelope: any, key: CryptoKey, saveAccess = true) {
     const bytes = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: decode(envelope.iv) }, key, decode(envelope.ciphertext));
     const payload = JSON.parse(new TextDecoder().decode(bytes));
-    let html: string = payload.html;
+    let html: string = resolveStoryBase(payload.html, import.meta.env.BASE_URL);
     for (const [name, entry] of Object.entries<any>(payload.files)) {
       if (entry.encoding !== 'base64') continue;
       const url = URL.createObjectURL(new Blob([decode(entry.data)], { type: entry.mime }));
@@ -76,6 +86,7 @@ const base = import.meta.env.BASE_URL;
     }
     content.innerHTML = html;
     content.hidden = false;
+    related.hidden = false;
     panel.hidden = true;
     input.value = '';
     document.title = payload.metadata.title + ' — Lehel Babos';
@@ -109,20 +120,5 @@ const base = import.meta.env.BASE_URL;
       } catch { forgetAccess(accessStorage, envelope.salt); }
     }).catch(() => {}).finally(showPassword);
   } else showPassword();
-  const dialog = document.querySelector<HTMLDialogElement>('.image-dialog')!;
-  const dialogImage = dialog.querySelector<HTMLImageElement>('img')!;
-  let opener: HTMLElement | null = null;
-  content.addEventListener('click', event => {
-    const target = (event.target as Element).closest<HTMLButtonElement>('.image-zoom');
-    const image = target?.querySelector('img');
-    if (!image) return;
-    opener = target;
-    dialogImage.src = image.src;
-    dialogImage.alt = image.alt;
-    dialog.showModal();
-  });
-  dialog.querySelector('button')?.addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
-  dialog.addEventListener('close', () => { dialogImage.removeAttribute('src'); opener?.focus(); });
   window.addEventListener('pagehide', event => { if (!event.persisted) { blobURLs.forEach(url => URL.revokeObjectURL(url)); blobURLs = []; } });
 </script>

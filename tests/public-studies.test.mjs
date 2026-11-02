@@ -10,6 +10,9 @@ test('all seven public studies publish locally with complete media and working n
     assert.ok(studies.some(study => study.slug === slug), `Missing imported study: ${slug}`);
   }
   const home = await fs.readFile('dist/index.html', 'utf8');
+  const cards = [...home.matchAll(/<a\b[^>]*class="work_item [^"]+"[^>]*>/g)].map(match => match[0]);
+  assert.equal(cards.length, 9);
+  for (const card of cards) assert.ok(!/target="_blank"/.test(card), 'Case studies must open in the current tab');
   const images = new Set();
   for (const study of studies) {
     const route = `/case-studies/${study.slug}/`;
@@ -18,6 +21,8 @@ test('all seven public studies publish locally with complete media and working n
     assert.ok(html.includes(`https://www.lehelbabos.com${route}`));
     assert.ok(!/miro\.medium\.com|cdn\.embedly\.com/.test(html));
     assert.ok(!html.includes('Get Lehel’s stories in'));
+    assert.ok(!/Originally (?:posted|published) on Medium|story-byline|\d+ min read/i.test(html), 'Imported study headers and footers omit Medium attribution and bylines');
+    assert.ok(html.includes('class="case-study"'));
     assert.ok(!/<p>\s*<(?:span|div)[^>]*id="[^\"]+"[^>]*><\/(?:span|div)>\s*<\/p>/.test(html), 'Source anchors must not add empty paragraphs');
     for (const match of html.matchAll(/(?:src|href)="(\/images\/case-studies\/[^"#]+)"/g)) {
       const bytes = await fs.readFile(path.join('dist', match[1]));

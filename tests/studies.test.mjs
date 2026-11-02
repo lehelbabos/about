@@ -5,7 +5,7 @@ import path from 'node:path';
 import os from 'node:os';
 import { webcrypto } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
-import { encrypt, decrypt, renderStudy, safeFilePath, assetToken } from '../scripts/study-core.mjs';
+import { encrypt, decrypt, renderStudy, previewHTML, safeFilePath, assetToken } from '../scripts/study-core.mjs';
 import { readAccess, rememberAccess, hasAccess, accessLifetime } from '../src/scripts/study-access.mjs';
 
 test('encrypted bundles open in Web Crypto, reject incorrect passwords, and authenticate all bytes', async () => {
@@ -29,11 +29,19 @@ test('local Markdown and assets can be rendered and restored from a sealed study
     await fs.mkdir(path.join(dir, 'assets'));
     await fs.writeFile(path.join(dir, 'index.md'), '---\ntitle: Example\nslug: example\ndraft: true\n---\n\n## Context\n\nA draft with ![a diagram](assets/diagram.png)');
     await fs.writeFile(path.join(dir, 'assets/diagram.png'), Buffer.from([1, 2, 3]));
+    // The original migration remains archived beside the active Markdown source.
+    await fs.writeFile(path.join(dir, 'layout.json'), JSON.stringify({ title: 'Archived title', sections: [] }));
     const payload = await renderStudy(dir);
     assert.equal(payload.metadata.draft, true);
     assert.match(payload.html, /<h2>Context<\/h2>/);
+    assert.match(payload.html, /<article class="case-study"/);
+    assert.ok(!payload.html.includes('Archived title'));
     assert.ok(payload.html.includes(assetToken('assets/diagram.png')));
     assert.ok(!payload.html.includes('src="assets/'));
+    const preview = previewHTML(payload, '/portfolio/');
+    assert.match(preview, /href="\/portfolio\/#work-heading"/);
+    assert.match(preview, /src="data:image\/png;base64,/);
+    assert.ok(!preview.includes('__PORTFOLIO_BASE__'));
     const restored = decrypt(encrypt(payload, 'test-only-password'), 'test-only-password');
     assert.equal(restored.files['index.md'].data, payload.files['index.md'].data);
     assert.deepEqual(Buffer.from(restored.files['assets/diagram.png'].data, 'base64'), Buffer.from([1, 2, 3]));
