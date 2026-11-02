@@ -1,6 +1,6 @@
 # Lehel Babos — portfolio
 
-An Astro portfolio that recreates the Squarespace homepage and migrates the Indeed Connect and TableCheck Reservations case studies. Other projects and articles keep their original Medium links.
+An Astro portfolio that recreates the Squarespace homepage and About page and migrates the Indeed Connect and TableCheck Reservations case studies. Other projects and articles keep their original Medium links.
 
 ## Local editing
 
@@ -13,7 +13,7 @@ npm run dev
 
 Open **http://localhost:4321/about/**. The page updates when you save. Most homepage edits live in `src/pages/index.astro`; project cards and article links are in `src/data/projects.json` and `src/data/articles.json`. Shared styles live in `src/styles/` and navigation in `src/components/Header.astro`.
 
-About and Read More still lead to the existing Squarespace About page. Migrating About is a separate follow-up before retiring Squarespace entirely.
+The About page is local at `/about/about/` on the repository preview (or `/about/` on a root-domain deployment). About and Read More use that local route. Astro prefetches it after initial page load; the portrait and shared styling are prepared in the background too.
 
 ## Editing a protected study
 
@@ -60,7 +60,7 @@ To feature a new study, add its card to `src/data/projects.json` and give it a m
 
 ## Password protection
 
-Protected studies use AES-256-GCM encryption with PBKDF2-SHA-256 (600,000 iterations), random salt, and a unique IV for each bundle. The browser decrypts the files after a visitor enters the password. Full-size images are included in the encrypted bundle and become temporary browser URLs after unlock. Optional tab-local remembering stores a derived decryption key, not the password.
+Protected studies use AES-256-GCM encryption with PBKDF2-SHA-256 (600,000 iterations), random salt, and a unique IV for each bundle. The browser decrypts the files after a visitor enters the password. Full-size images are included in the encrypted bundle and become temporary browser URLs after unlock. One successful password entry automatically unlocks all studies in the collection across pages and tabs in the same browser. A derived decryption key is kept locally for eight hours; the password itself is never stored. After expiry, the browser asks for the password again.
 
 This is intended for selectively sharing portfolio work. It has no server-side rate limiting, user accounts, or per-person revocation. Password strength matters because encrypted bundles are downloadable. Public homepage thumbnails and project names remain public. Figma embeds retain their own Figma permissions and availability.
 
@@ -85,7 +85,7 @@ After approval:
 2. Merge the migration into `master`.
 3. The deployment workflow builds, tests, and publishes `dist/` to `https://lehelbabos.github.io/about/`.
 
-For a future custom domain, set `SITE_URL` to its HTTPS origin and `SITE_BASE` to `/` in the build environment, configure the Pages custom domain, and update DNS. About still needs migration before fully disconnecting Squarespace. No domain or DNS change is included in this migration.
+For a future custom domain, set `SITE_URL` to its HTTPS origin and `SITE_BASE` to `/` in the build environment, configure the Pages custom domain, and update DNS. No domain or DNS change is included in this migration.
 
 ## Archive and rollback
 

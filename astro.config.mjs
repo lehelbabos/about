@@ -5,6 +5,7 @@ export default defineConfig({
   base: process.env.SITE_BASE || '/about',
   trailingSlash: 'always',
   devToolbar: { enabled: false },
+  prefetch: { prefetchAll: false },
   vite: {
     plugins: [{
       name: 'case-study-live-preview',

@@ -9,6 +9,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 const publishedStudies = new Set((await fs.readdir(path.resolve('public/protected'))).filter(f => f.endsWith('.json')).map(f => f.slice(0, -5)));
 const visibleProjects = projects.filter(p => !p.locked || publishedStudies.has(p.href.replace(/\/$/, '')));
+const base = import.meta.env.BASE_URL;
 ---
 <Site home>
   <section class="page-section intro">
@@ -16,7 +17,7 @@ const visibleProjects = projects.filter(p => !p.locked || publishedStudies.has(p
       <div class="grid-block home-intro-block-0"><div class="block">
         <h1>Hi, I’m Lehel</h1>
         <p class="sqsrte-large">I’m a Toronto based Product Designer. <br />I help teams solve problems, ship products and scale their design teams and practice.</p>
-        <p><a href="https://www.lehelbabos.com/about">Read More</a></p>
+        <p><a href={`${base}about/`} data-astro-prefetch="load">Read More</a></p>
       </div></div>
     </div>
   </section>

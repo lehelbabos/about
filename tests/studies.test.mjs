@@ -6,6 +6,7 @@ import os from 'node:os';
 import { webcrypto } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { encrypt, decrypt, renderStudy, safeFilePath, assetToken } from '../scripts/study-core.mjs';
+import { readAccess, rememberAccess, hasAccess, accessLifetime } from '../src/scripts/study-access.mjs';
 
 test('encrypted bundles open in Web Crypto, reject incorrect passwords, and authenticate all bytes', async () => {
   const source = { html: '<h1>A private study</h1>', files: { 'assets/a.png': { data: 'aGVsbG8=', encoding: 'base64', mime: 'image/png' } } };
@@ -52,7 +53,7 @@ test('production output contains empty password shells and encrypted assets, wit
   }
   for (const slug of ['indeed-connect', 'tablecheck-reservations']) {
     const html = await fs.readFile(path.join(root, slug, 'index.html'), 'utf8');
-    assert.match(html, /Restricted Access/);
+    assert.match(html, /Case study password/);
     assert.ok(!html.includes('class="migrated-study"'));
     assert.equal(/<div id="study-content"[^>]*>([\s\S]*?)<\/div>/.exec(html)?.[1], '');
     const envelope = JSON.parse(await fs.readFile(path.join(root, 'protected', slug + '.json'), 'utf8'));
@@ -61,6 +62,23 @@ test('production output contains empty password shells and encrypted assets, wit
     assert.ok(!('files' in envelope));
     assert.ok(!('html' in envelope));
   }
+});
+
+test('one successful unlock grants access across pages and tabs until expiry without storing the password', () => {
+  const items = new Map();
+  const storage = { get length() { return items.size; }, key: index => [...items.keys()][index], getItem: key => items.get(key) ?? null, setItem: (key, value) => items.set(key, value), removeItem: key => items.delete(key) };
+  const rawKey = Buffer.alloc(32, 3).toString('base64');
+  const now = 1000;
+  rememberAccess(storage, 'shared-collection', rawKey, now);
+  assert.equal(hasAccess(storage, now), true);
+  assert.equal(readAccess(storage, 'shared-collection', now), rawKey);
+  assert.equal(readAccess(storage, 'different-collection', now), null);
+  assert.equal(readAccess(storage, 'shared-collection', now + accessLifetime), null);
+  assert.equal(hasAccess(storage, now + accessLifetime), false);
+  assert.equal(items.size, 0);
+  const deniedStorage = { getItem() { throw new Error('Storage disabled'); }, setItem() { throw new Error('Storage disabled'); } };
+  assert.doesNotThrow(() => rememberAccess(deniedStorage, 'collection', rawKey));
+  assert.equal(readAccess(deniedStorage, 'collection'), null);
 });
 
 test('authoring commands preserve local edits, restore encrypted source, and exclude drafts', async () => {

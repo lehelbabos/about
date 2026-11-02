@@ -30,12 +30,10 @@ const base = import.meta.env.BASE_URL;
 ---
 <Site title={title} description="A selected product design case study by Lehel Babos." protectedPage>
   <section class="unlock-panel" hidden={!!preview} data-bundle={`${base}protected/${study}.json`}>
-    <h1>Restricted Access</h1>
-    <p>Enter your password to view this case study</p>
+    <h1>Case study password</h1>
     <form id="unlock-form">
       <label for="study-password" class="visually-hidden">Case-study password</label>
       <div class="password-field"><input id="study-password" name="password" type="password" autocomplete="current-password" required /><button type="submit">Submit</button></div>
-      <label class="remember"><input type="checkbox" id="remember-unlock" /> Keep unlocked in this tab</label>
       <p class="unlock-status" role="status" aria-live="polite"></p>
     </form>
     <noscript>JavaScript is required to unlock this encrypted case study.</noscript>
@@ -45,10 +43,10 @@ const base = import.meta.env.BASE_URL;
 </Site>
 <style>.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }</style>
 <script>
+  import { hasAccess, readAccess, rememberAccess, forgetAccess } from '../scripts/study-access.mjs';
   const panel = document.querySelector<HTMLElement>('.unlock-panel')!;
   const form = document.querySelector<HTMLFormElement>('#unlock-form')!;
   const input = document.querySelector<HTMLInputElement>('#study-password')!;
-  const remember = document.querySelector<HTMLInputElement>('#remember-unlock')!;
   const status = document.querySelector<HTMLElement>('.unlock-status')!;
   const content = document.querySelector<HTMLElement>('#study-content')!;
   const button = form.querySelector<HTMLButtonElement>('button')!;
@@ -56,14 +54,16 @@ const base = import.meta.env.BASE_URL;
   const encode = (bytes: Uint8Array) => { let result = ''; for (const byte of bytes) result += String.fromCharCode(byte); return btoa(result); };
   let bundlePromise: Promise<any> | undefined;
   let blobURLs: string[] = [];
+  let accessStorage: Storage | undefined;
+  try { accessStorage = window.localStorage; } catch {}
+  const showPassword = () => document.documentElement.classList.remove('checking-study-access');
   function getBundle() {
     return bundlePromise ??= fetch(panel.dataset.bundle!).then(response => {
       if (!response.ok) throw new Error('The case study could not be loaded. Please try again.');
       return response.json();
     }).catch(error => { bundlePromise = undefined; throw error; });
   }
-  function savedKey(salt: string) { try { return sessionStorage.getItem('portfolio-unlock-' + salt); } catch { return null; } }
-  async function unlock(envelope: any, key: CryptoKey) {
+  async function unlock(envelope: any, key: CryptoKey, saveAccess = true) {
     const bytes = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: decode(envelope.iv) }, key, decode(envelope.ciphertext));
     const payload = JSON.parse(new TextDecoder().decode(bytes));
     let html: string = payload.html;
@@ -79,9 +79,8 @@ const base = import.meta.env.BASE_URL;
     panel.hidden = true;
     input.value = '';
     document.title = payload.metadata.title + ' — Lehel Babos';
-    if (remember.checked) {
-      try { sessionStorage.setItem('portfolio-unlock-' + envelope.salt, encode(new Uint8Array(await crypto.subtle.exportKey('raw', key)))); } catch {}
-    }
+    if (saveAccess) rememberAccess(accessStorage, envelope.salt, encode(new Uint8Array(await crypto.subtle.exportKey('raw', key))));
+    showPassword();
     content.querySelector('h1')?.setAttribute('tabindex', '-1');
     content.querySelector<HTMLElement>('h1')?.focus({ preventScroll: true });
   }
@@ -100,18 +99,16 @@ const base = import.meta.env.BASE_URL;
     } catch (error: any) { status.textContent = error.message || 'Unable to unlock. Please try again.'; status.setAttribute('data-error', ''); input.focus(); }
     finally { button.disabled = false; }
   });
-  if (panel.hidden === false) {
-    // Auto-unlock only if a prior explicit opt-in saved a key for this collection.
-    let stored: string[] = [];
-    try { stored = Object.keys(sessionStorage).filter(k => k.startsWith('portfolio-unlock-')); } catch {}
-    if (stored.length) getBundle().then(async envelope => {
-      const raw = savedKey(envelope.salt);
+  if (!panel.hidden && hasAccess(accessStorage)) {
+    getBundle().then(async envelope => {
+      const raw = readAccess(accessStorage, envelope.salt);
       if (!raw) return;
-      const key = await crypto.subtle.importKey('raw', decode(raw), 'AES-GCM', true, ['decrypt']);
-      remember.checked = true;
-      await unlock(envelope, key);
-    }).catch(() => {});
-  }
+      try {
+        const key = await crypto.subtle.importKey('raw', decode(raw), 'AES-GCM', false, ['decrypt']);
+        await unlock(envelope, key, false);
+      } catch { forgetAccess(accessStorage, envelope.salt); }
+    }).catch(() => {}).finally(showPassword);
+  } else showPassword();
   const dialog = document.querySelector<HTMLDialogElement>('.image-dialog')!;
   const dialogImage = dialog.querySelector<HTMLImageElement>('img')!;
   let opener: HTMLElement | null = null;
