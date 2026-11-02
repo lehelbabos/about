@@ -1,7 +1,7 @@
 /* Original responsive placement, using the shared portfolio grid. */
 .home-intro { --mobile-rows: 2; --desktop-rows: 8; }
 .home-work { --mobile-rows: 142; --desktop-rows: 118; }
-.home-writing { --mobile-rows: 18; --desktop-rows: 12; }
+.home-writing { --mobile-rows: 18; --desktop-rows: 12; row-gap: 4px; }
 
 .home-intro-block-0 { grid-area: 1/2/3/10; z-index: 2; }
 .home-intro-block-0 .block { justify-content: flex-start; }
