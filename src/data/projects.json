@@ -37,9 +37,10 @@
       "Interaction Design"
     ],
     "locked": false,
-    "href": "https://medium.com/@lehel/a-lean-design-system-how-we-built-tablekit-27fdacc66858?sk=4bff257315409403ef3a5eb3cd35544b",
+    "href": "case-studies/tablekit/",
     "image": "tablekit.jpg",
-    "block": "home-work-block-3"
+    "block": "home-work-block-3",
+    "local": true
   },
   {
     "id": "suikakeibo",
@@ -51,9 +52,10 @@
       "Prototyping"
     ],
     "locked": false,
-    "href": "https://medium.com/@lehel/redesigning-suikakeibo-tips-for-approaching-product-design-on-side-projects-f7feaa00f931?sk=177a15e80a1e713b8bf054e84296444c",
+    "href": "case-studies/suikakeibo/",
     "image": "suikakeibo.jpg",
-    "block": "home-work-block-4"
+    "block": "home-work-block-4",
+    "local": true
   },
   {
     "id": "ca-datascience",
@@ -64,9 +66,10 @@
       "Design Thinking"
     ],
     "locked": false,
-    "href": "https://medium.com/@lehel/how-we-applied-enterprise-design-thinking-to-build-a-data-science-experience-in-cognos-analytics-67fd03b5da6a",
+    "href": "case-studies/cognos-data-science/",
     "image": "ca-datascience.jpg",
-    "block": "home-work-block-5"
+    "block": "home-work-block-5",
+    "local": true
   },
   {
     "id": "wasm-data",
@@ -77,9 +80,10 @@
       "UX/UI Design"
     ],
     "locked": false,
-    "href": "https://medium.com/@lehel/case-study-data-visualization-for-social-media-data-cc3a40150674",
+    "href": "case-studies/watson-social-data/",
     "image": "wasm-data.jpg",
-    "block": "home-work-block-6"
+    "block": "home-work-block-6",
+    "local": true
   },
   {
     "id": "ca-dataconnections",
@@ -91,9 +95,10 @@
       "Prototyping"
     ],
     "locked": false,
-    "href": "https://medium.com/@lehel/design-case-study-improving-how-users-connect-to-data-in-cognos-analytics-c919ddab9891",
+    "href": "case-studies/cognos-data-connections/",
     "image": "ca-dataconnections.jpg",
-    "block": "home-work-block-7"
+    "block": "home-work-block-7",
+    "local": true
   },
   {
     "id": "query",
@@ -104,9 +109,10 @@
       "Brand Development"
     ],
     "locked": false,
-    "href": "https://medium.com/@lehel/case-study-query-298a6f5f0c8",
+    "href": "case-studies/query/",
     "image": "query.jpg",
-    "block": "home-work-block-8"
+    "block": "home-work-block-8",
+    "local": true
   },
   {
     "id": "brewbox",
@@ -118,8 +124,9 @@
       "Print"
     ],
     "locked": false,
-    "href": "https://medium.com/@lehel/the-brewbox-company-case-study-aa8f7126ea6a",
+    "href": "case-studies/brewbox/",
     "image": "brewbox.jpg",
-    "block": "home-work-block-9"
+    "block": "home-work-block-9",
+    "local": true
   }
 ]

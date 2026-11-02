@@ -1,7 +1,7 @@
 ---
 const { project } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const href = project.locked ? `${base}${project.href}` : project.href;
+const href = project.locked || project.local ? `${base}${project.href}` : project.href;
 ---
 <a class={`work_item ${project.id}`} href={href} target="_blank" rel="noopener noreferrer" style={`background-image:url('${base}images/${project.image}')`}>
   <span class="item_cta"><svg class="launch-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3z"/></svg> Open case study</span>

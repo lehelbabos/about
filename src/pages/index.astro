@@ -7,8 +7,10 @@ import '../styles/home-layout.css';
 import '../styles/cards.css';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { publicStudies } from '../lib/public-studies.mjs';
 const publishedStudies = new Set((await fs.readdir(path.resolve('public/protected'))).filter(f => f.endsWith('.json')).map(f => f.slice(0, -5)));
-const visibleProjects = projects.filter(p => !p.locked || publishedStudies.has(p.href.replace(/\/$/, '')));
+const publicProjectIds = new Set((await publicStudies()).map(study => study.projectId));
+const visibleProjects = projects.filter(p => p.locked ? publishedStudies.has(p.href.replace(/\/$/, '')) : !p.local || publicProjectIds.has(p.id));
 const base = import.meta.env.BASE_URL;
 ---
 <Site home>
