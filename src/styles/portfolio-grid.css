@@ -1,0 +1,22 @@
+/* Shared geometry preserves the original homepage and About composition. */
+.portfolio-grid {
+  --grid-gutter: calc(var(--sqs-mobile-site-gutter) - 11px);
+  --cell-max-width: calc((var(--sqs-site-max-width) - 77px) / 8);
+  display: grid;
+  position: relative;
+  grid-area: 1 / 1 / -1 / -1;
+  grid-template-rows: repeat(var(--mobile-rows), minmax(24px, auto));
+  grid-template-columns: minmax(var(--grid-gutter), 1fr) repeat(8, minmax(0, var(--cell-max-width))) minmax(var(--grid-gutter), 1fr);
+  gap: 11px;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+@media (min-width: 768px) {
+  .portfolio-grid {
+    --grid-gutter: calc(var(--sqs-site-gutter) - 11px);
+    --cell-max-width: calc((var(--sqs-site-max-width) - 253px) / 24);
+    --container-width: min(var(--sqs-site-max-width), calc(100vw - var(--sqs-site-gutter) * 2));
+    grid-template-rows: repeat(var(--desktop-rows), minmax(calc(var(--container-width) * .0215), auto));
+    grid-template-columns: minmax(var(--grid-gutter), 1fr) repeat(24, minmax(0, var(--cell-max-width))) minmax(var(--grid-gutter), 1fr);
+  }
+}

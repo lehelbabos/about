@@ -1,5 +1,7 @@
 ---
 import fs from 'node:fs/promises';
+import { getImage } from 'astro:assets';
+import { portfolioImageOptions } from '../lib/portfolio-media';
 import path from 'node:path';
 import Site from '../layouts/Site.astro';
 import StudyImages from '../components/StudyImages.astro';
@@ -15,10 +17,17 @@ export async function getStaticPaths() {
   if (import.meta.env.DEV) {
     try { for (const f of await fs.readdir(path.join(projectRoot, '.private/studies'), { withFileTypes: true })) if (f.isDirectory()) names.add(f.name); } catch {}
   }
-  return [...names].map(study => ({ params: { study } }));
+  return Promise.all([...names].map(async study => {
+    const envelope = await fs.readFile(path.join(projectRoot, 'public/protected', `${study}.json`), 'utf8').then(JSON.parse).catch(() => null);
+    return { params: { study }, props: { bundleVersion: envelope?.iv ? Buffer.from(envelope.iv, 'base64').toString('base64url') : '' } };
+  }));
 }
 const { study } = Astro.params;
+const { bundleVersion } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const project = projects.find(project => project.href === `${study}/`);
+const hero = project ? await getImage({ ...portfolioImageOptions(project.image), sizes: '(max-width: 767px) calc(100vw - 48px), (max-width: 1272px) 88vw, 1120px' }) : null;
+const publicHero = hero && project ? { original: `${base}images/${project.image}`, src: hero.src, srcset: hero.srcSet.attribute, sizes: hero.options.sizes } : null;
 const publishedIds = (await publicStudies(base)).map(study => study.projectId);
 const siblings = projects.filter(project => project.local && publishedIds.includes(project.id));
 let preview = '';
@@ -36,7 +45,7 @@ if (import.meta.env.DEV) {
 }
 ---
 <Site title={title} description="A selected product design case study by Lehel Babos." protectedPage>
-  <section class="unlock-panel" hidden={!!preview} data-bundle={`${base}protected/${study}.json`}>
+  <section class="unlock-panel" hidden={!!preview} data-bundle={`${base}protected/${study}.json?v=${bundleVersion}`}>
     <h1>Case study password</h1>
     <form id="unlock-form">
       <label for="study-password" class="visually-hidden">Case-study password</label>
@@ -45,7 +54,7 @@ if (import.meta.env.DEV) {
     </form>
     <noscript>JavaScript is required to unlock this encrypted case study.</noscript>
   </section>
-  <div id="study-content" set:html={preview} hidden={!preview}></div>
+  <div id="study-content" data-hero={publicHero && JSON.stringify(publicHero)} set:html={preview} hidden={!preview}></div>
   <div id="study-related" hidden={!preview}><RelatedStudies projects={siblings} /></div>
   <StudyImages />
 </Site>
@@ -53,6 +62,7 @@ if (import.meta.env.DEV) {
 <script>
   import { hasAccess, readAccess, rememberAccess, forgetAccess } from '../scripts/study-access.mjs';
   import { resolveStoryBase } from '../lib/story-layout.mjs';
+  import { mountPrivateMedia } from '../scripts/private-media.mjs';
   const panel = document.querySelector<HTMLElement>('.unlock-panel')!;
   const form = document.querySelector<HTMLFormElement>('#unlock-form')!;
   const input = document.querySelector<HTMLInputElement>('#study-password')!;
@@ -64,6 +74,7 @@ if (import.meta.env.DEV) {
   const encode = (bytes: Uint8Array) => { let result = ''; for (const byte of bytes) result += String.fromCharCode(byte); return btoa(result); };
   let bundlePromise: Promise<any> | undefined;
   let blobURLs: string[] = [];
+  let disposeMedia = () => {};
   let accessStorage: Storage | undefined;
   try { accessStorage = window.localStorage; } catch {}
   const showPassword = () => document.documentElement.classList.remove('checking-study-access');
@@ -77,14 +88,15 @@ if (import.meta.env.DEV) {
     const bytes = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: decode(envelope.iv) }, key, decode(envelope.ciphertext));
     const payload = JSON.parse(new TextDecoder().decode(bytes));
     let html: string = resolveStoryBase(payload.html, import.meta.env.BASE_URL);
-    for (const [name, entry] of Object.entries<any>(payload.files)) {
+    for (const [name, entry] of Object.entries<any>(payload.files || {})) {
       if (entry.encoding !== 'base64') continue;
       const url = URL.createObjectURL(new Blob([decode(entry.data)], { type: entry.mime }));
       blobURLs.push(url);
       const token = '__PRIVATE_ASSET_' + encode(new TextEncoder().encode(name)).replaceAll('+', '-').replaceAll('/', '_').replaceAll('=', '') + '__';
       html = html.replaceAll(token, url);
     }
-    content.innerHTML = html;
+    if (payload.assets) disposeMedia = mountPrivateMedia(content, html, payload.assets, key, panel.dataset.bundle!, content.dataset.hero ? JSON.parse(content.dataset.hero) : null);
+    else content.innerHTML = html;
     content.hidden = false;
     related.hidden = false;
     panel.hidden = true;
@@ -95,6 +107,7 @@ if (import.meta.env.DEV) {
     content.querySelector('h1')?.setAttribute('tabindex', '-1');
     content.querySelector<HTMLElement>('h1')?.focus({ preventScroll: true });
   }
+  input.addEventListener('focus', () => { getBundle().catch(() => {}); }, { once: true });
   form.addEventListener('submit', async event => {
     event.preventDefault();
     button.disabled = true;
@@ -120,5 +133,5 @@ if (import.meta.env.DEV) {
       } catch { forgetAccess(accessStorage, envelope.salt); }
     }).catch(() => {}).finally(showPassword);
   } else showPassword();
-  window.addEventListener('pagehide', event => { if (!event.persisted) { blobURLs.forEach(url => URL.revokeObjectURL(url)); blobURLs = []; } });
+  window.addEventListener('pagehide', event => { if (!event.persisted) { disposeMedia(); blobURLs.forEach(url => URL.revokeObjectURL(url)); blobURLs = []; } });
 </script>

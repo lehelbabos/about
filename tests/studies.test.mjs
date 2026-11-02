@@ -101,7 +101,7 @@ test('authoring commands preserve local edits, restore encrypted source, and exc
     const source = path.join(study, 'index.md');
     assert.match(await fs.readFile(source, 'utf8'), /draft: true/);
     assert.equal(run('seal').status, 0);
-    assert.deepEqual(await fs.readdir(path.join(dir, 'public/protected')), []);
+    assert.deepEqual((await fs.readdir(path.join(dir, 'public/protected'))).filter(name => name.endsWith('.json')), []);
     const published = (await fs.readFile(source, 'utf8')).replace('draft: true', 'draft: false');
     await fs.writeFile(source, published);
     assert.equal(run('seal').status, 0);
@@ -113,6 +113,6 @@ test('authoring commands preserve local edits, restore encrypted source, and exc
     assert.equal(await fs.readFile(source, 'utf8'), published);
     await fs.writeFile(source, published.replace('draft: false', 'draft: true'));
     assert.equal(run('seal').status, 0);
-    assert.deepEqual(await fs.readdir(path.join(dir, 'public/protected')), []);
+    assert.deepEqual((await fs.readdir(path.join(dir, 'public/protected'))).filter(name => name.endsWith('.json')), []);
   } finally { await fs.rm(dir, { recursive: true, force: true }); }
 });

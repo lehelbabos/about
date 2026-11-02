@@ -1,0 +1,14 @@
+---
+import { Image } from 'astro:assets';
+import { portfolioImageOptions } from '../lib/portfolio-media';
+
+interface Props {
+  name: string;
+  alt: string;
+  sizes: string;
+  class?: string;
+  priority?: boolean;
+}
+const { name, alt, sizes, class: className, priority = false } = Astro.props;
+---
+<Image {...portfolioImageOptions(name)} alt={alt} class={className} sizes={sizes} priority={priority} />

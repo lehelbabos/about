@@ -2,7 +2,9 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { randomBytes } from 'node:crypto';
 import { createInterface } from 'node:readline/promises';
-import { encrypt, decrypt, renderStudy, safeFilePath, projectRoot } from './study-core.mjs';
+import { decrypt, renderStudy, safeFilePath, projectRoot } from './study-core.mjs';
+
+import { prepareStudy } from './study-publishing.mjs';
 
 const action = process.argv[2];
 const privateRoot = path.join(projectRoot, '.private/studies');
@@ -53,7 +55,9 @@ try {
       const slug = path.basename(file, '.json');
       const dir = path.join(privateRoot, slug);
       try { await fs.access(dir); console.log(`Kept existing local edits: ${slug}`); continue; } catch {}
-      const payload = decrypt(JSON.parse(await fs.readFile(path.join(encryptedRoot, file), 'utf8')), password);
+      const envelope = JSON.parse(await fs.readFile(path.join(encryptedRoot, file), 'utf8'));
+      const archive = envelope.source ? JSON.parse(await fs.readFile(safeFilePath(encryptedRoot, envelope.source), 'utf8')) : envelope;
+      const payload = decrypt(archive, password);
       // Validate all entries before creating any files.
       for (const name of Object.keys(payload.files)) safeFilePath(dir, name);
       for (const [name, entry] of Object.entries(payload.files)) {
@@ -76,12 +80,27 @@ try {
       const payload = await renderStudy(path.join(privateRoot, entry.name));
       if (payload.metadata.draft !== false) { console.log(`Draft excluded: ${entry.name}`); drafts.push(entry.name); continue; }
       if (payload.metadata.slug !== entry.name) throw new Error(`Slug must match folder: ${entry.name}`);
-      ready.push([entry.name, encrypt(payload, password, salt)]);
+      ready.push([entry.name, await prepareStudy(payload, password, salt)]);
     }
-    for (const [slug, envelope] of ready) {
-      await fs.writeFile(path.join(encryptedRoot, slug + '.json'), JSON.stringify(envelope));
+    for (const [slug, publication] of ready) {
+      for (const asset of publication.media) {
+        const target = safeFilePath(encryptedRoot, asset.href);
+        await fs.mkdir(path.dirname(target), { recursive: true });
+        await fs.writeFile(target, asset.bytes);
+      }
+      const source = safeFilePath(encryptedRoot, publication.envelope.source);
+      await fs.mkdir(path.dirname(source), { recursive: true });
+      await fs.writeFile(source, JSON.stringify(publication.source));
+      await fs.writeFile(path.join(encryptedRoot, slug + '.json'), JSON.stringify(publication.envelope));
+      const used = new Set(publication.media.map(asset => path.basename(asset.href)));
+      const mediaDir = path.join(encryptedRoot, 'media', slug);
+      for (const old of await fs.readdir(mediaDir).catch(() => [])) if (!used.has(old)) await fs.rm(path.join(mediaDir, old));
       console.log(`Encrypted text, images, and editable source: ${slug}`);
     }
-    for (const slug of drafts) await fs.rm(path.join(encryptedRoot, slug + '.json'), { force: true });
+    for (const slug of drafts) {
+      await fs.rm(path.join(encryptedRoot, slug + '.json'), { force: true });
+      await fs.rm(path.join(encryptedRoot, 'source', slug + '.json'), { force: true });
+      await fs.rm(path.join(encryptedRoot, 'media', slug), { recursive: true, force: true });
+    }
   } else throw new Error('Choose unlock, seal, or new.');
 } catch (error) { console.error(error.message); process.exitCode = 1; }

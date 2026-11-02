@@ -9,7 +9,7 @@ export async function publicStudies(base = '/') {
   return Promise.all(files.map(async name => {
     const { data, content } = matter(await fs.readFile(path.join(folder, name), 'utf8'));
     if (!data.title || !/^[a-z0-9-]+$/.test(data.slug)) throw new Error(`Invalid study metadata: ${name}`);
-    const html = marked.parse(content).replace(/\b(src|href)="\/(?!\/)/g, `$1="${base}`);
+    const html = marked.parse(content).replace(/<img\b[^>]*>/, image => image.replace(/loading="lazy"/, 'loading="eager" fetchpriority="high"')).replace(/\b(src|href)="\/(?!\/)/g, `$1="${base}`);
     return { ...data, html };
   })).then(studies => studies.filter(study => !study.draft));
 }
