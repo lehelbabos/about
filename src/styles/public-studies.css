@@ -7,7 +7,7 @@
 .story-header h1 { font-size: var(--story-5xl-size); line-height: var(--story-5xl-leading); max-width: 1020px; margin: 0 0 24px; text-wrap: balance; }
 .story-summary { max-width: 800px; font-size: var(--story-xl-size); line-height: var(--story-xl-leading); margin: 0 0 24px; }
 .story-tags { display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 0; margin: 0 0 24px; list-style: none; font-size: var(--story-sm-size); line-height: var(--story-sm-leading); color: #626262; }
-.story-body { max-width: 1120px; margin: auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 720px) minmax(0, 1fr); font-size: var(--story-lg-size); line-height: var(--story-lg-leading); overflow-wrap: anywhere; }
+.story-body { max-width: 1120px; margin: auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 720px) minmax(0, 1fr); font-size: var(--story-md-size); line-height: var(--story-md-leading); overflow-wrap: anywhere; }
 .story-body > * { grid-column: 2; min-width: 0; margin: 0 0 26px; }
 .story-body > .story-anchor { margin: 0; scroll-margin-top: 30px; }
 .story-body h2 { font-size: var(--story-3xl-size); line-height: var(--story-3xl-leading); margin-top: 42px; margin-bottom: 24px; text-wrap: balance; }
