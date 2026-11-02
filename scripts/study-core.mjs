@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { marked } from 'marked';
 import matter from 'gray-matter';
+import { renderStory, resolveStoryBase, storyBaseToken } from '../src/lib/story-layout.mjs';
 
 export const iterations = 600_000;
 export const projectRoot = process.cwd();
@@ -50,7 +51,7 @@ export function safeFilePath(root, file) {
 export async function renderStudy(dir) {
   const files = await collectFiles(dir);
   let html, metadata;
-  if (files['layout.json']) {
+  if (files['layout.json'] && !files['index.md']) {
     metadata = JSON.parse(files['layout.json'].data);
     const sections = [];
     for (const section of metadata.sections) {
@@ -80,7 +81,7 @@ export async function renderStudy(dir) {
     const parsed = matter(files['index.md'].data);
     metadata = parsed.data;
     if (typeof metadata.title !== 'string' || typeof metadata.slug !== 'string') throw new Error('A study needs a title and slug.');
-    html = `<article class="editorial-study"><header><h1>${escapeHTML(metadata.title)}</h1>${metadata.summary ? `<p class="sqsrte-large">${escapeHTML(metadata.summary)}</p>` : ''}</header>${await marked.parse(parsed.content)}</article>`;
+    html = renderStory({ title: metadata.title, company: metadata.company, tags: metadata.tags, summary: metadata.summary, body: await marked.parse(parsed.content), base: storyBaseToken });
   }
   // Every private asset, including backgrounds, stays inside the encrypted bundle.
   for (const [name, file] of Object.entries(files)) {
@@ -89,8 +90,8 @@ export async function renderStudy(dir) {
   return { metadata, html, files };
 }
 
-export function previewHTML(payload) {
-  let html = payload.html;
+export function previewHTML(payload, base = '/') {
+  let html = resolveStoryBase(payload.html, base);
   for (const [name, file] of Object.entries(payload.files)) {
     if (file.encoding === 'base64') html = html.replaceAll(assetToken(name), `data:${file.mime};base64,${file.data}`);
   }

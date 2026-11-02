@@ -1,7 +1,9 @@
 ---
 import Site from '../../layouts/Site.astro';
 import StudyImages from '../../components/StudyImages.astro';
+import RelatedStudies from '../../components/RelatedStudies.astro';
 import { publicStudies } from '../../lib/public-studies.mjs';
+import { renderStory } from '../../lib/story-layout.mjs';
 import projects from '../../data/projects.json';
 import '../../styles/public-studies.css';
 
@@ -12,9 +14,9 @@ export async function getStaticPaths() {
 const { study, publishedIds } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const project = projects.find(project => project.id === study.projectId)!;
-const date = new Date(study.published + 'T12:00:00Z').toLocaleDateString('en-CA', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 const canonical = new URL(`${base}case-studies/${study.slug}/`, Astro.site).href;
 const siblings = projects.filter(project => project.local && project.id !== study.projectId && publishedIds.includes(project.id));
+const story = renderStory({ title: study.title, company: project.product.replace(/^(at|for|on) /, ''), tags: project.tags, body: study.html, base });
 ---
 <Site title={`${study.title} — Lehel Babos`} description={study.description}>
   <Fragment slot="head">
@@ -25,23 +27,7 @@ const siblings = projects.filter(project => project.local && project.id !== stud
     <meta property="og:url" content={canonical} />
     <meta property="article:published_time" content={study.published} />
   </Fragment>
-  <article class="public-study" aria-labelledby="study-title">
-    <header class="story-header">
-      <a class="back-to-work" href={`${base}#work-heading`}>← All work</a>
-      <p class="story-eyebrow">Case study · {project.product.replace(/^(at|for|on) /, '')}</p>
-      <h1 id="study-title">{study.title}</h1>
-      <ul class="story-tags" aria-label="Disciplines">{project.tags.map(tag => <li>{tag}</li>)}</ul>
-      <p class="story-byline">Lehel Babos <span aria-hidden="true">·</span> <time datetime={study.published}>{date}</time> <span aria-hidden="true">·</span> {study.readingTime}</p>
-    </header>
-    <div class="story-body" set:html={study.html} />
-    <footer class="story-end">
-      <p>Originally published <a href={study.originalUrl} target="_blank" rel="noopener noreferrer">on Medium</a>.</p>
-      <a href={`${base}#work-heading`}>← Back to all work</a>
-    </footer>
-  </article>
-  <nav class="related-studies" aria-label="More case studies">
-    <h2>More things I’ve worked on</h2>
-    <div>{siblings.slice(0,2).map(project => <a href={`${base}${project.href}`}><span>{project.title}</span><small>{project.product}</small><span aria-hidden="true">↗</span></a>)}</div>
-  </nav>
+  <Fragment set:html={story} />
+  <RelatedStudies projects={siblings} />
   <StudyImages />
 </Site>

@@ -23,12 +23,11 @@ npm run studies:unlock
 
 Enter the shared case-study password when prompted. This restores the editable source into `.private/studies/`, which Git ignores. Existing local files are kept, so unlocking cannot overwrite your work.
 
-The migrated studies contain:
+The protected studies use the same reading layout as the public case studies:
 
-- `content/*.md` — individual text sections, written in Markdown.
+- `index.md` — the active story, metadata, image order, captions, and embeds.
 - `assets/` — the original screenshots and graphics.
-- `layout.json` — the order, image references, embeds, and original grid placement.
-- `layout.css` — the responsive layout captured from the original page.
+- `content/`, `layout.json`, and `layout.css` — archived source from the original Squarespace migration, kept for reference. Edit `index.md` for current changes.
 
 While the dev server is running, the study URLs show the unlocked local version and reload after edits. New study folders require restarting the dev server. The production build always serves a password screen.
 
@@ -46,7 +45,7 @@ Keep the password somewhere you can retrieve it. There is no password reset or s
 
 ## Writing a case study together
 
-Public case studies live in `src/content/case-studies/*.md`. Edit their Markdown text directly; frontmatter holds the title, original publication date, reading time, description, and Medium source URL. Images live under `public/images/case-studies/<slug>/`. Imported image groups use small HTML figure blocks inside the Markdown so captions and grouping remain editable. The shared reading layout, responsive styling, and image viewer live in `src/pages/case-studies/[slug].astro`, `src/styles/public-studies.css`, and `src/components/StudyImages.astro`. The site renders these files at build time and needs no Medium service for text or images. The original YouTube video remains an external embed with a direct fallback link.
+Public case studies live in `src/content/case-studies/*.md`. Edit their Markdown text directly; frontmatter holds the title, original publication date, reading time, description, and Medium source URL. Images live under `public/images/case-studies/<slug>/`. Imported image groups use small HTML figure blocks inside the Markdown so captions and grouping remain editable. All case studies share the reading layout in `src/lib/story-layout.mjs`, responsive styling in `src/styles/public-studies.css`, and image viewer in `src/components/StudyImages.astro`. Typography size/line-height tokens in `src/styles/story-typography.css` follow the SimpleHedge Figma scale while retaining the portfolio fonts. Public pages omit author/date/reading-time rows and Medium attribution; source metadata stays in frontmatter for reference. The site renders these files at build time and needs no Medium service for text or images. The original YouTube video remains an external embed with a direct fallback link.
 
 For a new public study, copy an existing Markdown file, give it a unique `slug` and `projectId`, and start with `draft: true`. Set `draft: false` when ready and add its project card/placement to the homepage. Drafts do not generate pages or appear as local project cards. Build and preview before committing.
 
@@ -56,7 +55,7 @@ For a new **password-protected** study:
 npm run study:new -- project-name
 ```
 
-This creates `.private/studies/project-name/index.md` from a simple starter. It includes context, your role, the problem, design decisions, outcomes, and reflections. Adapt those headings to the story. New studies use a shared reading layout; migrated studies retain their original layouts.
+This creates `.private/studies/project-name/index.md` from a simple starter. It includes context, your role, the problem, design decisions, outcomes, and reflections. Adapt those headings to the story. All studies use the shared reading layout.
 
 We can work from rough notes, screenshots, and an outline, edit the Markdown together, and review the rendered page locally. Add images to the study's `assets/` folder and use normal Markdown image links. HTML is supported for richer layouts and embeds.
 
