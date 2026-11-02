@@ -18,6 +18,7 @@ test('all seven public studies publish locally with complete media and working n
     assert.ok(html.includes(`https://www.lehelbabos.com${route}`));
     assert.ok(!/miro\.medium\.com|cdn\.embedly\.com/.test(html));
     assert.ok(!html.includes('Get Lehel’s stories in'));
+    assert.ok(!/<p>\s*<(?:span|div)[^>]*id="[^\"]+"[^>]*><\/(?:span|div)>\s*<\/p>/.test(html), 'Source anchors must not add empty paragraphs');
     for (const match of html.matchAll(/(?:src|href)="(\/images\/case-studies\/[^"#]+)"/g)) {
       const bytes = await fs.readFile(path.join('dist', match[1]));
       images.add(match[1]);

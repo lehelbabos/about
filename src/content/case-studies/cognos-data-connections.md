@@ -9,37 +9,37 @@ description: "Case Study: Improving how users manage data connections in Cognos 
 draft: false
 ---
 
-<span id="32f8"></span>
+<div class="story-anchor" id="32f8"></div>
 
 ## Taking a complex task and making it simple
 
-<span id="bd3a"></span>
+<div class="story-anchor" id="bd3a"></div>
 
 ## Project brief
 
-<span id="fc68"></span>
+<div class="story-anchor" id="fc68"></div>
 
 This is a quick look at one of the more significant projects I tackled as part of my work on IBM Cognos Analytics. Aimed primarily at enterprise clients, Cognos is a data analytics, reporting and visualization tool. We help enterprise clients working with large amounts of data from disparate sources, to help them gain business insights and manage their operations. Here’s a quick promo showing some of the this in action.
 
 <figure class="story-figure story-video"><iframe src="https://www.youtube-nocookie.com/embed/sxHaCa16XEc" title="Cognos Analytics data connections video" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe><figcaption><a href="https://www.youtube.com/watch?v=sxHaCa16XEc">Watch the video on YouTube</a></figcaption></figure>
 
-<span id="d157"></span>
+<div class="story-anchor" id="d157"></div>
 
 The first task performed in any data analytics tool is… well… uploading data. Users today have the option of uploading their datasets directly, or connecting to an outside database and importing their assets from there.
 
-<span id="6992"></span>
+<div class="story-anchor" id="6992"></div>
 
 My focus was improving the experience, design and efficiency of the second task, as well as how users managed these connections later on. Here’s how my team and I tackled this.
 
-<span id="4e9c"></span>
+<div class="story-anchor" id="4e9c"></div>
 
 ## Laying the groundwork
 
-<span id="6b26"></span>
+<div class="story-anchor" id="6b26"></div>
 
 The bulk of the team is based in Ottawa, so I flew down for two days to help kick things off. My primary goal was to learn, ensure we had a shared understanding of the problem we were trying to solve and tease out questions we still had.
 
-<span id="0dcd"></span>
+<div class="story-anchor" id="0dcd"></div>
 
 ### Persona Review
 
@@ -48,35 +48,35 @@ The bulk of the team is based in Ottawa, so I flew down for two days to help kic
 <figure class="story-figure"><a href="/images/case-studies/cognos-data-connections/02.webp" aria-label="View full-size image"><img src="/images/case-studies/cognos-data-connections/02.webp" alt="Improving how users connect to data — figure 2" width="483" height="619" loading="lazy" decoding="async" /></a></figure>
 </div>
 
-<span id="92ca"></span>
+<div class="story-anchor" id="92ca"></div>
 
 Cognos has historically been a B2B, on-prem only product. If you wanted access, you had an IBM rep show up, work with your IT team to set things up and train your staff, and then IT would run everything in a very tightly managed environment. For many of our clients this is still the case.
 
-<span id="8e80"></span>
+<div class="story-anchor" id="8e80"></div>
 
 However as we move towards turning Cognos into more of a cloud based, self managed product, this model has changed.
 
-<span id="a124"></span>
+<div class="story-anchor" id="a124"></div>
 
 Connecting to new data sources is now a task that’s done increasingly by the data analysts themselves. People who don’t have an admin team to contact, or can’t wait in a queue for 2 days before getting their data.
 
-<span id="ce7f"></span>
+<div class="story-anchor" id="ce7f"></div>
 
 So we started by aligning on who our key personas were and reviewing existing user feedback. Our primary persona was Sergio “The Admin”, but after some discussion it became clear that we had a secondary user — Lucas “ The Data Analyst”.
 
-<span id="5241"></span>
+<div class="story-anchor" id="5241"></div>
 
 After reviewing their summaries we started working through each user’s Tasks, Goals and Pains (a slight twist on the classic Tasks, Pains and Gains exercise). This helped us compare and contrast what each user is trying to accomplish and the challenges they face.
 
-<span id="1a9f"></span>
+<div class="story-anchor" id="1a9f"></div>
 
 ### Needs statements
 
-<span id="e21e"></span>
+<div class="story-anchor" id="e21e"></div>
 
 Then it was time for needs statements — what are users <strong>actually</strong> trying to accomplish and <strong>why</strong>.
 
-<span id="11e8"></span>
+<div class="story-anchor" id="11e8"></div>
 
 After diverging and everyone putting up various different needs statements, we began to converge and cluster them. As we did, a few patterns emerged. On a high level, both users needed to be able to do the following with ease:
 
@@ -86,37 +86,37 @@ After diverging and everyone putting up various different needs statements, we b
 -   Analysts generally need to set up simple connections quickly so they can get to their business insights.
 -   Admins need to do more extensive customization and set up more complex connections in order to track and control access, as well as test and edit multiple connections.
 
-<span id="e042"></span>
+<div class="story-anchor" id="e042"></div>
 
 We teased out a few more but I wanted to have these ready for our next exercise. Our needs statements also helped keep us focused later on when we had to define what our MVP is, and push back against scope creep. If something was proposed that didn’t directly address our needs statements, it was pushed out of MVP.
 
-<span id="5dae"></span>
+<div class="story-anchor" id="5dae"></div>
 
 ### As-Is Scenario Mapping
 
 <figure class="story-figure wide"><a href="/images/case-studies/cognos-data-connections/04.webp" aria-label="View full-size image"><img src="/images/case-studies/cognos-data-connections/04.webp" alt="Improving how users connect to data — figure 4" width="2400" height="1232" loading="lazy" decoding="async" /></a></figure>
 
-<span id="12fb"></span>
+<div class="story-anchor" id="12fb"></div>
 
 We used our needs statements to help guide us as we did an As Is Scenario Map.
 
 > If a sys admin wants to edit the details of an existing connection to fix an error, so their CFO can update their dashboard, what would they have to do?
 
-<span id="4b65"></span>
+<div class="story-anchor" id="4b65"></div>
 
 The As-Is scenario helped us break things down into steps and gain a more thorough understanding of what the current pain points were
 
 <figure class="story-figure"><a href="/images/case-studies/cognos-data-connections/05.webp" aria-label="View full-size image"><img src="/images/case-studies/cognos-data-connections/05.webp" alt="Hope you like slideouts" width="700" height="438" loading="lazy" decoding="async" /></a><figcaption>Hope you like slideouts</figcaption></figure>
 
-<span id="e21b"></span>
+<div class="story-anchor" id="e21b"></div>
 
 <em>To help give you a bit of context, here is the current process for simply getting to the connection details screen showing the URL. (Assuming you know where to click).</em>
 
-<span id="3e63"></span>
+<div class="story-anchor" id="3e63"></div>
 
 <em>Cognos is a really powerful tool, but parts of the admin experience have clearly been neglected.</em>
 
-<span id="bdc2"></span>
+<div class="story-anchor" id="bdc2"></div>
 
 ### Sketching
 
@@ -136,27 +136,27 @@ The As-Is scenario helped us break things down into steps and gain a more thorou
 <figure class="story-figure"><a href="/images/case-studies/cognos-data-connections/12.webp" aria-label="View full-size image"><img src="/images/case-studies/cognos-data-connections/12.webp" alt="Improving how users connect to data — figure 12" width="500" height="1080" loading="lazy" decoding="async" /></a></figure>
 </div>
 
-<span id="b590"></span>
+<div class="story-anchor" id="b590"></div>
 
 Every Design Thinking workshop I’ve been involved with has had one thing in common — all of them required a bit of improvisation as we went along… and this was no different.
 
-<span id="68e5"></span>
+<div class="story-anchor" id="68e5"></div>
 
 I wanted to run a few more exercises before we got to sketching, but I only had a bit of time left. Instead, I decided leverage the team’s enthusiasm and give everyone an opportunity to get their ideas down and share them with others.
 
-<span id="0845"></span>
+<div class="story-anchor" id="0845"></div>
 
 This was one of the best examples for why having a diverse set of perspectives on a team and giving them a voice during the design process can be so beneficial. As designers, we’re responsible for the final outcome, but no one has a monopoly on good ideas. These sketches gave me a lot of great material to work, and gave others on my team a sense of ownership in the design itself.
 
-<span id="8ddc"></span>
+<div class="story-anchor" id="8ddc"></div>
 
 ## Wireframing
 
-<span id="bb47"></span>
+<div class="story-anchor" id="bb47"></div>
 
 Over the next few weeks we began to converge and flesh things out in more detail. I broke things down to the following views:
 
-<span id="71a1"></span>
+<div class="story-anchor" id="71a1"></div>
 
 <strong>The New Connection View</strong>
 
@@ -171,11 +171,11 @@ Over the next few weeks we began to converge and flesh things out in more detail
 <figure class="story-figure"><a href="/images/case-studies/cognos-data-connections/17.webp" aria-label="View full-size image"><img src="/images/case-studies/cognos-data-connections/17.webp" alt="Left: Menu to invoke the new data overlay" width="334" height="964" loading="lazy" decoding="async" /></a><figcaption>Left: Menu to invoke the new data overlay</figcaption></figure>
 </div>
 
-<span id="630b"></span>
+<div class="story-anchor" id="630b"></div>
 
 The user would be able to invoke this view as an overlay from a few different places in the UI. The main one being the Plus button at the top which we currently use to create new assets in Cognos and add in data files. This helps update our current experience to be more streamlined for analysts, who’d no longer have to go into the admin panel to set up new connections.
 
-<span id="1475"></span>
+<div class="story-anchor" id="1475"></div>
 
 <strong>The Servers List</strong>
 
@@ -184,11 +184,11 @@ The user would be able to invoke this view as an overlay from a few different pl
 <figure class="story-figure"><a href="/images/case-studies/cognos-data-connections/19.webp" aria-label="View full-size image"><img src="/images/case-studies/cognos-data-connections/19.webp" alt="Option 1: Tree view on the left and detail view on the right based on selection. Option 2: Accordion view showing hierarchy and basic info on each server and connection at a glance." width="500" height="964" loading="lazy" decoding="async" /></a><figcaption>Option 1: Tree view on the left and detail view on the right based on selection. Option 2: Accordion view showing hierarchy and basic info on each server and connection at a glance.</figcaption></figure>
 </div>
 
-<span id="693e"></span>
+<div class="story-anchor" id="693e"></div>
 
 We explored different layouts and indicators to show the hierarchy and relationships between Servers and Connections, while providing high level information about each item that the users could take action on.
 
-<span id="864f"></span>
+<div class="story-anchor" id="864f"></div>
 
 <strong>The Server Details, Connection Details and Authentication Details Views</strong>
 
@@ -198,23 +198,23 @@ We explored different layouts and indicators to show the hierarchy and relations
 <figure class="story-figure"><a href="/images/case-studies/cognos-data-connections/22.webp" aria-label="View full-size image"><img src="/images/case-studies/cognos-data-connections/22.webp" alt="From left to right, the same general layout template used for the 3 different levels in the IA’s hierarchy" width="331" height="964" loading="lazy" decoding="async" /></a><figcaption>From left to right, the same general layout template used for the 3 different levels in the IA’s hierarchy</figcaption></figure>
 </div>
 
-<span id="daa7"></span>
+<div class="story-anchor" id="daa7"></div>
 
 For these screens I decided to focus on mapping out general layout and information architecture, while my team gathered more detailed requirements.
 
-<span id="ff9a"></span>
+<div class="story-anchor" id="ff9a"></div>
 
 Understanding the hierarchy and relationship between Servers, Connections and Authentication Methods is something users struggled with in the existing experience due to key parts of the UI being hidden behind tabs and links, as well as unclear directions, vernacular and calls to action. My goal was to clean up this hierarchy, clarify the wording and create a layout template that could be reused between the different levels in the IA to help create consistency and familiarity for the user.
 
-<span id="986a"></span>
+<div class="story-anchor" id="986a"></div>
 
 ## HiFi Designs
 
-<span id="c6b8"></span>
+<div class="story-anchor" id="c6b8"></div>
 
 We went through a number of iterations, meeting weekly with the core team to review and update, bringing in additional stakeholders and domain experts as needed.
 
-<span id="9de7"></span>
+<div class="story-anchor" id="9de7"></div>
 
 <strong>The New Connection View</strong>
 
@@ -226,7 +226,7 @@ We went through a number of iterations, meeting weekly with the core team to rev
 <figure class="story-figure"><a href="/images/case-studies/cognos-data-connections/26.webp" aria-label="View full-size image"><img src="/images/case-studies/cognos-data-connections/26.webp" alt="Improving how users connect to data — figure 26" width="334" height="964" loading="lazy" decoding="async" /></a></figure>
 </div>
 
-<span id="691c"></span>
+<div class="story-anchor" id="691c"></div>
 
 For an analysts, the intention was to be able to create a new connection in 3 steps:
 
@@ -234,15 +234,15 @@ For an analysts, the intention was to be able to create a new connection in 3 st
 -   Set up your authentication method — we’ll preselect the most commonly used option for this data server type.
 -   Choose what data you want to load — and you’re done!
 
-<span id="6e72"></span>
+<div class="story-anchor" id="6e72"></div>
 
 This is a much more streamlined approach than the previous experience for both analysts and admins alike.
 
-<span id="70fb"></span>
+<div class="story-anchor" id="70fb"></div>
 
 For power users, the ability to perform more heavy duty configuration is still there, but the non-essential and more technical fields have been placed under the advanced tab.
 
-<span id="881c"></span>
+<div class="story-anchor" id="881c"></div>
 
 <strong>The Server List</strong>
 
@@ -254,25 +254,25 @@ For power users, the ability to perform more heavy duty configuration is still t
 <figure class="story-figure"><a href="/images/case-studies/cognos-data-connections/30.webp" aria-label="View full-size image"><img src="/images/case-studies/cognos-data-connections/30.webp" alt="Improving how users connect to data — figure 30" width="334" height="964" loading="lazy" decoding="async" /></a></figure>
 </div>
 
-<span id="0e8b"></span>
+<div class="story-anchor" id="0e8b"></div>
 
 The key user outcomes here were the following:
 
 -   We’ve given sys admins more high level, glanceable information about their existing servers and connections, and the ability to better organize these items.
 -   We’ve added the ability to test multiple connections quickly, without needing to drill down through multiple levels of the UI. <em>Something that required at least five clicks to do before could now be done in one.</em>
 
-<span id="17f1"></span>
+<div class="story-anchor" id="17f1"></div>
 
 A couple of things here got held back for our MVP
 
 -   The visualizations and summary view at the top
 -   Live tracking and display of each connection’s status
 
-<span id="5c8d"></span>
+<div class="story-anchor" id="5c8d"></div>
 
 This was primarily due to technical limitations, but we still wanted to give users a clear visual indicator that showed which connections have been tested and which connections needed troubleshooting.
 
-<span id="79dc"></span>
+<div class="story-anchor" id="79dc"></div>
 
 <strong>The Server Details, Connection Details and Authentication Details Views</strong>
 
@@ -284,11 +284,11 @@ This was primarily due to technical limitations, but we still wanted to give use
 <figure class="story-figure"><a href="/images/case-studies/cognos-data-connections/34.webp" aria-label="View full-size image"><img src="/images/case-studies/cognos-data-connections/34.webp" alt="Improving how users connect to data — figure 34" width="440" height="964" loading="lazy" decoding="async" /></a></figure>
 </div>
 
-<span id="66e8"></span>
+<div class="story-anchor" id="66e8"></div>
 
 As users continued to drill down through the various levels, the information displayed could get pretty complex. (See the third screengrab for an example of what a fully configured connection setup could look like in advanced view).
 
-<span id="012d"></span>
+<div class="story-anchor" id="012d"></div>
 
 The desired user outcomes here were the following:
 
@@ -296,7 +296,7 @@ The desired user outcomes here were the following:
 -   Secondary info (such as permissions and object properties) are easily accessible but out of the way.
 -   Tests can be run quickly. But power users can run more complex tests and configurations if required.
 
-<span id="5958"></span>
+<div class="story-anchor" id="5958"></div>
 
 ## Reflection
 
@@ -308,15 +308,15 @@ The desired user outcomes here were the following:
 <figure class="story-figure"><a href="/images/case-studies/cognos-data-connections/38.webp" aria-label="View full-size image"><img src="/images/case-studies/cognos-data-connections/38.webp" alt="The evolution of a few different parts of the UI" width="334" height="1067" loading="lazy" decoding="async" /></a><figcaption>The evolution of a few different parts of the UI</figcaption></figure>
 </div>
 
-<span id="e1ea"></span>
+<div class="story-anchor" id="e1ea"></div>
 
 ## Overall Outcomes
 
-<span id="eee9"></span>
+<div class="story-anchor" id="eee9"></div>
 
 This redesign ended up being much more complex than any of us had initially anticipated. This post here provides a glimpse into how we worked and the final outcome, but really I’ve only just scratched the surface.
 
-<span id="1c47"></span>
+<div class="story-anchor" id="1c47"></div>
 
 It took us a few months to get there but the net outcomes of the redesign were the following:
 
@@ -326,22 +326,22 @@ It took us a few months to get there but the net outcomes of the redesign were t
 -   We introduced new capabilities around bulk actions, and made support documentation and in context help much more prominent.
 -   Built the design in a way which lays the groundwork for future enhancements around things like showing in context data visualization and introducing natural language based search and an AI driven UI.
 
-<span id="d77f"></span>
+<div class="story-anchor" id="d77f"></div>
 
 ## Lessons learned
 
-<span id="b3de"></span>
+<div class="story-anchor" id="b3de"></div>
 
 Looking back, the biggest takeaway for me was this — <em>always be ready to learn, re-evaluate and adjust.</em>
 
-<span id="5d05"></span>
+<div class="story-anchor" id="5d05"></div>
 
 When dealing with sufficiently complex systems, (and especially legacy systems), chances are you’ll never have all the answers at the outset.
 
-<span id="5cc8"></span>
+<div class="story-anchor" id="5cc8"></div>
 
 Requirements will change, unexpected technical limitations will surface, user validation will show you things you didn’t expect. Be ready to change course as a team accordingly — even in the 11th hour. Because designing a good solution and shipping one are two different things.
 
-<span id="88b2"></span>
+<div class="story-anchor" id="88b2"></div>
 
 If this case study has piqued your interest and you’d like to hear more about how we incorporated testing and validation into our process, how we managed scope creep or worked through implementation, or if you have any other questions — feel free to get in touch!

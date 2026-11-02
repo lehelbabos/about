@@ -9,47 +9,47 @@ description: "Case Study: Data Visualization for Social Media Data Project Brief
 draft: false
 ---
 
-<span id="9c70"></span>
+<div class="story-anchor" id="9c70"></div>
 
 ## <strong>Project Brief</strong>
 
-<span id="51d7"></span>
+<div class="story-anchor" id="51d7"></div>
 
 The work was for a product called Watson Analytics for Social Media (WASM). Like it says on the tin, WASM is a product tailored specifically for social media analysis — pulling in social media content from a number of sources, and surfacing insights around everything from trending topics, to sentiment analysis, key influencers, audience demographics etc etc… figures such as <em>sales data</em> can show how a product may be doing in a certain market over a period of time. <em>Social media</em> data can help give further context to that <em>business data</em>, enabling users to (hopefully) make more informed decisions.
 
-<span id="e838"></span>
+<div class="story-anchor" id="e838"></div>
 
 Watson Analytics for Social Media has a number of custom visualizations tailored to surface specific insights and patterns. We’ll be looking at how our team redesigned one of these visualizations.
 
-<span id="b1cd"></span>
+<div class="story-anchor" id="b1cd"></div>
 
 ### My role
 
 <figure class="story-figure"><a href="/images/case-studies/watson-social-data/01.webp" aria-label="View full-size image"><img src="/images/case-studies/watson-social-data/01.webp" alt="Building a Custom Data Visualization — figure 1" width="700" height="266" loading="lazy" decoding="async" /></a></figure>
 
-<span id="1abd"></span>
+<div class="story-anchor" id="1abd"></div>
 
 My primary role on this effort was focused on planning, research, and design. I worked with our PMs and Devs to nail down requirements, translating them into user needs, and then working with my team on taking our designs from initial sketches and ideation, through to high fidelity designs and specs, which our dev team could then leverage to build out the visualization itself.
 
-<span id="8620"></span>
+<div class="story-anchor" id="8620"></div>
 
 ## Laying the groundwork
 
 <figure class="story-figure"><a href="/images/case-studies/watson-social-data/02.webp" aria-label="View full-size image"><img src="/images/case-studies/watson-social-data/02.webp" alt="A poster our research team put together to help communicate the high level details for our main persona." width="700" height="1080" loading="lazy" decoding="async" /></a><figcaption>A poster our research team put together to help communicate the high level details for our main persona.</figcaption></figure>
 
-<span id="50ca"></span>
+<div class="story-anchor" id="50ca"></div>
 
 ### The Persona (and what we’re trying to help her do)
 
-<span id="6876"></span>
+<div class="story-anchor" id="6876"></div>
 
 The purpose of the visualization is simple. Help our persona, Natalie, compare data for 3 predefined user groups — <em>Prospective Customers, Existing Customers</em> and <em>Dissatisfied Customers</em>, and see what they are saying about the topics she’s defined. (Are the number of potential customers increasing? Are existing ones unsatisfied or leaving? If so, why?) This would allow her, to quickly do a competitive analysis, see where her company is strong, or alternatively where they may be struggling, and help her craft a business strategy in response.
 
-<span id="9cce"></span>
+<div class="story-anchor" id="9cce"></div>
 
 ### The Usecase
 
-<span id="6cff"></span>
+<div class="story-anchor" id="6cff"></div>
 
 To help put things in context, let’s say Natalie’s works at an auto manufacturer such as BMW and she needs to run an analysis on both BMW’s brand and products, as well as some of the competition. For this scenario our list will include
 
@@ -60,7 +60,7 @@ To help put things in context, let’s say Natalie’s works at an auto manufact
 -   Porsche
 -   and Tesla
 
-<span id="e85e"></span>
+<div class="story-anchor" id="e85e"></div>
 
 Her execs want to know about a few things in specific, (we’ll call these <em>themes</em>). They want to know what people are saying about things like:
 
@@ -71,11 +71,11 @@ Her execs want to know about a few things in specific, (we’ll call these <em>t
 -   Reliability
 -   Warranty etc…
 
-<span id="bcd3"></span>
+<div class="story-anchor" id="bcd3"></div>
 
 Are these things driving sales? Is there an opportunity in any one of these areas that they can capitalize on? Between reviewing existing research data and doing our own explorations and inquiries, we boiled things down to the following.
 
-<span id="29a7"></span>
+<div class="story-anchor" id="29a7"></div>
 
 ### <strong>User outcomes</strong>
 
@@ -83,15 +83,15 @@ Are these things driving sales? Is there an opportunity in any one of these area
 -   <strong>Drill in:</strong> Once she’s found a point of interest she needs to be able to explore her data by drilling into either a specific user group or a specific data point, getting further information about her selection. (Sentiment breakdown, demographics etc…)
 -   <strong>Discover:</strong> Natalie should also be able to discover new insights and see what else her customers are talking about that <em>isn’t</em> captured in her list of defined themes.
 
-<span id="0645"></span>
+<div class="story-anchor" id="0645"></div>
 
 The above three user outcomes would become the core of our UX Requirements.
 
-<span id="2cc0"></span>
+<div class="story-anchor" id="2cc0"></div>
 
 ### Understanding the data
 
-<span id="dc87"></span>
+<div class="story-anchor" id="dc87"></div>
 
 The next step was actually gaining a thorough understanding of the data. Answering questions such as:
 
@@ -100,57 +100,57 @@ The next step was actually gaining a thorough understanding of the data. Answeri
 -   Could we gather info about \_\_\_\_\_\_\_\_\_\_ ?
 -   What’s the single most important piece of information or insight our users want from this chart? What about secondary info?
 
-<span id="205f"></span>
+<div class="story-anchor" id="205f"></div>
 
 As we gained a better and better understanding of the data itself, it was time to start coming up with ideas.
 
-<span id="250e"></span>
+<div class="story-anchor" id="250e"></div>
 
 ## Ideation
 
-<span id="5b72"></span>
+<div class="story-anchor" id="5b72"></div>
 
 ### Sketching
 
-<span id="2ee0"></span>
+<div class="story-anchor" id="2ee0"></div>
 
 We started by doing a few rounds of sketching and paper prototyping. We figured it would be good to get some fresh eyes on this and leverage some of the talent in our studio, so we pulled in some other designers from different squads. This is where working within a broader design team really comes in handy.
 
-<span id="c243"></span>
+<div class="story-anchor" id="c243"></div>
 
 After a few iterations we converged on 3 approaches and reviewed them with the rest of the product team. The feedback was the following.
 
-<span id="4459"></span>
+<div class="story-anchor" id="4459"></div>
 
 ### Bubble / Bar Matrix
 
 <figure class="story-figure"><a href="/images/case-studies/watson-social-data/03.webp" aria-label="View full-size image"><img src="/images/case-studies/watson-social-data/03.webp" alt="Eagle eyed readers will notice that we decided to have some fun in this sketching session and switched to a Star Wars theme for our mock data." width="700" height="525" loading="lazy" decoding="async" /></a><figcaption>Eagle eyed readers will notice that we decided to have some fun in this sketching session and switched to a Star Wars theme for our mock data.</figcaption></figure>
 
-<span id="7836"></span>
+<div class="story-anchor" id="7836"></div>
 
 <strong>Pros</strong>
 
-<span id="0cc4"></span>
+<div class="story-anchor" id="0cc4"></div>
 
 Being able to scan across groups as well as individual columns or rows makes it easy to compare data across a number of metrics and quickly find outliers.
 
-<span id="bda4"></span>
+<div class="story-anchor" id="bda4"></div>
 
 Easy to show secondary information such as sentiment or demographics breakdown by turning each bubble into a pie chart.
 
-<span id="8633"></span>
+<div class="story-anchor" id="8633"></div>
 
 <strong>Cons</strong>
 
-<span id="8815"></span>
+<div class="story-anchor" id="8815"></div>
 
 Showing sentiment or demographics by default may make things very busy.
 
-<span id="5b5a"></span>
+<div class="story-anchor" id="5b5a"></div>
 
 Still need a way to show conversations <em>not captured by her themes</em>.
 
-<span id="472a"></span>
+<div class="story-anchor" id="472a"></div>
 
 ### Donut Chart with themes toggle and “Related Viz” Panel
 
@@ -160,73 +160,73 @@ Still need a way to show conversations <em>not captured by her themes</em>.
 <figure class="story-figure"><a href="/images/case-studies/watson-social-data/06.webp" aria-label="View full-size image"><img src="/images/case-studies/watson-social-data/06.webp" alt="Left: Default state. Middle: Toggle showing number of comments without themes. Right: Drilling in to a specific part of the chart to show related visualizations." width="334" height="600" loading="lazy" decoding="async" /></a><figcaption>Left: Default state. Middle: Toggle showing number of comments without themes. Right: Drilling in to a specific part of the chart to show related visualizations.</figcaption></figure>
 </div>
 
-<span id="9ed2"></span>
+<div class="story-anchor" id="9ed2"></div>
 
 <strong>Pros</strong>
 
-<span id="5966"></span>
+<div class="story-anchor" id="5966"></div>
 
 Nice left-to-right progression in terms of granularity of data with a clear CTA for exploration.
 
-<span id="4b2a"></span>
+<div class="story-anchor" id="4b2a"></div>
 
 Chart gives quick, easy to understand breakdown of each Topic’s prominence within a User Group.
 
-<span id="6021"></span>
+<div class="story-anchor" id="6021"></div>
 
 The toggle helps the user control if they want to see content with no detected themes in their visualization or not. (Seeing this data can be valuable, but it can often also skew things).
 
-<span id="3d62"></span>
+<div class="story-anchor" id="3d62"></div>
 
 <strong>Cons</strong>
 
-<span id="c9aa"></span>
+<div class="story-anchor" id="c9aa"></div>
 
 Lack of ability to quickly compare across groups.
 
-<span id="f053"></span>
+<div class="story-anchor" id="f053"></div>
 
 May be a bit too simplistic.
 
-<span id="d3ee"></span>
+<div class="story-anchor" id="d3ee"></div>
 
 ### Stacked bar charts
 
 <figure class="story-figure"><a href="/images/case-studies/watson-social-data/07.webp" aria-label="View full-size image"><img src="/images/case-studies/watson-social-data/07.webp" alt="Building a Custom Data Visualization — figure 7" width="800" height="600" loading="lazy" decoding="async" /></a></figure>
 
-<span id="5019"></span>
+<div class="story-anchor" id="5019"></div>
 
 <strong>Pros</strong>
 
-<span id="f582"></span>
+<div class="story-anchor" id="f582"></div>
 
 Tabs make it easy to switch between groups
 
-<span id="c773"></span>
+<div class="story-anchor" id="c773"></div>
 
 Stacked bar charts provide an easy way to compare secondary info (such as sentiment) across themes / topics.
 
-<span id="d4e8"></span>
+<div class="story-anchor" id="d4e8"></div>
 
 <strong>Cons</strong>
 
-<span id="7626"></span>
+<div class="story-anchor" id="7626"></div>
 
 No way to compare across user groups side by side
 
-<span id="5f9d"></span>
+<div class="story-anchor" id="5f9d"></div>
 
 May not scale well to a large number of topics or themes.
 
-<span id="3c6e"></span>
+<div class="story-anchor" id="3c6e"></div>
 
 May break down if the user hasn’t defined any themes.
 
-<span id="76be"></span>
+<div class="story-anchor" id="76be"></div>
 
 ## Converge
 
-<span id="89ef"></span>
+<div class="story-anchor" id="89ef"></div>
 
 After a few more rounds of lo-mid fi designs and reviews we started to converged on a single solution that leveraged some of the pros of each option. We did away with the bar graph cause frankly — it’s often times the easy solution and our product was already had a bunch of bar graphs… and we wanted to do something more interesting.
 
@@ -236,7 +236,7 @@ After a few more rounds of lo-mid fi designs and reviews we started to converged
 <figure class="story-figure"><a href="/images/case-studies/watson-social-data/10.webp" aria-label="View full-size image"><img src="/images/case-studies/watson-social-data/10.webp" alt="Same interaction pattern as above, just with a bit more detail." width="368" height="2493" loading="lazy" decoding="async" /></a><figcaption>Same interaction pattern as above, just with a bit more detail.</figcaption></figure>
 </div>
 
-<span id="ba40"></span>
+<div class="story-anchor" id="ba40"></div>
 
 For the first option, we added the tabs from the bar graphs design, and added in our “Mentions” panel, which shows pieces of content and conversations related to your selected datapoint.
 
@@ -245,19 +245,19 @@ For the first option, we added the tabs from the bar graphs design, and added in
 <figure class="story-figure"><a href="/images/case-studies/watson-social-data/12.webp" aria-label="View full-size image"><img src="/images/case-studies/watson-social-data/12.webp" alt="Building a Custom Data Visualization — figure 12" width="500" height="3024" loading="lazy" decoding="async" /></a></figure>
 </div>
 
-<span id="b9ba"></span>
+<div class="story-anchor" id="b9ba"></div>
 
 For the second option, we added in the same mentions panel and the “related visualizations” panel, which would come up from the bottom once the user has drilled into a datapoint. Testing things internally as we went along, we continued to refine our approach. We also added a bar-graph overlay on each row, to show the accumulative sum of conversation happening around each brand for each user group.
 
-<span id="8ce1"></span>
+<div class="story-anchor" id="8ce1"></div>
 
 In the end we converged on Option 2, with the benefit of highlighting both patterns and outliers being the key difference that tipped the scales in its favour.
 
-<span id="4297"></span>
+<div class="story-anchor" id="4297"></div>
 
 ## Moving to Mid-High Fidelity
 
-<span id="5090"></span>
+<div class="story-anchor" id="5090"></div>
 
 Once we had settled on a solution, we moved from low to mid fidelity designs to help nail down some of the interaction patterns, sizing and spacing.
 
@@ -273,23 +273,23 @@ Once we had settled on a solution, we moved from low to mid fidelity designs to 
 <figure class="story-figure"><a href="/images/case-studies/watson-social-data/18.webp" aria-label="View full-size image"><img src="/images/case-studies/watson-social-data/18.webp" alt="Building a Custom Data Visualization — figure 18" width="334" height="900" loading="lazy" decoding="async" /></a></figure>
 </div>
 
-<span id="7eb2"></span>
+<div class="story-anchor" id="7eb2"></div>
 
 I’ve found working at mixed fidelity like this really beneficial when doing design reviews. Parts of the UI that are not important to <em>what is being designed for right now</em> are abstracted out, while the key points of focus are mapped out in more detail. I’ve found this helps:
 
-<span id="e386"></span>
+<div class="story-anchor" id="e386"></div>
 
 a) Keep teams focused during a review by removing noise from the UI. And it also keeps people from going down rabbit holes about “the label on that button there that has nothing to do with what we’re reviewing, but someone in the room has really strong opinions on”.
 
-<span id="575f"></span>
+<div class="story-anchor" id="575f"></div>
 
 b) Make my life easier because I don’t have to make up unique copy for each item, which I then have to make sure stays consistent throughout.
 
-<span id="1cbc"></span>
+<div class="story-anchor" id="1cbc"></div>
 
 At this stage we also decided to decrease the scope of our MVP, and leave out the Related Visualizations panel. If we were going to introduce the feature, we figured we should do it right and bring it in as a more high level enhancement, that’s available for <em>all</em> charts within our product, rather than just this one.
 
-<span id="d18a"></span>
+<div class="story-anchor" id="d18a"></div>
 
 ### Specs
 
@@ -309,17 +309,17 @@ At this stage we also decided to decrease the scope of our MVP, and leave out th
 <figure class="story-figure"><a href="/images/case-studies/watson-social-data/25.webp" aria-label="View full-size image"><img src="/images/case-studies/watson-social-data/25.webp" alt="Building a Custom Data Visualization — figure 25" width="500" height="900" loading="lazy" decoding="async" /></a></figure>
 </div>
 
-<span id="2ffa"></span>
+<div class="story-anchor" id="2ffa"></div>
 
 Last but not least, once the general layout, interactions and visual treatment were locked down, I moved on to speccing things out in detail. The full design spec ended up being over 30 pages long. Dissecting that page by page is a bit outside the scope of this case study, but these snapshots should give you an idea of what the rest of the specs looked like.
 
-<span id="13d8"></span>
+<div class="story-anchor" id="13d8"></div>
 
 ## Reflection
 
 <figure class="story-figure wide"><a href="/images/case-studies/watson-social-data/26.webp" aria-label="View full-size image"><img src="/images/case-studies/watson-social-data/26.webp" alt="The IBM Design Thinking Loop" width="1000" height="354" loading="lazy" decoding="async" /></a><figcaption>The IBM Design Thinking Loop</figcaption></figure>
 
-<span id="9a1b"></span>
+<div class="story-anchor" id="9a1b"></div>
 
 This was an interesting new challenge for me. Most of my work tends to have more of a traditional UX/UI focus. This project helped me take some of those same skills and tools, and apply them in a new domain. While data viz design has its unique challenges, it was reassuring to see a lot of the same processes’ used in more traditional “UX Design” work equally well here.
 
@@ -331,6 +331,6 @@ This was an interesting new challenge for me. Most of my work tends to have more
 -   Figure out what’s needed for a Minimum Viable Experience, and build a roadmap for how to ship that and then move beyond.
 -   Flesh out the details as you move along that roadmap. Adjust as needed.
 
-<span id="3967"></span>
+<div class="story-anchor" id="3967"></div>
 
 Or as the key principles of IBM Design Thinking state, <strong><em>Observe, Reflect, Make.</em></strong>
