@@ -11,9 +11,9 @@ npm ci
 npm run dev
 ```
 
-Open **http://localhost:4321/about/**. The page updates when you save. Most homepage edits live in `src/pages/index.astro`; project cards and article links are in `src/data/projects.json` and `src/data/articles.json`. Shared styles live in `src/styles/` and navigation in `src/components/Header.astro`.
+Open **http://localhost:4321/**. The page updates when you save. Most homepage edits live in `src/pages/index.astro`; project cards and article links are in `src/data/projects.json` and `src/data/articles.json`. Shared styles live in `src/styles/` and navigation in `src/components/Header.astro`.
 
-The About page is local at `/about/about/` on the repository preview (or `/about/` on a root-domain deployment). About and Read More use that local route. Astro prefetches it after initial page load; the portrait and shared styling are prepared in the background too.
+The About page is local at `/about/`. About and Read More use that local route. Astro prefetches it after initial page load; the portrait and shared styling are prepared in the background too.
 
 ## Editing a protected study
 
@@ -73,19 +73,15 @@ npm run build
 npm run preview
 ```
 
-Open the printed preview URL to test the password screen, including while your local editing copy is unlocked. The site works at the repository path `/about/` and uses local fonts and images, with no Squarespace runtime or asset dependency.
+Open the printed preview URL to test the password screen, including while your local editing copy is unlocked. The site uses local fonts and images, with no Squarespace runtime or asset dependency.
 
 ## Publishing
 
-The existing repository uses **master**, not main. The migration is prepared on `migration/astro-portfolio` for review. The current GitHub Pages site uses `master:/docs`; it remains unchanged during that review.
+The repository uses **master**, not main. GitHub Pages uses GitHub Actions. Every push to `master` builds, tests, and publishes `dist/`.
 
-After approval:
+The production configuration targets **https://www.lehelbabos.com/** at the domain root. GitHub Pages must have `www.lehelbabos.com` configured as its custom domain. At Namecheap, `www` points to `lehelbabos.github.io` via CNAME; the four apex A records point to GitHub Pages so `lehelbabos.com` redirects to `www`. Email records stay independent of web hosting.
 
-1. In repository **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source.
-2. Merge the migration into `master`.
-3. The deployment workflow builds, tests, and publishes `dist/` to `https://lehelbabos.github.io/about/`.
-
-For a future custom domain, set `SITE_URL` to its HTTPS origin and `SITE_BASE` to `/` in the build environment, configure the Pages custom domain, and update DNS. No domain or DNS change is included in this migration.
+For a deployment without the custom domain, override `SITE_URL=https://lehelbabos.github.io` and `SITE_BASE=/about` when building, and remove the custom domain from Pages. These environment overrides also support temporary previews under a different base path.
 
 ## Archive and rollback
 

@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: process.env.SITE_URL || 'https://lehelbabos.github.io',
-  base: process.env.SITE_BASE || '/about',
+  site: process.env.SITE_URL || 'https://www.lehelbabos.com',
+  base: process.env.SITE_BASE || '/',
   trailingSlash: 'always',
   devToolbar: { enabled: false },
   prefetch: { prefetchAll: false },
