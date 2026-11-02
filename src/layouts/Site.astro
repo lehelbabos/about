@@ -32,6 +32,15 @@ const base = import.meta.env.BASE_URL;
   <body>
     <Header home={home} about={about} />
     <main id="page"><slot /></main>
-    <footer class="site-footer"><p>Copyright © 2022 Lehel Babos</p></footer>
+    <footer class="site-footer"><p>Copyright © <span data-copyright-year>{new Date().getFullYear()}</span> Lehel Babos</p></footer>
   </body>
 </html>
+<script>
+  function updateCopyrightYear() {
+    const year = document.querySelector('[data-copyright-year]');
+    if (year) year.textContent = String(new Date().getFullYear());
+  }
+  updateCopyrightYear();
+  window.addEventListener('pageshow', updateCopyrightYear);
+</script>
+
