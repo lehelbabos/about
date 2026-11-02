@@ -24,6 +24,7 @@ const base = import.meta.env.BASE_URL;
     <link rel="icon" href={`${base}favicon.ico`} />
     {home && <link rel="prefetch" as="image" href={`${base}images/profile.jpeg`} />}
     <title>{title}</title>
+    <slot name="head" />
   </head>
   <body>
     <Header home={home} about={about} />

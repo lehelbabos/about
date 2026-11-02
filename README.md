@@ -1,6 +1,6 @@
 # Lehel Babos — portfolio
 
-An Astro portfolio that recreates the Squarespace homepage and About page and migrates the Indeed Connect and TableCheck Reservations case studies. Other projects and articles keep their original Medium links.
+An Astro portfolio with a homepage, About page, two encrypted case studies, and seven public case studies migrated from Medium. The four general writing articles retain their original Medium links.
 
 ## Local editing
 
@@ -45,6 +45,12 @@ Enter the shared password again. Sealing updates `public/protected/*.json` with 
 Keep the password somewhere you can retrieve it. There is no password reset or server-side recovery mechanism. Changing the password means unlocking with the old password and sealing all studies with the new one; previously distributed copies can still be opened with their original password.
 
 ## Writing a case study together
+
+Public case studies live in `src/content/case-studies/*.md`. Edit their Markdown text directly; frontmatter holds the title, original publication date, reading time, description, and Medium source URL. Images live under `public/images/case-studies/<slug>/`. Imported image groups use small HTML figure blocks inside the Markdown so captions and grouping remain editable. The shared reading layout, responsive styling, and image viewer live in `src/pages/case-studies/[slug].astro`, `src/styles/public-studies.css`, and `src/components/StudyImages.astro`. The site renders these files at build time and needs no Medium service for text or images. The original YouTube video remains an external embed with a direct fallback link.
+
+For a new public study, copy an existing Markdown file, give it a unique `slug` and `projectId`, and start with `draft: true`. Set `draft: false` when ready and add its project card/placement to the homepage. Drafts do not generate pages or appear as local project cards. Build and preview before committing.
+
+For a new **password-protected** study:
 
 ```sh
 npm run study:new -- project-name
