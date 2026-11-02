@@ -1,10 +1,11 @@
 /* SimpleHedge “Updated Typescale”, Figma rpj8topjGDQ58cXcAB6tZF, 3355:654.
-   Size/line-height pairs follow the source exactly; portfolio font families stay. */
+   Based on the source scale, with portfolio leading overrides for md and lg.
+   Portfolio font families stay. */
 :root {
   --story-xs-size: 12px; --story-xs-leading: 16px;
   --story-sm-size: 14px; --story-sm-leading: 20px;
-  --story-md-size: 16px; --story-md-leading: 22px;
-  --story-lg-size: 18px; --story-lg-leading: 24px;
+  --story-md-size: 16px; --story-md-leading: 24px;
+  --story-lg-size: 18px; --story-lg-leading: 28px;
   --story-xl-size: 24px; --story-xl-leading: 32px;
   --story-2xl-size: 28px; --story-2xl-leading: 36px;
   --story-3xl-size: 36px; --story-3xl-leading: 44px;
