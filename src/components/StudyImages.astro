@@ -1,24 +1,36 @@
 <dialog class="story-image-dialog" aria-label="Full-size case study image">
   <button class="close-story-image" aria-label="Close image">×</button>
+  <p class="image-viewer-status" role="status" hidden></p>
   <img alt="" />
 </dialog>
 <script>
+  import { resolveImage } from '../scripts/study-image-loaders.mjs';
   const dialog = document.querySelector<HTMLDialogElement>('.story-image-dialog')!;
   const image = dialog.querySelector('img')!;
+  const status = dialog.querySelector<HTMLParagraphElement>('.image-viewer-status')!;
   const close = dialog.querySelector<HTMLButtonElement>('button')!;
   let opener: HTMLElement | null = null;
   // Delegation also handles protected images inserted after decryption.
-  document.addEventListener('click', event => {
+  document.addEventListener('click', async event => {
     const link = (event.target as Element).closest<HTMLAnchorElement>('.story-body figure a[href]');
     const thumbnail = link?.querySelector('img');
     if (!link || !thumbnail) return;
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
     opener = link;
-    image.src = link.href;
-    image.alt = thumbnail.alt;
+    image.hidden = true;
+    status.hidden = false;
+    status.textContent = 'Loading image…';
     dialog.showModal();
     close.focus();
+    try {
+      const src = await resolveImage(link);
+      if (!dialog.open || opener !== link) return;
+      image.src = src;
+      image.alt = thumbnail.alt;
+      image.hidden = false;
+      status.hidden = true;
+    } catch { status.textContent = 'The image could not be loaded. Close this view and select it to try again.'; }
   });
   close.addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });

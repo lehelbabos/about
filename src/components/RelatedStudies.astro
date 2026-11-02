@@ -4,5 +4,5 @@ const base = import.meta.env.BASE_URL;
 ---
 <nav class="related-studies" aria-label="More case studies">
   <h2>More things I’ve worked on</h2>
-  <div>{projects.slice(0,2).map(project => <a href={`${base}${project.href}`}><span>{project.title}</span><small>{project.product}</small><span aria-hidden="true">↗</span></a>)}</div>
+  <div>{projects.slice(0,2).map(project => <a href={`${base}${project.href}`} data-astro-prefetch="hover"><span>{project.title}</span><small>{project.product}</small><span aria-hidden="true">↗</span></a>)}</div>
 </nav>

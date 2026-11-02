@@ -71,3 +71,8 @@
   .related-studies > div { grid-template-columns: 1fr; }
   .story-embed iframe { min-height: 360px; }
 }
+
+.story-image-dialog img[hidden], .image-viewer-status[hidden] { display: none; }
+.image-viewer-status { min-width: 200px; max-width: 460px; padding: 16px; font-size: var(--story-md-size); line-height: var(--story-md-leading); }
+.image-load-status { display: block; padding: 12px; text-align: center; font-size: var(--story-sm-size); line-height: var(--story-sm-leading); }
+.story-figure img[data-load-error] { background: #f7f7f7; }

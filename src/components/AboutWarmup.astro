@@ -1,0 +1,40 @@
+---
+import italicFont from '../fonts/work-sans-400-italic.woff2?url';
+---
+<!-- Warm the local About page after the current page has finished its critical work. -->
+<div id="about-warmup" data-url={`${import.meta.env.BASE_URL}about/`} data-font={italicFont} hidden></div>
+<script>
+  const target = document.querySelector<HTMLElement>('#about-warmup')!;
+  const connection = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+  async function warmAbout() {
+    if (connection?.saveData || /(^|-)2g$/.test(connection?.effectiveType || '')) return;
+    try {
+      const response = await fetch(target.dataset.url!, { priority: 'low' });
+      if (!response.ok) return;
+      const font = document.createElement('link');
+      font.rel = 'preload'; font.as = 'font'; font.type = 'font/woff2';
+      font.crossOrigin = 'anonymous'; font.href = target.dataset.font!;
+      font.fetchPriority = 'low'; document.head.append(font);
+      const page = new DOMParser().parseFromString(await response.text(), 'text/html');
+      for (const stylesheet of page.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"][href]')) {
+        const url = new URL(stylesheet.getAttribute('href')!, location.href);
+        if (url.origin !== location.origin || document.querySelector(`link[href="${url.pathname}"]`)) continue;
+        const preload = document.createElement('link');
+        preload.rel = 'preload'; preload.as = 'style'; preload.href = url.href;
+        preload.fetchPriority = 'low'; document.head.append(preload);
+      }
+      const portrait = page.querySelector<HTMLImageElement>('.profile-portrait');
+      if (portrait) {
+        const image = new Image();
+        image.fetchPriority = 'low';
+        image.sizes = portrait.sizes; image.srcset = portrait.srcset; image.src = portrait.getAttribute('src')!;
+      }
+    } catch { /* Navigation still works normally when background warming is unavailable. */ }
+  }
+  const schedule = () => {
+    if ('requestIdleCallback' in window) requestIdleCallback(warmAbout, { timeout: 2000 });
+    else setTimeout(warmAbout, 0);
+  };
+  if (document.readyState === 'complete') schedule();
+  else window.addEventListener('load', schedule, { once: true });
+</script>

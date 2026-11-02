@@ -1,25 +1,24 @@
 ---
 import Site from '../layouts/Site.astro';
-import social from '../data/social.json';
-const base = import.meta.env.BASE_URL;
+import PortfolioImage from '../components/PortfolioImage.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import '../styles/about-layout.css';
 ---
 <Site title="About — Lehel Babos" about>
   <section class="page-section about-section" aria-labelledby="about-name">
-    <div class="section-content about-profile-grid">
+    <div class="section-content portfolio-grid about-profile-grid">
       <div class="grid-block about-portrait"><div class="block">
-        <img class="profile-portrait" src={`${base}images/profile.jpeg`} alt="Lehel working on his laptop at a café" width="1500" height="2000" loading="eager" fetchpriority="high" />
+        <PortfolioImage name="profile.jpeg" class="profile-portrait" alt="Lehel working on his laptop at a café" priority sizes="(max-width: 767px) 88vw, 32vw" />
       </div></div>
       <div class="grid-block about-name"><div class="block"><h1 id="about-name" class="profile-name">Lehel Babos</h1></div></div>
       <div class="grid-block about-location"><div class="block"><p class="sqsrte-small"><strong>Location</strong><br />Toronto, Canada</p></div></div>
       <div class="grid-block about-employer"><div class="block"><p class="sqsrte-small"><strong>Working at</strong><br />SimpleHedge</p></div></div>
       <div class="grid-block about-bio"><div class="block"><p><em>Part time coffee nerd, occasional cyclist. Obsessive about typography. Currently dormant globe trotter.</em></p></div></div>
-      <div class="grid-block about-social"><div class="block"><div class="profile-social" aria-label="Social links">
-        {social.map(s => <a href={s.href} aria-label={s.label} target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 64 64" aria-hidden="true"><use href={s.icon} width="64" height="64" /></svg></a>)}
-      </div></div></div>
+      <div class="grid-block about-social"><div class="block"><SocialLinks variant="profile" /></div></div>
     </div>
   </section>
   <section class="page-section about-section" aria-labelledby="design-thoughts">
-    <div class="section-content about-story-grid">
+    <div class="section-content portfolio-grid about-story-grid">
       <div class="grid-block about-story"><div class="block"><div class="about-story-content">
         <h2 id="design-thoughts">Some thoughts on design</h2>
         <p>I believe good design doesn't happen in a vacuum. Building and delivering products is a team sport, and one of the most challenging but rewarding aspects of my work is being a conduit between design, engineering and business strategy. Helping other designers improve their craft, and making design accessible to those who are new to it.</p>

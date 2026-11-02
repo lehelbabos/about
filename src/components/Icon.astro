@@ -1,0 +1,5 @@
+---
+import sprite from '../data/icons.svg?url';
+const { name, class: className, viewBox = '0 0 24 24', size = 24 } = Astro.props;
+---
+<svg class={className} viewBox={viewBox} aria-hidden="true" focusable="false"><use href={`${sprite}#${name}`} width={size} height={size} /></svg>

@@ -1,6 +1,7 @@
 ---
 import Site from '../layouts/Site.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import AboutWarmup from '../components/AboutWarmup.astro';
 import projects from '../data/projects.json';
 import articles from '../data/articles.json';
 import '../styles/home-layout.css';
@@ -15,23 +16,23 @@ const base = import.meta.env.BASE_URL;
 ---
 <Site home>
   <section class="page-section intro">
-    <div class="section-content home-intro">
+    <div class="section-content portfolio-grid home-intro">
       <div class="grid-block home-intro-block-0"><div class="block">
         <h1>Hi, I’m Lehel</h1>
-        <p class="sqsrte-large">I’m a Toronto based Product Designer. <br />I help teams solve problems, ship products and scale their design teams and practice.</p>
-        <p><a href={`${base}about/`} data-astro-prefetch="load">Read More</a></p>
+        <p class="sqsrte-large">I’m a Toronto based Product Designer. <br />I help teams solve problems, ship products and scale design.</p>
+        <p><a href={`${base}about/`} data-astro-prefetch="hover">Read More</a></p>
       </div></div>
     </div>
   </section>
   <section class="page-section work-gallery" aria-labelledby="work-heading">
-    <div class="section-content home-work">
+    <div class="section-content portfolio-grid home-work">
       <div class="grid-block home-work-block-0"><div class="block"><h2 class="section-heading" id="work-heading">Some things I’ve worked on</h2></div></div>
-      {visibleProjects.map(project => <div class={`grid-block ${project.block}`}><div class="block"><div class="card-content"><div class="card-wrapper"><ProjectCard project={project} /></div></div></div></div>)}
+      {visibleProjects.map((project, index) => <div class={`grid-block ${project.block}`}><div class="block"><div class="card-content"><div class="card-wrapper"><ProjectCard project={project} priority={index === 0} /></div></div></div></div>)}
       <div class="grid-block home-work-block-10"><div class="block"><p class="additional">Additional samples available upon request</p></div></div>
     </div>
   </section>
   <section class="page-section writing" aria-labelledby="writing-heading">
-    <div class="section-content home-writing">
+    <div class="section-content portfolio-grid home-writing">
       <div class="grid-block home-writing-block-0"><div class="block"><h2 class="section-heading" id="writing-heading">Some things I’ve written</h2></div></div>
       {articles.map(article => <>
         <div class={`grid-block ${article.block}`}><div class="block"><h4><a href={article.href}>{article.title}</a></h4></div></div>
@@ -39,6 +40,7 @@ const base = import.meta.env.BASE_URL;
       </>)}
     </div>
   </section>
+  <AboutWarmup />
 </Site>
 <style>
   .intro :global(.block) { display: block; }

@@ -4,6 +4,7 @@ import StudyImages from '../../components/StudyImages.astro';
 import RelatedStudies from '../../components/RelatedStudies.astro';
 import { publicStudies } from '../../lib/public-studies.mjs';
 import { renderStory } from '../../lib/story-layout.mjs';
+import { responsiveStory } from '../../lib/story-media';
 import projects from '../../data/projects.json';
 import '../../styles/public-studies.css';
 
@@ -16,7 +17,7 @@ const base = import.meta.env.BASE_URL;
 const project = projects.find(project => project.id === study.projectId)!;
 const canonical = new URL(`${base}case-studies/${study.slug}/`, Astro.site).href;
 const siblings = projects.filter(project => project.local && project.id !== study.projectId && publishedIds.includes(project.id));
-const story = renderStory({ title: study.title, company: project.product.replace(/^(at|for|on) /, ''), tags: project.tags, body: study.html, base });
+const story = renderStory({ title: study.title, company: project.product.replace(/^(at|for|on) /, ''), tags: project.tags, body: await responsiveStory(study.html), base });
 ---
 <Site title={`${study.title} — Lehel Babos`} description={study.description}>
   <Fragment slot="head">

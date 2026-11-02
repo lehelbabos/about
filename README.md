@@ -13,7 +13,7 @@ npm run dev
 
 Open **http://localhost:4321/**. The page updates when you save. Most homepage edits live in `src/pages/index.astro`; project cards and article links are in `src/data/projects.json` and `src/data/articles.json`. Shared styles live in `src/styles/` and navigation in `src/components/Header.astro`.
 
-The About page is local at `/about/`. About and Read More use that local route. Astro prefetches it after initial page load; the portrait and shared styling are prepared in the background too.
+The About page is local at `/about/`. About and Read More use that local route. After the homepage finishes loading, an idle background task warms the About HTML, styles, and responsive portrait. It skips this work for data saver and very slow connections.
 
 ## Editing a protected study
 
@@ -39,7 +39,7 @@ npm run build
 npm test
 ```
 
-Enter the shared password again. Sealing updates `public/protected/*.json` with encrypted page content, images, and editable source. Commit those encrypted files along with any public layout/code changes. **A normal build does not seal private edits automatically.** This explicit step prevents unfinished local drafts from being published accidentally.
+Enter the shared password again. Sealing updates a small encrypted reading page in `public/protected/*.json`, individually encrypted images in `public/protected/media/`, and the original editable source in `public/protected/source/`. Commit the whole `public/protected/` folder along with any public layout/code changes. The editable archive is fetched by the local unlock command, not by visitors. **A normal build does not seal private edits automatically.** This explicit step prevents unfinished local drafts from being published accidentally.
 
 Keep the password somewhere you can retrieve it. There is no password reset or server-side recovery mechanism. Changing the password means unlocking with the old password and sealing all studies with the new one; previously distributed copies can still be opened with their original password.
 
@@ -65,7 +65,7 @@ To feature a new study, add its card to `src/data/projects.json` and give it a m
 
 ## Password protection
 
-Protected studies use AES-256-GCM encryption with PBKDF2-SHA-256 (600,000 iterations), random salt, and a unique IV for each bundle. The browser decrypts the files after a visitor enters the password. Full-size images are included in the encrypted bundle and become temporary browser URLs after unlock. One successful password entry automatically unlocks all studies in the collection across pages and tabs in the same browser. A derived decryption key is kept locally for eight hours; the password itself is never stored. After expiry, the browser asks for the password again.
+Protected studies use AES-256-GCM encryption with PBKDF2-SHA-256 (600,000 iterations), random salt, and a unique IV for each bundle. The browser decrypts the files after a visitor enters the password. Each content image is encrypted separately with the same collection key and a unique IV. Lossless WebP is used when it reduces the file size, with original pixels preserved. After unlock, images are fetched and decrypted as they approach the viewport, or immediately when opened in the image viewer. Their temporary browser URLs are revoked when the page is left. Original source files remain in a separate encrypted archive for local editing. One successful password entry automatically unlocks all studies in the collection across pages and tabs in the same browser. A derived decryption key is kept locally for eight hours; the password itself is never stored. After expiry, the browser asks for the password again.
 
 This is intended for selectively sharing portfolio work. It has no server-side rate limiting, user accounts, or per-person revocation. Password strength matters because encrypted bundles are downloadable. Public homepage thumbnails and project names remain public. Figma embeds retain their own Figma permissions and availability.
 
@@ -79,6 +79,14 @@ npm run preview
 ```
 
 Open the printed preview URL to test the password screen, including while your local editing copy is unlocked. The site uses local fonts and images, with no Squarespace runtime or asset dependency.
+
+## Shared assets and loading
+
+`PortfolioImage.astro` and `src/lib/portfolio-media.ts` generate responsive WebP thumbnails and portraits at build time with Astro's image service. Stable original image URLs remain available for existing references. The first visible image gets eager/high-priority loading; later images and third-party embeds use lazy loading. Public case-study images get smaller responsive variants while original full-size links and animations are retained.
+
+`Icon.astro` and `SocialLinks.astro` reference one hashed SVG sprite shared across pages. The two main text fonts are preloaded and all fonts remain self-hosted with `font-display: swap`. Common grid geometry lives in `src/styles/portfolio-grid.css`; homepage and About placement rules stay in their own stylesheets. Case studies share the reading typography and layout. Page HTML stays static, with small scripts for navigation, prefetching, the image viewer, and encrypted studies.
+
+`tests/loading.test.mjs` checks loading priorities, responsive media paths, shared assets, small encrypted page payloads, and individual image encryption/pixel preservation. Run it through `npm test` after building.
 
 ## Publishing
 
