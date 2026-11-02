@@ -50,7 +50,7 @@ const { home = false, about = false } = Astro.props;
     .desktop-nav { display: none; }
     .logo :global(img) { width: 32px; height: 32px; }
     .menu-toggle { position: absolute; left: 6vw; display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 23px; z-index: 2; }
-    .menu-toggle span { height: 3px; width: 100%; background: #303030; transition: transform .2s; }
+    .menu-toggle span { height: 3px; width: 100%; background: #303030; transition: transform calc(200ms / var(--motion-speed)); }
     .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(10px) rotate(45deg); }
     .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
     .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-10px) rotate(-45deg); }

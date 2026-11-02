@@ -1,6 +1,8 @@
 @import './fonts.css';
 
 :root {
+  /* Scale all UI durations and delays together; 1.25 means 25% faster. */
+  --motion-speed: 1.25;
   --sqs-site-gutter: 2vw;
   --sqs-mobile-site-gutter: 6vw;
   --sqs-site-max-width: 2560px;
