@@ -3,11 +3,17 @@
 :root {
   /* Scale all UI durations and delays together; 1.25 means 25% faster. */
   --motion-speed: 1.25;
+  --font-heading: 'IBM Plex Serif', serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-weight-body: 350;
+  --font-weight-heading: 675;
   --sqs-site-gutter: 2vw;
   --sqs-mobile-site-gutter: 6vw;
   --sqs-site-max-width: 2560px;
   --type-unit: min(1.2vw, 30.72px);
   --text: #323232;
+  /* Body text: 15% white mixed into the original charcoal. */
+  --text-body: #515151;
   --link: #3268a4;
   color: var(--text);
   background: #fff;
@@ -15,13 +21,14 @@
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-body { font-family: 'Work Sans', sans-serif; font-size: calc(16px + .2 * var(--type-unit)); font-weight: 400; line-height: 1.8; }
+body { color: var(--text-body); font-family: var(--font-body); font-size: calc(16px + .2 * var(--type-unit)); font-weight: var(--font-weight-body); line-height: 1.8; }
 button, input { font: inherit; }
 a { color: var(--link); text-underline-offset: .17em; text-decoration-thickness: 1px; }
 button, a { -webkit-tap-highlight-color: transparent; }
 a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--link); outline-offset: 5px; }
 img { max-width: 100%; }
-h1, h2, h3, h4 { font-family: 'Rubik', sans-serif; font-weight: 700; letter-spacing: 0; margin: 2rem 0; }
+h1, h2, h3, h4, h5, h6 { color: var(--text); font-family: var(--font-heading); font-weight: var(--font-weight-heading); letter-spacing: 0; margin: 2rem 0; }
+:is(h1, h2, h3, h4, h5, h6) :is(strong, b) { font-weight: inherit; }
 h1 { font-size: calc(16px + 3 * var(--type-unit)); line-height: 1.232; }
 h2 { font-size: calc(16px + 1.8 * var(--type-unit)); line-height: 1.2992; }
 h3 { font-size: calc(16px + 1.2 * var(--type-unit)); line-height: 1.3328; }

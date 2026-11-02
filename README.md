@@ -15,6 +15,10 @@ Open **http://localhost:4321/**. The page updates when you save. Most homepage e
 
 The About page is local at `/about/`. About and Read More use that local route. After the homepage finishes loading, an idle background task warms the About HTML, styles, and responsive portrait. It skips this work for data saver and very slow connections.
 
+## Typography
+
+Fonts are self-hosted variable IBM Plex Serif for headings (`675`) and IBM Plex Sans for body copy (`350`), with normal and italic styles. Typography tokens live in `src/styles/story-typography.css`; body copy uses `lg` (18px / 28px), captions and sidenotes use `md` (16px / 24px). The shared case-study text width is 688px, while wide images retain their layout. Body colour is `#515151`; headings use `#323232`.
+
 ## Editing a protected study
 
 ```sh
