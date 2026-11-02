@@ -1,14 +1,8 @@
-.DS_Store
-.sass-cache/
 node_modules/
 dist/
-npm-debug.log
-
-# Ignore unnecessary stuff pulled from Ghost
-docs/case-studies/robots.txt
-docs/case-studies/index.html
-docs/case-studies/rss
-docs/case-studies/author
-
-posts/.ghost-cli
-posts/.ghostpid
+.astro/
+.private/
+.env
+.env.*
+!.env.example
+.DS_Store

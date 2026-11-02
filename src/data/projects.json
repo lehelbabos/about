@@ -1,0 +1,125 @@
+[
+  {
+    "id": "indeed-connect-web",
+    "title": "Rethinking small business hiring",
+    "product": "at Indeed",
+    "tags": [
+      "Product Design",
+      "UX Research",
+      "Product Planning"
+    ],
+    "locked": true,
+    "href": "indeed-connect/",
+    "image": "indeed-connect-web.png",
+    "block": "home-work-block-1"
+  },
+  {
+    "id": "tablecheck",
+    "title": "Reservation UX/UI Revamp",
+    "product": "on TableCheck",
+    "tags": [
+      "UX/UI Design",
+      "Design Thinking",
+      "Responsive Design"
+    ],
+    "locked": true,
+    "href": "tablecheck-reservations/",
+    "image": "tablecheck.png",
+    "block": "home-work-block-2"
+  },
+  {
+    "id": "tablekit",
+    "title": "Tablekit: A lean design system",
+    "product": "for TableCheck",
+    "tags": [
+      "UI Design",
+      "Systems Thinking",
+      "Interaction Design"
+    ],
+    "locked": false,
+    "href": "https://medium.com/@lehel/a-lean-design-system-how-we-built-tablekit-27fdacc66858?sk=4bff257315409403ef3a5eb3cd35544b",
+    "image": "tablekit.jpg",
+    "block": "home-work-block-3"
+  },
+  {
+    "id": "suikakeibo",
+    "title": "Suikakeibo Mobile App Redesign",
+    "product": "for Mediavrog",
+    "tags": [
+      "Mobile UX/UI",
+      "Interaction Design",
+      "Prototyping"
+    ],
+    "locked": false,
+    "href": "https://medium.com/@lehel/redesigning-suikakeibo-tips-for-approaching-product-design-on-side-projects-f7feaa00f931?sk=177a15e80a1e713b8bf054e84296444c",
+    "image": "suikakeibo.jpg",
+    "block": "home-work-block-4"
+  },
+  {
+    "id": "ca-datascience",
+    "title": "Building a data science experience",
+    "product": "on IBM Cognos Analytics",
+    "tags": [
+      "UX Design",
+      "Design Thinking"
+    ],
+    "locked": false,
+    "href": "https://medium.com/@lehel/how-we-applied-enterprise-design-thinking-to-build-a-data-science-experience-in-cognos-analytics-67fd03b5da6a",
+    "image": "ca-datascience.jpg",
+    "block": "home-work-block-5"
+  },
+  {
+    "id": "wasm-data",
+    "title": "Building a Custom Data Visualization",
+    "product": "for Watson Analytics",
+    "tags": [
+      "Data Visualization",
+      "UX/UI Design"
+    ],
+    "locked": false,
+    "href": "https://medium.com/@lehel/case-study-data-visualization-for-social-media-data-cc3a40150674",
+    "image": "wasm-data.jpg",
+    "block": "home-work-block-6"
+  },
+  {
+    "id": "ca-dataconnections",
+    "title": "Improving how users connect to data",
+    "product": "on IBM Cognos Analytics",
+    "tags": [
+      "UX/UI Design",
+      "Design Thinking",
+      "Prototyping"
+    ],
+    "locked": false,
+    "href": "https://medium.com/@lehel/design-case-study-improving-how-users-connect-to-data-in-cognos-analytics-c919ddab9891",
+    "image": "ca-dataconnections.jpg",
+    "block": "home-work-block-7"
+  },
+  {
+    "id": "query",
+    "title": "Modernizing regulations compliance",
+    "product": "for Base5 Tech",
+    "tags": [
+      "UX/UI Design",
+      "Brand Development"
+    ],
+    "locked": false,
+    "href": "https://medium.com/@lehel/case-study-query-298a6f5f0c8",
+    "image": "query.jpg",
+    "block": "home-work-block-8"
+  },
+  {
+    "id": "brewbox",
+    "title": "Defining a brand and product",
+    "product": "for The Brewbox Company",
+    "tags": [
+      "UI Design",
+      "Brand Development",
+      "Print"
+    ],
+    "locked": false,
+    "href": "https://medium.com/@lehel/the-brewbox-company-case-study-aa8f7126ea6a",
+    "image": "brewbox.jpg",
+    "block": "home-work-block-9"
+  }
+]

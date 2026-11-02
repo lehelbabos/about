@@ -1,0 +1,49 @@
+---
+import Site from '../layouts/Site.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import projects from '../data/projects.json';
+import articles from '../data/articles.json';
+import '../styles/home-layout.css';
+import '../styles/cards.css';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+const publishedStudies = new Set((await fs.readdir(path.resolve('public/protected'))).filter(f => f.endsWith('.json')).map(f => f.slice(0, -5)));
+const visibleProjects = projects.filter(p => !p.locked || publishedStudies.has(p.href.replace(/\/$/, '')));
+const base = import.meta.env.BASE_URL;
+---
+<Site home>
+  <section class="page-section intro">
+    <div class="section-content home-intro">
+      <div class="grid-block home-intro-block-0"><div class="block">
+        <h1>Hi, I’m Lehel</h1>
+        <p class="sqsrte-large">I’m a Toronto based Product Designer. <br />I help teams solve problems, ship products and scale their design teams and practice.</p>
+        <p><a href={`${base}about/`} data-astro-prefetch="load">Read More</a></p>
+      </div></div>
+    </div>
+  </section>
+  <section class="page-section work-gallery" aria-labelledby="work-heading">
+    <div class="section-content home-work">
+      <div class="grid-block home-work-block-0"><div class="block"><h2 class="section-heading" id="work-heading">Some things I’ve worked on</h2></div></div>
+      {visibleProjects.map(project => <div class={`grid-block ${project.block}`}><div class="block"><div class="card-content"><div class="card-wrapper"><ProjectCard project={project} /></div></div></div></div>)}
+      <div class="grid-block home-work-block-10"><div class="block"><p class="additional">Additional samples available upon request</p></div></div>
+    </div>
+  </section>
+  <section class="page-section writing" aria-labelledby="writing-heading">
+    <div class="section-content home-writing">
+      <div class="grid-block home-writing-block-0"><div class="block"><h2 class="section-heading" id="writing-heading">Some things I’ve written</h2></div></div>
+      {articles.map(article => <>
+        <div class={`grid-block ${article.block}`}><div class="block"><h4><a href={article.href}>{article.title}</a></h4></div></div>
+        <div class={`grid-block ${article.timeBlock}`}><div class="block"><p class="read-time">{article.time}</p></div></div>
+      </>)}
+    </div>
+  </section>
+</Site>
+<style>
+  .intro :global(.block) { display: block; }
+  .intro { padding: 3.5vmax 0; min-height: 35vh; }
+  .work-gallery { padding: 4.8vmax 0; min-height: 48vh; background: #f7f7f7; }
+  .writing { padding: 3.3vmax 0; }
+  .section-heading { font-size: calc(16px + 3 * var(--type-unit)); line-height: 1.232; }
+  .additional { text-align: center; color: #777; }
+  .read-time { font-size: calc(16px - .2 * var(--type-unit)); }
+</style>

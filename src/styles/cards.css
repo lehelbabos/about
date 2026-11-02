@@ -1,0 +1,180 @@
+.work_item {
+  background:#252525;
+  position:relative;
+  color:#252525;
+  width:100%;
+  max-width:800px;
+  text-align:left;
+  height:30vh;
+  min-height:480px;
+  display:flex;
+  margin:0 auto 30px auto;
+  flex-flow:column;
+  justify-content:flex-end;
+  text-decoration:none;
+  min-width:190px;
+  transition:transform 300ms ease 200ms;
+  box-shadow:0 0 30px -10px #777;
+  background-size:cover;
+  background-position:center;
+  border-radius:12px;
+  overflow:hidden
+}
+.work_item:hover,.work_item:focus-visible {
+  transform:translatey(-10px);
+  transition:transform 300ms ease
+}
+.work_item:hover .item_cta,.work_item:focus-visible .item_cta {
+  transform:translatey(1px);
+  transition:transform 200ms ease
+}
+.work_item:hover .item_cta:before {
+  border-right:15px solid transparent;
+  border-top:15px solid transparent;
+  transition:border-color 150ms ease -50ms,transform 0ms ease -50ms
+}
+.work_item:hover .item_cta:after {
+  transform:rotate3d(-1,-1,0,180deg);
+  border-right:15px solid #fff598;
+  border-top:15px solid #fff598;
+  box-shadow:5px -2.5px 10px -2.5px rgba(37,37,37,.5);
+  transition:transform 300ms ease-out 100ms,box-shadow 300ms ease 250ms,border-color 0ms ease 250ms
+}
+.work_item .item_cta {
+  position:relative;
+  transform:translatey(26px);
+  transition:transform 200ms 225ms ease;
+  font-size:.875rem;
+  line-height:20px;
+  height:30px;
+  font-weight:500;
+  background:#f6e118;
+  display:block;
+
+width:calc(100% - 30px);
+  text-align:center;
+  line-height:30px
+}
+.work_item .item_cta:after,.work_item .item_cta:before {
+  width:0;
+  height:0;
+  content:" ";
+  position:absolute;
+  right:-30px;
+  top:0
+}
+.work_item .item_cta:before {
+  border-left:15px solid #f6e118;
+  border-right:15px solid #f6e118;
+  border-top:15px solid #f6e118;
+  border-bottom:15px solid #f6e118;
+  transition:border-color 300ms ease 300ms
+}
+.work_item .item_cta:after {
+  border-left:15px solid transparent;
+  border-right:15px solid #f6e118;
+  border-top:15px solid #f6e118;
+  border-bottom:15px solid transparent;
+  box-shadow:5px -2.5px 10px -2.5px rgba(37,37,37,0);
+  transform-origin:center center;
+  transform:rotate3d(-1,-1,0,0deg) translatex(-1px);
+  transition:transform 300ms ease,box-shadow 300ms ease,border-color 0ms ease 150ms
+}
+.launch-icon {
+  font-size:1rem !important;
+  line-height:.875rem !important;
+  vertical-align:sub
+}
+.work_item .item_meta {
+  background:#f8f8f8;
+  flex:0 0 auto;
+  transform-style:preserve-3d;
+  bottom:-1px;
+  position:relative;
+  z-index:10;
+  transform:translatez(100px);
+  text-align:left;
+  display:flex;
+  flex-flow:row wrap;
+  padding:20px 35px 25px 20px;
+  align-items:flex-end;
+  align-content:flex-end;
+  justify-content:flex-start
+}
+.work_item .locked {
+  position:absolute;
+  right:15px;
+  bottom:20px;
+  font-size:18px;
+  line-height:30px;
+  color:#777
+}
+.work_item .item_title {
+  font-size:20px;
+  line-height:30px;
+  font-weight:500;
+  margin:0;
+  padding:0;
+  min-height:60px;
+  text-overflow:ellipsis;
+  min-height:30px;
+  overflow:visible;
+  flex:0 0 100%
+}
+.work_item .item_tags {
+  font-size:.75rem;
+  line-height:20px;
+  margin:0;
+  padding:0;
+  min-height:20px;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  flex:0 0 100%;
+  display:block
+}
+.work_item .item_tags li {
+  display:inline-block;
+  border:1px solid #777;
+  color:#383838;
+  border-radius:20px;
+  padding:0 5px;
+  margin:0 5px 0 0;
+  font-weight:500
+}
+.work_item .item_product {
+  font-size:.875rem;
+  line-height:20px;
+  font-weight:500;
+  padding:0;
+  border-radius:20px;
+  color:#777;
+  margin:0 0 20px 0;
+  flex:0 0 auto
+}
+
+.launch-icon {
+  width:16px;
+  height:16px;
+  fill:currentColor
+}
+.locked {
+  width:18px;
+  height:30px;
+  display:flex;
+  align-items:center
+}
+.locked svg {
+  width:18px;
+  height:18px;
+  fill:currentColor
+}
+.work_item:focus-visible {
+  outline-offset:6px
+}
+@media(prefers-reduced-motion:reduce) {
+  .work_item {
+  transform:none!important
+}
+
+}
