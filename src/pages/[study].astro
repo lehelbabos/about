@@ -52,6 +52,7 @@ if (import.meta.env.DEV) {
       <div class="password-field"><input id="study-password" name="password" type="password" autocomplete="current-password" required /><button type="submit">Submit</button></div>
       <p class="unlock-status" role="status" aria-live="polite"></p>
     </form>
+    <p class="unlock-help">Need the password for this case study? <a href="mailto:design@lehel.ca">Get in touch!</a></p>
     <noscript>JavaScript is required to unlock this encrypted case study.</noscript>
   </section>
   <div id="study-content" data-hero={publicHero && JSON.stringify(publicHero)} set:html={preview} hidden={!preview}></div>

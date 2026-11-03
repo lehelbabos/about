@@ -7,6 +7,8 @@
 .checking-study-access .unlock-panel { visibility: hidden; }
 .unlock-status { min-height: 28px; font-size: var(--story-sm-size); line-height: var(--story-sm-leading); }
 .unlock-status[data-error] { color: #ac2525; }
+.unlock-help { font-size: var(--story-sm-size); line-height: var(--story-sm-leading); }
+.unlock-help a { color: inherit; text-decoration: underline; }
 body:has(.unlock-panel:not([hidden])) { min-height: 100vh; }
 body:has(.unlock-panel:not([hidden])) .site-header, body:has(.unlock-panel:not([hidden])) .site-footer { display: none; }
 body:has(.unlock-panel:not([hidden])) main { min-height: 100vh; display: flex; align-items: center; }
