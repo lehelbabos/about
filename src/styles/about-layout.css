@@ -5,7 +5,7 @@
 .about-portrait { grid-area: 1/2/13/10; z-index: 0; }
 .about-portrait .block { justify-content: center; }
 .about-name { grid-area: 13/2/15/10; z-index: 5; }
-.about-name .block { justify-content: flex-start; }
+.about-name .block { justify-content: center; }
 .about-location { grid-area: 15/2/17/10; z-index: 6; }
 .about-location .block { justify-content: flex-start; }
 .about-employer { grid-area: 17/2/19/10; z-index: 8; }

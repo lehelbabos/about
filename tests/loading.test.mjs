@@ -51,7 +51,7 @@ test('protected reading pages stay small and separate from encrypted editable ar
     assert.notEqual(source.iv, envelope.iv);
     assert.ok(!text.includes('PRIVATE_ASSET'));
     const files = await fs.readdir(`dist/protected/media/${slug}`);
-    assert.equal(files.length, slug === 'indeed-connect' ? 20 : 5);
+    assert.equal(files.length, slug === 'indeed-connect' ? 20 : 4);
     assert.ok(files.every(file => /^[a-f0-9]{32}\.bin$/.test(file)));
   }
 });

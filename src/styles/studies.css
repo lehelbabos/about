@@ -1,15 +1,26 @@
 #study-content h1[tabindex="-1"]:focus { outline: none; }
 .unlock-panel { width: min(100% - 48px, 520px); margin: auto; text-align: center; padding: 80px 0; }
 .unlock-panel h1 { font-size: var(--story-3xl-size); line-height: var(--story-3xl-leading); margin-bottom: 28px; }
-.password-field { font-size: var(--story-md-size); line-height: var(--story-md-leading); display: flex; gap: 8px; }
-.password-field input { border: 1px solid #bbb; padding: 12px 16px; width: 100%; min-width: 0; border-radius: 0; }
-.password-field button { background: #323232; color: #fff; border: 1px solid #323232; padding: 12px 22px; cursor: pointer; }
+.password-field { font-size: var(--story-md-size); line-height: var(--story-md-leading); display: flex; border: 1px solid var(--border-strong); border-radius: 12px; background: var(--bg); overflow: hidden; }
+.password-field:focus-within { border-color: var(--text); }
+.password-field input { border: 0; padding: 8px 12px; width: 100%; min-width: 0; background: transparent; outline: none; }
+.password-field button { background: var(--button-bg); color: #fff; border: 0; padding: 8px 20px; cursor: pointer; flex-shrink: 0; transition: background-color calc(150ms / var(--motion-speed)) ease; }
+.password-field button:hover { background: var(--button-bg-hover); }
+/* The field clips overflow, so draw the focus ring inside the button. */
+.password-field button:focus-visible { outline: 2px solid #fff; outline-offset: -5px; }
 .checking-study-access .unlock-panel { visibility: hidden; }
 .unlock-status { min-height: 28px; font-size: var(--story-sm-size); line-height: var(--story-sm-leading); }
-.unlock-status[data-error] { color: #ac2525; }
-.unlock-help { font-size: var(--story-sm-size); line-height: var(--story-sm-leading); }
+.unlock-status:empty { min-height: 0; margin: 0; }
+.unlock-status[data-error] { color: var(--error); }
+.unlock-help { margin-top: 28px; font-size: var(--story-sm-size); line-height: var(--story-sm-leading); }
 .unlock-help a { color: inherit; text-decoration: underline; }
 body:has(.unlock-panel:not([hidden])) { min-height: 100vh; }
 body:has(.unlock-panel:not([hidden])) .site-header, body:has(.unlock-panel:not([hidden])) .site-footer { display: none; }
 body:has(.unlock-panel:not([hidden])) main { min-height: 100vh; display: flex; align-items: center; }
-@media (max-width: 767px) { .unlock-panel h1 { font-size: var(--story-2xl-size); line-height: var(--story-2xl-leading); } .password-field { flex-direction: column; } }
+@media (max-width: 767px) { .unlock-panel h1 { font-size: var(--story-2xl-size); line-height: var(--story-2xl-leading); } }
+/* Inline SVG stat cards: scale like an image, recolour with the theme. */
+.stat-graphic { display: block; width: 100%; height: auto; font-family: 'Rubik', var(--font-body); font-weight: 700; }
+.stat-graphic .card { fill: light-dark(#fff, #1e1e1e); }
+.stat-graphic .stat { fill: var(--text); }
+.stat-graphic .purple { fill: light-dark(#6335b9, #a98be6); }
+.stat-graphic .blue { fill: light-dark(#3f73d3, #86a9ec); }

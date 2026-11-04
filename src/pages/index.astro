@@ -6,6 +6,7 @@ import projects from '../data/projects.json';
 import articles from '../data/articles.json';
 import '../styles/home-layout.css';
 import '../styles/cards.css';
+import '../styles/story-typography.css';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { publicStudies } from '../lib/public-studies.mjs';
@@ -35,7 +36,7 @@ const base = import.meta.env.BASE_URL;
     <div class="section-content portfolio-grid home-writing">
       <div class="grid-block home-writing-block-0"><div class="block"><h2 class="section-heading" id="writing-heading">Some things I’ve written</h2></div></div>
       {articles.map(article => <>
-        <div class={`grid-block ${article.block}`}><div class="block"><h4><a href={article.href}>{article.title}</a></h4></div></div>
+        <div class={`grid-block ${article.block}`}><div class="block"><h3 class="writing-title"><a href={article.href}>{article.title}</a></h3></div></div>
         <div class={`grid-block ${article.timeBlock}`}><div class="block"><p class="read-time">{article.time}</p></div></div>
       </>)}
     </div>
@@ -45,9 +46,11 @@ const base = import.meta.env.BASE_URL;
 <style>
   .intro :global(.block) { display: block; }
   .intro { padding: 3.5vmax 0; min-height: 35vh; }
-  .work-gallery { padding: 4.8vmax 0; min-height: 48vh; background: #f7f7f7; }
+  .work-gallery { padding: 4.8vmax 0; min-height: 48vh; background: var(--surface); }
   .writing { padding: 3.3vmax 0; }
   .section-heading { font-size: calc(16px + 3 * var(--type-unit)); line-height: 1.232; }
-  .additional { text-align: center; color: #777; }
-  .read-time { font-size: calc(16px - .2 * var(--type-unit)); }
+  .additional { text-align: center; color: var(--text-subtle); }
+  /* h3 for heading order, sized like the original h4. */
+  .writing-title { font-size: calc(16px + .6 * var(--type-unit)); line-height: 1.3664; }
+  .read-time { font-size: var(--story-md-size); line-height: var(--story-md-leading); }
 </style>

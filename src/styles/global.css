@@ -11,14 +11,47 @@
   --sqs-mobile-site-gutter: 6vw;
   --sqs-site-max-width: 2560px;
   --type-unit: min(1.2vw, 30.72px);
-  --text: #323232;
+  /* Colours are light-dark() pairs: the OS setting picks one, and a saved
+     header-toggle choice (data-theme on <html>) overrides it. */
+  --text: light-dark(#323232, #ececec);
   /* Body text: 15% white mixed into the original charcoal. */
-  --text-body: #515151;
-  --link: #3268a4;
+  --text-body: light-dark(#515151, #c8c8c8);
+  --link: light-dark(#3268a4, #7fabe0);
+  --text-muted: light-dark(#626262, #a3a3a3);
+  --text-subtle: light-dark(#6e6e6e, #8f8f8f);
+  --bg: light-dark(#fff, #141414);
+  --surface: light-dark(#f7f7f7, #1e1e1e);
+  --border: light-dark(#ddd, #333);
+  --border-strong: light-dark(#bbb, #4a4a4a);
+  --error: light-dark(#ac2525, #f07a7a);
+  /* Light: the link blue with 20% / 32% black. Dark: the link blue, then 12% lighter. */
+  --button-bg: light-dark(#285383, #3268a4);
+  --button-bg-hover: light-dark(#224770, #4b7aaf);
+  --card-meta-bg: light-dark(#f8f8f8, #232323);
+  --card-text: light-dark(#252525, #ececec);
+  --card-tag-text: light-dark(#383838, #c8c8c8);
+  --card-shadow: light-dark(#777, #000);
+  --switch-track: light-dark(#f8f8f8, #2a2a2a);
+  --switch-knob: light-dark(#fff, #d6d6d6);
+  --switch-icon: light-dark(#626262, #2a2a2a);
+  --logo-filter: none;
+  color-scheme: light dark;
   color: var(--text);
-  background: #fff;
+  background: var(--bg);
   font-synthesis: none;
 }
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+/* Recolour the navy logo to the light text colour; filters can't use light-dark(). */
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --logo-filter: brightness(0) invert(.92); } }
+:root[data-theme="dark"] { --logo-filter: brightness(0) invert(.92); }
+/* Set briefly by the header toggle so a theme switch fades, at the same pace as the switch's knob. */
+:root.theme-transition, :root.theme-transition *, :root.theme-transition *::before, :root.theme-transition *::after {
+  transition: color, background-color, border-color, fill, box-shadow, filter;
+  transition-duration: calc(200ms / var(--motion-speed));
+  transition-timing-function: ease;
+}
+:root.theme-transition .knob { transition-property: color, background-color, border-color, fill, box-shadow, transform; }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body { color: var(--text-body); font-family: var(--font-body); font-size: calc(16px + .2 * var(--type-unit)); font-weight: var(--font-weight-body); line-height: 1.8; }
@@ -44,8 +77,6 @@ p { margin: 1rem 0; }
 .section-content { width: 100%; }
 .site-footer { text-align: center; font-size: calc(16px + .1 * var(--type-unit)); padding: 2.7vw 6vw 1.4vw; }
 .site-footer p { margin: 0; }
-.skip-link { position: fixed; top: -100px; left: 16px; z-index: 100; padding: 8px 16px; background: white; }
-.skip-link:focus { top: 12px; }
 @media (max-width: 767px) {
   :root { --type-unit: calc(.012 * min(100vh, 900px)); }
   .site-footer { padding: 30px 6vw; }
