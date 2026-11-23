@@ -147,7 +147,7 @@ The progress bar is still present on the left but remains collapsed by default. 
 
 <div class="story-anchor" id="2f80"></div>
 
-Out of all the start ups I’ve worked with, these guys have definitely been one of my favourites. I’m as happy to see them going places, as I am to have had the privilege of being along for the ride. If you’re in Ontario and want to try some of the best, local craft beers our province has to offer, [check out their site](https://www.thebrewbox.co/). (This is stuff you won’t find at your local LCBO… Oh and it’s delivered straight to your doorstep. Awesome, right?)
+Out of all the start ups I’ve worked with, these guys have definitely been one of my favourites. I’m as happy to see them going places, as I am to have had the privilege of being along for the ride.
 
 <div class="story-anchor" id="e053"></div>
 
